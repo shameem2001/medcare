@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HospitalListCard from '../components/HospitalListCard';
-import DoctorListCard from "../components/DoctorListCard";
+import HospitalListCard from '../components/DoctorList/HospitalListCard';
+import DoctorListCard from "../components/DoctorList/DoctorListCard";
 
 let hospitals_list = [
   {
