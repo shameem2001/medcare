@@ -131,7 +131,7 @@ body {
     padding-bottom: 20px;
 
     .Hospital-card {
-        background-color: white;
+      background-color: white;
       min-height: 130px;
       border-bottom: 1px solid black;
       padding-top: 20px;
@@ -154,6 +154,10 @@ body {
             border-radius: 12px;
             height: 100px;
             width: 100px;
+        }
+
+        .title-address{
+            padding: 0 20px;
         }
       }
 
@@ -186,7 +190,67 @@ body {
         }
       }
     }
+    .doctor-card-sheet{
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      justify-content: space-evenly;
+
+      .doctor-card{
+        background-color: white;
+        width: 260px;
+        height: 300px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        display: grid;
+        grid-template-rows: repeat(5, auto);
+
+        .doctor-card-circle-avatar{
+          width: 110px;
+          height: 110px;
+          border-radius: 100%;
+          border: solid 1px gray;
+          background-image: url('../assets/profile.jpg');
+          background-size: 100% 100%;
+          
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
+        }
+        .doctor-card-name{
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .doctor-card-dept{
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -20px;
+          color: gray;
+        }
+        .doctor-card-exp{
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -25px;
+          color: gray;
+          font-size: small;
+        }
+        .doctor-card-hospital-name{
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -25px;
+          color: black;
+        }
+        .doctor-card-view-profile-button{
+          margin-left: auto;
+          margin-right: auto;
+          height: 40px;
+          margin-bottom: 10px;
+          background-color: cadetblue;
+          color: white;
+        }
+      }
+    }
   }
 }
 
 // DoctorList Page Styling end
+
