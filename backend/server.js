@@ -25,7 +25,7 @@ db.once("open", function () {
 
 
 app.get("/", (req, res) => {
-    res.send("Hi");
+  res.sendFile("/index.html");
 });
 
 app.listen(process.env.PORT || PORT, () => {
