@@ -1,5 +1,6 @@
 import React from "react";
-import DependantCard from "../components/Profile/DependantCard";
+import DependantCard from "../../components/Profile/DependantCard";
+import './Profile.scss';
 
 export default function Profile() {
   return (
