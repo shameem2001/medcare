@@ -10,7 +10,7 @@ export default function Login() {
       <img className='imagine' src={imga} alt ="somet" /> 
       <div className='loginpart'>
         
-        <h3 className='logintext'> MED<span className='care'>CARE</span></h3> 
+        <h3>MED<span className='care'>CARE</span></h3> 
         <br/>
         <TextField 
           size="normal"  className='logininput'
