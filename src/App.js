@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Home from "./user/pages/HomePage/Home.js";
 import DoctorList from './user/pages/DoctorList/DoctorList.js';
 import Profile from './user/pages/ProfilePage/Profile';
+import Login from './user/pages/Login/Login.js';
+import Register from './user/pages/Register/Register.js';
 
 export default function Medcare() {
   return (
@@ -14,6 +16,8 @@ export default function Medcare() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="register" element={<Register />}/>
+          <Route path="/login" element={<Login />}/>
           <Route path="/doctor-list" element={<DoctorList />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
