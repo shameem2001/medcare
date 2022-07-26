@@ -6,148 +6,154 @@
   background-color: whitesmoke;
   padding: 30px 60px;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: auto auto;
+  justify-content: space-around;
 
-  // profile-card styling start
-  .profile-card1 {
-    background-color: white;
-    border-radius: 8px;
-    height: 390px;
-    width: 370px;
-    padding: 10px;
+  .profile-div-left {
+    position: fixed;
+    margin-left: 10%;
 
-    .profile-card1-grid {
-      display: grid;
-      grid-template-columns: auto auto;
+    // profile-card styling start
+    .profile-card1 {
+      background-color: white;
+      border-radius: 8px;
+      height: 390px;
+      width: 370px;
+      padding: 10px;
 
-      .profile-card1-circle-avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 100%;
-        border: solid 1px gray;
-        background-image: url("../../../../assets/profile.jpg");
-        background-size: 100% 100%;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-      }
-
-      .profile-card1-top-right {
-        margin-top: 10px;
-        margin-left: 5px;
-
-        .profile-card1-name {
-          font-weight: 500;
-        }
-
-        .profile-card1-dob {
-          font-size: 14px;
-          .profile-card1-dob-helper {
-            color: cadetblue;
-            font-weight: 500;
-            font-size: 16px;
-          }
-        }
-
-        .profile-card1-gender {
-          font-size: 14px;
-          .profile-card1-gender-helper {
-            color: cadetblue;
-            font-weight: 500;
-            font-size: 16px;
-          }
-        }
-
-        .profile-card1-edit-button {
-          background-color: cadetblue;
-          color: white;
-          width: 80px;
-          height: 30px;
-          font-size: 12px;
-          padding: 2px;
-        }
-      }
-    }
-
-    .profile-card1-details {
-      padding-left: 10px;
-      padding-right: 20px;
-      margin-bottom: 10px;
-      font-size: 14px;
-
-      .profile-card1-details-helper {
-        color: cadetblue;
-        font-weight: 600;
-        font-size: 16px;
-      }
-    }
-  }
-  // profile card styling end
-
-  // dependents card styling start
-  .dependents-card {
-    margin-top: 20px;
-    width: 370px;
-    min-height: 200px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-
-    .dependants-card-hr {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    .dependant-list-card {
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: space-between;
-
-      .dependant-list-card-left {
+      .profile-card1-grid {
         display: grid;
         grid-template-columns: auto auto;
 
-        .dependant-list-card-left-circle-avatar {
-          width: 40px;
-          height: 40px;
+        .profile-card1-circle-avatar {
+          width: 110px;
+          height: 110px;
           border-radius: 100%;
-          background-color: cadetblue;
-          color: white;
-          font-size: 22px;
-          text-align: center;
-          padding-top: 2px;
+          border: solid 1px gray;
+          background-image: url("../../../../assets/profile.jpg");
+          background-size: 100% 100%;
+
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
         }
 
-        .dependant-list-card-left-details {
-          h5 {
-            font-size: large;
+        .profile-card1-top-right {
+          margin-top: 10px;
+          margin-left: 5px;
+
+          .profile-card1-name {
+            font-weight: 500;
           }
-          h6 {
-            color: gray;
+
+          .profile-card1-dob {
             font-size: 14px;
-            margin-top: -7px;
+            .profile-card1-dob-helper {
+              color: cadetblue;
+              font-weight: 500;
+              font-size: 16px;
+            }
+          }
+
+          .profile-card1-gender {
+            font-size: 14px;
+            .profile-card1-gender-helper {
+              color: cadetblue;
+              font-weight: 500;
+              font-size: 16px;
+            }
+          }
+
+          .profile-card1-edit-button {
+            background-color: cadetblue;
+            color: white;
+            width: 80px;
+            height: 30px;
+            font-size: 12px;
+            padding: 2px;
           }
         }
       }
 
-      .dependant-list-card-right {
-        .dependant-list-card-right-icons {
-          margin-right: 15px;
-          color: gray;
-          margin-top: 15px;
+      .profile-card1-details {
+        padding-left: 10px;
+        padding-right: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+
+        .profile-card1-details-helper {
+          color: cadetblue;
+          font-weight: 600;
+          font-size: 16px;
         }
       }
     }
-    .dependants-list-card-hr {
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-    .dependents-card-btn {
-      width: 340px;
-      background-color: cadetblue;
-      color: white;
-      font-weight: 500;
+    // profile card styling end
+
+    // dependents card styling start
+    .dependents-card {
+      margin-top: 20px;
+      width: 370px;
+      min-height: 200px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+
+      .dependants-card-hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .dependant-list-card {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+
+        .dependant-list-card-left {
+          display: grid;
+          grid-template-columns: auto auto;
+
+          .dependant-list-card-left-circle-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: cadetblue;
+            color: white;
+            font-size: 22px;
+            text-align: center;
+            padding-top: 2px;
+          }
+
+          .dependant-list-card-left-details {
+            h5 {
+              font-size: large;
+            }
+            h6 {
+              color: gray;
+              font-size: 14px;
+              margin-top: -7px;
+            }
+          }
+        }
+
+        .dependant-list-card-right {
+          .dependant-list-card-right-icons {
+            margin-right: 15px;
+            color: gray;
+            margin-top: 15px;
+          }
+        }
+      }
+      .dependants-list-card-hr {
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      .dependents-card-btn {
+        width: 340px;
+        background-color: cadetblue;
+        color: white;
+        font-weight: 500;
+      }
     }
   }
 
@@ -304,7 +310,7 @@
           border-bottom: 1px solid gray;
           padding: 12px;
 
-          p{
+          p {
             font-size: 15px;
             margin-bottom: 7px;
           }
@@ -434,16 +440,16 @@
               margin-right: 8px;
             }
           }
-          .profile-prescription-card-body-sect-3-header{
+          .profile-prescription-card-body-sect-3-header {
             margin-top: 10px;
             margin-bottom: 10px;
           }
-          .profile-prescription-card-body-sect-3{
-            table{
-              th{
+          .profile-prescription-card-body-sect-3 {
+            table {
+              th {
                 font-size: 14px;
               }
-              td{
+              td {
                 font-size: 14px;
               }
             }
@@ -452,12 +458,12 @@
       }
     }
 
-    .profile-tabbar-content-appointments-tab-container{
+    .profile-tabbar-content-appointments-tab-container {
       display: grid;
       grid-template-columns: auto auto;
       padding-left: 2px;
 
-      .profile-tabbar-content-appointments-tab-container-h5{
+      .profile-tabbar-content-appointments-tab-container-h5 {
         margin-bottom: 2px;
       }
     }
