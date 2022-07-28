@@ -35,7 +35,7 @@ export default function AppointmentCard() {
           <p>AFTERNOON</p>
           <p>12:00 PM</p>
           <p>John Doe</p>
-          <p>QK-139646</p>
+          <p>MD-139646</p>
         </div>
       </div>
       <div className="profile-tabbar-content-all-tab-appointment-card-sect-4">

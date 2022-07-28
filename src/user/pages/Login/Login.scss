@@ -1,78 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+.login-page {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-content: center;
+  height: 90vh;
 
-body {
-    font-family: 'Poppins';
-}
-.login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 880px;
-    
-    
-}
-.care {
-    color: red;
-}
-.loginin {
+  .login-page-container {
+    width: 900px;
+    height: 500px;
+    border-radius: 12px;
     display: grid;
-    justify-content: center;
-    height: 600px;
-    width: 1400px;
-    border-radius: 30px;
-}
-.imagine{
-    grid-row: 1;
-    height: 600px;
-    width: 660px;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    
-}
+    grid-template-columns: auto auto;
 
+    .login-page-container-left {
+      width: 400px;
+      height: 250px;
 
-.loginpart{
-    grid-row: 1;
-    height: 600px;
-    width: 660px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
+      img {
+        margin-top: 50px;
+        align-content: center;
+        width: 400px;
+        height: 350px;
+      }
+    }
 
-.logintext{
-    font-size: 50px;
-    font-weight: 600;
-}
+    .login-page-container-right {
+        width: 300px;
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        align-content: center;
 
-.logininput{
-    width: 80%;
-    border-radius:10px; 
-}
+      h5 {
+        color: black;
+        font-size: 50px;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 30px;
 
-.loginbutton{
-    height: 50px;
-    width: 80%;
-    color: white;
-    border: none;
-    background-color: cadetblue;
-    border-radius: 10px;
-    font-size: 22px;
-}
+        span {
+          color: red;
+        }
+      }
 
-.loginbutton:hover {
-        
-        cursor: pointer;
-}
-.loginnew{
-    color: cadetblue;
-}
+      .email{
+        margin: 10px 5px 10px 5px;
+        width: 400px;
+      }
+      .password{
+        margin: 10px 5px 10px 5px;
+        width: 400px;
+      }
 
-.loginnew:hover {
-    
-    cursor: pointer;
+      .login-button{
+        margin: 10px 5px 10px 5px;
+        width: 400px;
+        height: 45px;
+        background-color: cadetblue;
+        color: white;
+        letter-spacing: 1.5px;
+        font-size: 18px;
+      }
+
+      .loginnew{
+        margin: 10px 5px 10px 5px;
+        color: cadetblue;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+
+        .loginnew-link{
+          margin-left: 3px;
+          color: cadetblue;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

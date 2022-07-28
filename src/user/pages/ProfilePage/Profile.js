@@ -7,6 +7,7 @@ import './Profile.scss';
 export default function Profile() {
   return (
     <div className="profile">
+      <div></div>
       <div className="profile-div-left">
         <div className="container shadow profile-card1">
           <div className="profile-card1-grid">
