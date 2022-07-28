@@ -7,7 +7,7 @@ import './Profile.scss';
 export default function Profile() {
   return (
     <div className="profile">
-      <div></div>
+      {/* <div></div> */}
       <div className="profile-div-left">
         <div className="container shadow profile-card1">
           <div className="profile-card1-grid">
@@ -59,7 +59,6 @@ export default function Profile() {
         <div className="container shadow dependents-card">
           <h5>Registered Dependants</h5>
           <hr className="dependants-card-hr" />
-          <DependantCard />
           <DependantCard />
           <button className="btn dependents-card-btn">Add Dependant</button>
         </div>
