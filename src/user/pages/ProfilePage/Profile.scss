@@ -10,8 +10,8 @@
   justify-content: space-around;
 
   .profile-div-left {
-    position: fixed;
-    margin-left: 5%;
+    // position: fixed;
+    // margin-left: 5%;
 
     // profile-card styling start
     .profile-card1 {
@@ -94,7 +94,7 @@
     .dependents-card {
       margin-top: 20px;
       width: 370px;
-      min-height: 200px;
+      min-height: 100px;
       background-color: white;
       border-radius: 8px;
       padding: 15px;

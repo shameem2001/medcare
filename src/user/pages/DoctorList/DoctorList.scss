@@ -6,15 +6,19 @@
 .parent {
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .back-to-home{
     display: grid;
     grid-template-columns: 90% auto auto;
     justify-items: right;
+    color: gray;
 }
 
 .back-url{
+    color: gray;
     text-align: right;
 }
 
