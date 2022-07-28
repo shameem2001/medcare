@@ -16,7 +16,7 @@ export default function Medcare() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="register" element={<Register />}/>
+          <Route path="/register" element={<Register />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/doctor-list" element={<DoctorList />} />
           <Route path="/profile" element={<Profile />} />

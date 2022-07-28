@@ -6,12 +6,12 @@
   background-color: whitesmoke;
   padding: 30px 60px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 40% auto;
   justify-content: space-around;
 
   .profile-div-left {
     position: fixed;
-    margin-left: 10%;
+    margin-left: 5%;
 
     // profile-card styling start
     .profile-card1 {
