@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Raleway&family=Roboto&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.divider{
+    display: grid;
+    grid-template-columns: 70% 20%;
+   
+    .stepper{
+       
+        align-self: center;
+        
+    }
+    .dateSelect{
+        justify-self: center;
+        padding-left: 40px;
+        
+    }
+    .stepcontact{
+        justify-self: left;
+    }
+    
+}
+
+.bookingStatus{
+    align-self: center;
+}
+.contactcard{
+    padding-right: 20px;
+}
+
+.headerCard{
+   
+    display: flex;
+  justify-content: center;
+  
+}
+
