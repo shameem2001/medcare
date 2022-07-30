@@ -4,6 +4,7 @@ import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import { IconButton, Typography, Avatar, Chip, Stack } from "@mui/material";
 import BasicDatePicker from "./BasicDatePicker";
+import img from "../../../assets/elder.jpg";
 
 var cardStyle = {
   display: "block",
@@ -29,7 +30,7 @@ const timeSelect = [
   },
 ];
 
-export default function Dcard({ name, speciality, updateStep}) {
+export default function Dcard({ name, speciality, updateStep }) {
   const [timeShow, setTimeshow] = useState(timeSelect);
   const [displayTime, setDisplayTime] = useState(false);
   let i = 0;
@@ -42,20 +43,19 @@ export default function Dcard({ name, speciality, updateStep}) {
   let timeComponent = () => {
     console.log("Hi");
     let times = timeShow
-            .filter((item1) => {
-              return item1.nameD === name;
-            })
-            .map((item2) => {
-              return item2.timeToken;
-            })[0];
-            
+      .filter((item1) => {
+        return item1.nameD === name;
+      })
+      .map((item2) => {
+        return item2.timeToken;
+      })[0];
+
     return (
       <div className="mt-2 mb-7">
         <Stack direction="row" spacing={1}>
-          {
-            times.map((item3) => {
-              return <Chip label={item3} />
-            })}
+          {times.map((item3) => {
+            return <Chip label={item3} />;
+          })}
         </Stack>
       </div>
     );
@@ -65,14 +65,7 @@ export default function Dcard({ name, speciality, updateStep}) {
     <div className="mt-3">
       <Card elevation={3} style={cardStyle}>
         <CardHeader
-          avatar={
-            <Avatar
-              sx={{ bgcolor: "lightgray", width: 70, height: 70 }}
-              aria-label="recipe"
-              src="https://www.pexels.com/photo/man-in-black-jacket-771742/"
-              alt="I"
-            />
-          }
+          avatar={<img className="Dcard-circle-avatar" src={img} alt="I" />}
           action={
             <IconButton>
               <BasicDatePicker

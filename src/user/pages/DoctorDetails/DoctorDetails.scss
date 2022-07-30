@@ -1,57 +1,70 @@
-.appointment{
-background-color: whitesmoke;
+.appointment {
+  background-color: whitesmoke;
 }
-.divider{
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    padding: 100px;
-   
-    .stepper{
-       
-        align-self: center;
-        
-    }
-    .dateSelect{
-        justify-self: center;
-        padding-left: 40px;
-        margin-right: 60px;
-        
-    }
-    .stepcontact{
-        justify-self: left;
-    }
-    
-}
+.divider {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 100px;
+  padding-top: 50px;
 
-.bookingStatus{
+  .stepper {
     align-self: center;
-}
-.contactcard{
-    padding-right: 20px;
+  }
+  .dateSelect {
+    justify-self: center;
+    padding-left: 40px;
+    margin-right: 60px;
+  }
+  .stepcontact {
+    justify-self: left;
+  }
 }
 
-.headerCard{
-   width: 100%;
-   border-radius: 6px;
-   height: 125px;
-   background-color: white;
-   display: grid;
-   grid-template-columns: auto auto;
-   padding: 12px;
-   padding-left: 20px;
+.bookingStatus {
+  align-self: center;
+}
+.contactcard {
+  padding-right: 20px;
+}
 
-  .headerCard-img{
-    width: 100px;
+.headerCard {
+  width: 645px;
+  border-radius: 6px;
+  height: 125px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  justify-content: start;
+  padding: 12px;
+  padding-left: 20px;
+
+  .headerCard-img {
+    width: 150px;
     height: 100px;
     border: 1px solid black;
-    background-image: url('../../../../assets/img_sample.jpg');
+    background-image: url("../../../../assets/img_sample.jpg");
     background-size: 100% 100%;
   }
 
-  .header-card-div-right{
+  .header-card-div-right {
     margin-top: 10px;
+
+    .headerCard-2 {
+      font-size: 15px;
+    }
+
+    .headerCard-3 {
+      font-size: 14px;
+    }
   }
-  
 }
 
+.Dcard-circle-avatar {
+  border: 1px solid black;
+  border-radius: 2px;
+  width: 70px;
+  height: 70px;
+}

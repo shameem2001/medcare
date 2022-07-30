@@ -8,6 +8,7 @@ import {
   StepLabel,
 } from "@mui/material";
 import Dcard from "../../components/DoctorDetails/Dcard.js";
+import img from '../../../assets/akghospital.png';
 import "./DoctorDetails.scss";
 
 let doctInitial = [
@@ -50,13 +51,11 @@ export default function Appointment({ hospital, address, moto }) {
       <div className="divider">
         <div className="dateSelect">
           <div className="container shadow-sm headerCard">
-            <div
-              className="headerCard-img"
-            />
+            <img className="headerCard-img" src={img} alt="" />
             <div className="header-card-div-right">
-              <h5>{hospital}</h5>
-              <h6>{address}</h6>
-              <h6>"{moto}"</h6>
+              <h5 className="headerCard-1">{hospital}</h5>
+              <h6 className="headerCard-2">{address}</h6>
+              <h6 className="headerCard-3">"{moto}"</h6>
             </div>
           </div>
           {tasks.map((item) => {
@@ -136,6 +135,6 @@ export default function Appointment({ hospital, address, moto }) {
 }
 Appointment.defaultProps = {
   hospital: "AKG HOSPITAL",
-  address: "40/1276 , A1, NH 66 Bypass, Palarivattom, Kochi -682024",
+  address: "A1, NH 66 Bypass, Talap, Kannur -692024",
   moto: "WE SERVE",
 };
