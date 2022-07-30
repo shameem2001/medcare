@@ -175,7 +175,7 @@ export default function DoctorList() {
             </div>
           </div>
           <div class="container cont3">
-            {/* {hospitals_list.map((hospital) => {
+            {hospitals_list.map((hospital) => {
               return (
                 <HospitalListCard
                   id={hospital.id}
@@ -186,8 +186,8 @@ export default function DoctorList() {
                   doctors={hospital.doctors}
                 />
               );
-            })} */}
-            <div className="doctor-card-sheet">
+            })}
+            {/* <div className="doctor-card-sheet">
               {doctors_list.map((doctor) => {
               return (
                 <DoctorListCard
@@ -200,7 +200,7 @@ export default function DoctorList() {
                 />
               );
             })}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -5,9 +5,9 @@
 
 .parent {
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  background-color: whitesmoke;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .back-to-home{
@@ -32,7 +32,7 @@
 }
 
 .doctor-list-search-card {
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 10px;
   min-height: 150px;
   display: grid;
@@ -60,7 +60,7 @@
 
 .doctor-list-card-container {
   margin-top: 1rem;
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 10px;
   min-height: 200px;
 
@@ -135,7 +135,6 @@
     .Hospital-card {
       background-color: white;
       min-height: 130px;
-      border-bottom: 1px solid black;
       padding-top: 20px;
       padding-bottom: 20px;
       margin-bottom: 20px;
@@ -189,6 +188,12 @@
         .search-appointment-button{
             background-color: cadetblue;
             color: white;
+            font-size: 17px;
+
+            .search-appointment-button-link{
+              text-decoration: none;
+              color: white;
+            }
         }
       }
     }
@@ -248,6 +253,11 @@
           margin-bottom: 10px;
           background-color: cadetblue;
           color: white;
+
+          .doctor-card-view-profile-button-link{
+            text-decoration: none;
+            color: white;
+          }
         }
       }
     }
