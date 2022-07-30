@@ -20,11 +20,11 @@ export default function HospitalCard({img, name, address, departments, doctors})
             <span className="doctor-no">{doctors}</span> doctors
           </p>
         </div>
-        <button className="btn btn-large search-appointment-button">
-          <Link className="search-appointment-button-link" to="/doctor-details">
+        <Link className="search-appointment-button-link" to="/doctor-details">
+          <button className="btn btn-large search-appointment-button">
             Book an Appointment
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   );

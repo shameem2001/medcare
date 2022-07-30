@@ -2,7 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Raleway&family=Roboto&display=swap");
 
-
 .parent {
   font-family: "Poppins", sans-serif;
   background-color: whitesmoke;
@@ -10,16 +9,16 @@
   padding-bottom: 50px;
 }
 
-.back-to-home{
-    display: grid;
-    grid-template-columns: 90% auto auto;
-    justify-items: right;
-    color: gray;
+.back-to-home {
+  display: grid;
+  grid-template-columns: 90% auto auto;
+  justify-items: right;
+  color: gray;
 }
 
-.back-url{
-    color: gray;
-    text-align: right;
+.back-url {
+  color: gray;
+  text-align: right;
 }
 
 .link {
@@ -27,8 +26,8 @@
   color: black;
 }
 
-.link:hover{
-    color: cadetblue;
+.link:hover {
+  color: cadetblue;
 }
 
 .doctor-list-search-card {
@@ -87,7 +86,7 @@
       display: grid;
       grid-template-columns: 30% 5% 10% 5% 10% 12%;
 
-      .filter-h5{
+      .filter-h5 {
         font-weight: 500;
       }
     }
@@ -143,66 +142,69 @@
       display: grid;
       grid-template-columns: 60% 40%;
 
-      .left-side{
+      .left-side {
         display: grid;
         grid-template-columns: auto auto;
         justify-items: left;
         align-items: center;
-        .img-container{
-            background-image: url('../../../../assets/img_sample.jpg');
-            background-size: 100% 100%;
-            border: 1px solid black;
-            border-radius: 12px;
-            height: 100px;
-            width: 100px;
+        .img-container {
+          background-image: url("../../../../assets/img_sample.jpg");
+          background-size: 100% 100%;
+          border: 1px solid black;
+          border-radius: 12px;
+          height: 100px;
+          width: 100px;
         }
 
-        .title-address{
-            padding: 0 20px;
+        .title-address {
+          padding: 0 20px;
         }
       }
 
-      .right-side{
+      .right-side {
         display: grid;
-        grid-template-rows: auto auto;
-        .right-side-top{
-            display: grid;
-            grid-template-columns: auto auto;
-            justify-content: space-between;
+        grid-template-rows: 30% auto;
+        .right-side-top {
+          margin-top: 20px;
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
 
-            .departments {
-                .department-no{
-                    color: cadetblue;
-                    font-weight: 600;
-                }
+          .departments {
+            font-size: 16px;
+            .department-no {
+              color: cadetblue;
+              font-weight: 600;
             }
+          }
 
-            .doctors{
-                .doctor-no{
-                    color: cadetblue;
-                    font-weight: 600;
-                }
+          .doctors {
+            font-size: 16px;
+            .doctor-no {
+              color: cadetblue;
+              font-weight: 600;
             }
+          }
         }
 
-        .search-appointment-button{
+        .search-appointment-button-link {
+          .search-appointment-button {
+            margin-top: 20px;
             background-color: cadetblue;
             color: white;
             font-size: 17px;
-
-            .search-appointment-button-link{
-              text-decoration: none;
-              color: white;
-            }
+            width: 100%;
+            height: 50px;
+          }
         }
       }
     }
-    .doctor-card-sheet{
+    .doctor-card-sheet {
       display: grid;
       grid-template-columns: repeat(4, auto);
       justify-content: space-evenly;
 
-      .doctor-card{
+      .doctor-card {
         background-color: white;
         width: 260px;
         height: 300px;
@@ -211,42 +213,42 @@
         display: grid;
         grid-template-rows: repeat(5, auto);
 
-        .doctor-card-circle-avatar{
+        .doctor-card-circle-avatar {
           width: 110px;
           height: 110px;
           border-radius: 100%;
           border: solid 1px gray;
-          background-image: url('../../../../assets/profile.jpg');
+          background-image: url("../../../../assets/profile.jpg");
           background-size: 100% 100%;
-          
+
           margin-left: auto;
           margin-right: auto;
           margin-top: 10px;
         }
-        .doctor-card-name{
+        .doctor-card-name {
           margin-left: auto;
           margin-right: auto;
         }
-        .doctor-card-dept{
+        .doctor-card-dept {
           margin-left: auto;
           margin-right: auto;
           margin-top: -20px;
           color: gray;
         }
-        .doctor-card-exp{
+        .doctor-card-exp {
           margin-left: auto;
           margin-right: auto;
           margin-top: -25px;
           color: gray;
           font-size: small;
         }
-        .doctor-card-hospital-name{
+        .doctor-card-hospital-name {
           margin-left: auto;
           margin-right: auto;
           margin-top: -25px;
           color: black;
         }
-        .doctor-card-view-profile-button{
+        .doctor-card-view-profile-button {
           margin-left: auto;
           margin-right: auto;
           height: 40px;
@@ -254,7 +256,7 @@
           background-color: cadetblue;
           color: white;
 
-          .doctor-card-view-profile-button-link{
+          .doctor-card-view-profile-button-link {
             text-decoration: none;
             color: white;
           }
@@ -266,7 +268,6 @@
 
 // DoctorList Page Styling end
 
-
 // Profile page styling start
 .profile {
   background-color: whitesmoke;
@@ -275,57 +276,57 @@
   grid-template-columns: 40% 60%;
 
   // profile-card styling start
-  .profile-card1{
+  .profile-card1 {
     background-color: white;
     border-radius: 8px;
     height: 390px;
     width: 370px;
     padding: 10px;
 
-    .profile-card1-grid{
+    .profile-card1-grid {
       display: grid;
       grid-template-columns: auto auto;
 
-      .profile-card1-circle-avatar{
-          width: 110px;
-          height: 110px;
-          border-radius: 100%;
-          border: solid 1px gray;
-          background-image: url('../../../../assets/profile.jpg');
-          background-size: 100% 100%;
-          
-          margin-left: auto;
-          margin-right: auto;
-          margin-top: 10px;
+      .profile-card1-circle-avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 100%;
+        border: solid 1px gray;
+        background-image: url("../../../../assets/profile.jpg");
+        background-size: 100% 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
       }
 
-      .profile-card1-top-right{
+      .profile-card1-top-right {
         margin-top: 10px;
         margin-left: 5px;
 
-        .profile-card1-name{
+        .profile-card1-name {
           font-weight: 500;
         }
 
-        .profile-card1-dob{
+        .profile-card1-dob {
           font-size: 14px;
-          .profile-card1-dob-helper{
+          .profile-card1-dob-helper {
             color: cadetblue;
             font-weight: 500;
             font-size: 16px;
           }
         }
 
-        .profile-card1-gender{
+        .profile-card1-gender {
           font-size: 14px;
-          .profile-card1-gender-helper{
+          .profile-card1-gender-helper {
             color: cadetblue;
             font-weight: 500;
             font-size: 16px;
           }
         }
 
-        .profile-card1-edit-button{
+        .profile-card1-edit-button {
           background-color: cadetblue;
           color: white;
           width: 80px;
@@ -334,22 +335,20 @@
           padding: 2px;
         }
       }
-
     }
 
-    .profile-card1-details{
+    .profile-card1-details {
       padding-left: 10px;
       padding-right: 20px;
       margin-bottom: 10px;
       font-size: 14px;
 
-      .profile-card1-details-helper{
+      .profile-card1-details-helper {
         color: cadetblue;
         font-weight: 600;
         font-size: 16px;
-      }      
+      }
     }
-
   }
 }
-  // profile card styling end
+// profile card styling end
