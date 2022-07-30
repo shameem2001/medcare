@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+body {
+    font-family: 'Poppins';
+}
+
+.fullpage {
+    height: 100vh;
+    width: 100vw;
+}
+.header {
+    width: 99.8vw;
+    height: 15%;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.c1 {
+    padding-left: 100px;
+    font-size: 500%;
+    font-weight: 450;
+    display: flex;
+}
+.c11 {
+    color: red;
+}
+.c2 {
+    display: flex;
+    font-size: 120%;
+    padding-right: 100px;
+}
+.c21 {
+    padding-left: 30px;
+    color: purple;
+}
+.c21:hover {
+    cursor: pointer;
+}
+.mainpart {
+    display: flex;
+    height: 85%;
+    width: 100%;
+}
+.bottompart{
+    display: flex;
+    justify-content: center;
+}
+.leftbutton {
+    height: 40px;
+    border-radius: 10px;
+    background-color: lightgreen;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.leftbutton:hover {
+    cursor: pointer;
+}
+.rightpart {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5rem;
+}
+.divtable{
+    padding-left: 15rem;
+    padding-top: 6rem;
+}
+table {
+    width: 80%;
+    border-collapse: collapse;
+}
+th {
+    border: 1px solid ;
+    text-align: center;
+    color: cadetblue;
+    padding: 8px;
+}
+td {
+    border: 1px solid ;
+    text-align: center;
+    padding: 6px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+}
+.actionbutton {
+    height: 25px;
+}
+.actionbutton:hover {
+    cursor: pointer;
+}

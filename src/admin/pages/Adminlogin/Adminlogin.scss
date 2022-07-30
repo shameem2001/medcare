@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+body {
+    font-family: 'Poppins';
+}
+
+.mainbox{
+  height: 500px;
+  width: 430px;
+  border-style: solid;
+  border-radius: 20px;
+  display: grid;
+  
+}
+.adminlog {
+  display: flex;
+  justify-content: center;
+  height: 880px;
+  align-items: center;
+}
+.row1 {
+  grid-row: 1;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7ch;
+  align-items: flex-start;
+}
+.row11 {
+  align-self: center;
+}
+.row12 {
+  align-self: center;
+}
+.row2 {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+}
+.row21 {
+  width: 90%;
+}
+.row3 {
+  grid-row: 3;
+  display: flex;
+  justify-content: center;
+}
+.row31 {
+  width: 90%;
+}
+.row4 {
+  grid-row: 4;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.row41 {
+width: 90%;
+height: 40px;
+font-size: 25px;
+background-color: cadetblue;
+border: none;
+border-radius: 5px;
+}
+.row41:hover {
+  cursor: pointer;
+}

@@ -8,21 +8,32 @@ import DoctorList from './user/pages/DoctorList/DoctorList.js';
 import Profile from './user/pages/ProfilePage/Profile';
 import Login from './user/pages/Login/Login.js';
 import Register from './user/pages/Register/Register.js';
+import DashBoard from './admin/pages/Dashboard/Dashboard.js';
+import Adminlogin from './admin/pages/Adminlogin/Adminlogin.js';
+import AddDoctor from './admin/pages/Adddoctor/Adddoctor.js';
+import DoctorLogin from './doctor/pages/doctorlogin/doctorlogin.js';
 
 export default function Medcare() {
   return (
-    <BrowserRouter>
-      <div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/doctor-list" element={<DoctorList />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+
+          <div>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/doctor-list" element={<DoctorList />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/dashboard" element={<DashBoard/>} />
+              <Route path="/add-doctor" element={<AddDoctor />} />
+              <Route path="/admin-login" element={<Adminlogin />}  />
+              <Route path="/doctor-login" element={<DoctorLogin />} />
+            </Routes>
+            <Footer />
+          </div>
+          
+      </BrowserRouter>
+
   );
 }
