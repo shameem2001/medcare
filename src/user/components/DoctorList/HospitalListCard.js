@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 export default function HospitalCard({img, name, address, departments, doctors}) {
   return (
@@ -15,11 +16,15 @@ export default function HospitalCard({img, name, address, departments, doctors})
           <p className="departments">
             <span className="department-no">{departments}</span> departments
           </p>
-          <p className='doctors'>
+          <p className="doctors">
             <span className="doctor-no">{doctors}</span> doctors
           </p>
         </div>
-        <button className='btn btn-large search-appointment-button'>Book an Appointment</button>
+        <Link className="search-appointment-button-link" to="/doctor-details">
+          <button className="btn btn-large search-appointment-button">
+            Book an Appointment
+          </button>
+        </Link>
       </div>
     </div>
   );
