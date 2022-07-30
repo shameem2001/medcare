@@ -11,7 +11,7 @@ export default function doctor_card({id, img, name, department, experience, hosp
       <h6 className="doctor-card-hospital-name">{hospital}</h6>
       <button className="btn btn-large doctor-card-view-profile-button">
         <Link className="doctor-card-view-profile-button-link" to="/doctor-details">
-          View Profile
+          Book now
         </Link>
       </button>
     </div>

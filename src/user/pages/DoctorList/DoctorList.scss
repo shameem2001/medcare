@@ -133,7 +133,7 @@
 
     .Hospital-card {
       background-color: white;
-      min-height: 130px;
+      height: 140px;
       padding-top: 20px;
       padding-bottom: 20px;
       margin-bottom: 20px;
@@ -162,13 +162,15 @@
       }
 
       .right-side {
+        padding-top: 20px;
         display: grid;
         grid-template-rows: 30% auto;
+        padding-right: 30px;
         .right-side-top {
-          margin-top: 20px;
           display: grid;
           grid-template-columns: auto auto;
           justify-content: space-between;
+          margin-bottom: 15px;
 
           .departments {
             font-size: 16px;
@@ -189,12 +191,11 @@
 
         .search-appointment-button-link {
           .search-appointment-button {
-            margin-top: 20px;
             background-color: cadetblue;
             color: white;
             font-size: 17px;
             width: 100%;
-            height: 50px;
+            height: 40px;
           }
         }
       }

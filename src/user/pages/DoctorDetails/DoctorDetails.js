@@ -38,7 +38,7 @@ let doctInitial = [
   },
 ];
 
-export default function Appointment({ hospital, moto }) {
+export default function Appointment({ hospital, address, moto }) {
   const [tasks, setTasks] = useState(doctInitial);
   const [activeStep, setActiveStep] = useState(0);
   let updateStep = () => {
@@ -46,29 +46,19 @@ export default function Appointment({ hospital, moto }) {
   };
 
   return (
-    <div className="mt-4 mb-4 appointment">
-      <div className="headerCard">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">{hospital}</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">{moto}</small>
-            </p>
-          </div>
-          <img
-            className="card-img-bottom"
-            src="../../../assets/akghospital.png"
-            alt="d"
-          />
-        </div>
-      </div>
-      <div className="mt-5 divider">
+    <div className="appointment">
+      <div className="divider">
         <div className="dateSelect">
+          <div className="container shadow-sm headerCard">
+            <div
+              className="headerCard-img"
+            />
+            <div className="header-card-div-right">
+              <h5>{hospital}</h5>
+              <h6>{address}</h6>
+              <h6>"{moto}"</h6>
+            </div>
+          </div>
           {tasks.map((item) => {
             return (
               <Dcard
@@ -107,8 +97,8 @@ export default function Appointment({ hospital, moto }) {
           </div>
           <div className="mt-5 contactcard">
             <Card
-              sx={{ minWidth: 100 }}
-              style={{ backgroundColor: "cadetblue" }}
+              sx={{ width: 300 }}
+              style={{ backgroundColor: "white" }}
               elevation={6}
             >
               <CardContent>
@@ -146,5 +136,6 @@ export default function Appointment({ hospital, moto }) {
 }
 Appointment.defaultProps = {
   hospital: "AKG HOSPITAL",
+  address: "40/1276 , A1, NH 66 Bypass, Palarivattom, Kochi -682024",
   moto: "WE SERVE",
 };

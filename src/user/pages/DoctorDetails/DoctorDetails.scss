@@ -1,6 +1,11 @@
+.appointment{
+background-color: whitesmoke;
+}
 .divider{
     display: grid;
-    grid-template-columns: 70% 20%;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    padding: 100px;
    
     .stepper{
        
@@ -10,6 +15,7 @@
     .dateSelect{
         justify-self: center;
         padding-left: 40px;
+        margin-right: 60px;
         
     }
     .stepcontact{
@@ -26,9 +32,26 @@
 }
 
 .headerCard{
-   
-    display: flex;
-  justify-content: center;
+   width: 100%;
+   border-radius: 6px;
+   height: 125px;
+   background-color: white;
+   display: grid;
+   grid-template-columns: auto auto;
+   padding: 12px;
+   padding-left: 20px;
+
+  .headerCard-img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    background-image: url('../../../../assets/img_sample.jpg');
+    background-size: 100% 100%;
+  }
+
+  .header-card-div-right{
+    margin-top: 10px;
+  }
   
 }
 
