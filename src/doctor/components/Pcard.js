@@ -54,7 +54,7 @@ export default function Pcard({flag,check,dateP}) {
   return (
     <div>
       <div className='card Patientcard shadow mb-4' >
-       {check? details.filter((item1)=>{ return JSON.stringify(dateP).includes(item1.date) }).map((item)=>{ return(<Psubcard name={item.name} status={item.status} phoneNumber={item.phoneNumber} date={item.date} time={item.time}/>)}) :
+       {check? details.filter((item1)=>{ return JSON.stringify(dateP).includes(item1.date) }).map((item)=>{ return( <Psubcard name={item.name} status={item.status} phoneNumber={item.phoneNumber} date={item.date} time={item.time}/>)}) :
         details.filter((item1)=>{return item1.status===flag && JSON.stringify(dateP).includes(item1.date)}).map((item)=>{
           return (<Psubcard name={item.name} status={item.status} phoneNumber={item.phoneNumber} date={item.date} time={item.time}/>)
         })

@@ -3,13 +3,12 @@ import Pcard from "../components/Pcard";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, Calendar } from "@material-ui/pickers";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
-
 import { enGB } from "date-fns/locale";
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
-    primary: { light: green[300], main: green[500], dark: green[700] },
+    primary: { light: green[300], main: '#5F9EA0', dark: green[700] },
   },
 });
 
