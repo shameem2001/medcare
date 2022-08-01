@@ -1,0 +1,175 @@
+.profile-tabbar1-container {
+
+  margin-top: 25px;
+  height: 50px;
+
+  width: 90%;
+
+  border-radius: 8px;
+
+  padding-top: 4px;
+
+  padding-left: 2px;
+
+  padding-right: 4px;
+  padding-bottom: 4px;
+
+  background-color: white;
+
+
+
+  .profile-tabbar1 {
+
+    display: grid;
+
+    grid-template-columns: auto auto auto ;
+
+    justify-content: space-around;
+
+
+
+    .profile-tabbar1-tab {
+
+      width: 255px;
+
+      border-radius: 8px;
+
+      color: cadetblue;
+      
+
+    }
+
+
+
+    .nav-item {
+
+    
+    .nav-link.active {
+
+      
+      background-color: cadetblue;
+
+      font-size: 18px;
+
+
+      color: white;
+      
+
+    }
+  }
+
+  }
+
+}
+
+.patient-list-cont{
+  height: 100vh;
+  width: 90vw;
+  background-color: white;
+}
+.Patientlist{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  padding: 20px;
+}  
+
+.Patientcard{
+border-radius: 8px;
+border-width: 0px;
+padding-bottom: 20px;
+padding-top: 20px;
+min-height: 100px;
+
+}
+.PatientSubcard{
+border-radius: 8px;
+display: grid;
+grid-template-columns: 17% 83%;
+width: 90%;
+height: 80px;
+
+.leftdiv{
+ margin-top: 10px;
+  h5{
+    font-size: 16px;
+  }
+
+  h6{
+    font-size: 13px;
+    font-style: italic;
+    color: cadetblue;
+  }
+}
+.rightdiv{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding-left: 20px;
+  padding-right: 100px;
+  padding-top: 20px;  
+  .date-rightdiv{
+    margin-left: 50px;
+  }
+
+  .details-rightdiv{
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    justify-content: space-between;
+
+    img{
+      width: 40px;
+      height: 40px;
+      
+      border: 1px solid black;
+      margin-left: 65px;
+      border-radius: 100%;
+    }
+
+    .details-right-div-name{
+      width: 250px;
+      font-size: 13px;
+      margin-left: 5px;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      justify-content: space-between;
+      
+      p{
+        margin-bottom: 0;
+      }
+      
+      .details-right-div-mob{
+        h6{
+          font-size: 13px;
+          
+        }
+      }
+    }
+  }
+}
+
+}
+
+
+.rb{
+  border-right: 1px solid lightgray;
+  height: 50px;
+  align-self: center;
+}
+
+.datePickerPatient{
+display: grid;
+justify-content: center;
+border-radius: 15px;
+padding-right: 20px;
+width: 400px;
+
+}
+
+.calendar-ui{
+border-radius: 12px;
+}
+
+.psubcard-link{
+  text-decoration: none;
+  color: black;
+}

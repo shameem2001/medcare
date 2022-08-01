@@ -446,11 +446,18 @@
           }
           .profile-prescription-card-body-sect-3 {
             table {
+              border: 0;
               th {
                 font-size: 14px;
+                border: 0;
+                th:hover{
+                  background: white;
+                }
               }
               td {
                 font-size: 14px;
+                border: 0;
+                background-color: white;
               }
             }
           }

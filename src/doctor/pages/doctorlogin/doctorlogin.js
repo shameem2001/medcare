@@ -28,7 +28,7 @@ function Doctorlogin() {
             type="password"
           />
 
-          <Link to="/">
+          <Link to="/doctor/">
             <button className="btn login-button">LOGIN</button>
           </Link>
         </div>
