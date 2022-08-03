@@ -29,8 +29,8 @@ db.once("open", function () {
 
 const userRoute = './routes/user/';
 
-const userRegister = require(`${userRoute}Register`);
-app.use(userRegister);
+const userData = require(`${userRoute}User`);
+app.use(userData);
 
 
 
