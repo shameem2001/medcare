@@ -1,0 +1,355 @@
+// DoctorList page styling start
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Raleway&family=Roboto&display=swap");
+
+.parent {
+  font-family: "Poppins", sans-serif;
+  background-color: whitesmoke;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.back-to-home {
+  display: grid;
+  grid-template-columns: 90% auto auto;
+  justify-items: right;
+  color: gray;
+}
+
+.back-url {
+  color: gray;
+  text-align: right;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: cadetblue;
+}
+
+.doctor-list-search-card {
+  background-color: white;
+  border-radius: 10px;
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-evenly;
+
+  .search-button {
+    background-color: cadetblue;
+    color: white;
+    max-height: 60px;
+    min-width: 13rem;
+    align-self: center;
+    margin-top: 25px;
+  }
+
+  .search-boxes {
+    align-self: center;
+    min-width: 20rem;
+  }
+
+  .label {
+    margin-bottom: 2px;
+  }
+}
+
+.doctor-list-card-container {
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  min-height: 200px;
+
+  .cont1 {
+    max-height: 60px;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+
+    .cont1-h6 {
+      margin-top: 5px;
+      align-self: center;
+    }
+  }
+
+  .cont2 {
+    max-height: 100px;
+    padding: 1.5rem;
+    border-bottom: 1px solid gray;
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+    .filter {
+      border-right: 1px solid gray;
+      display: grid;
+      grid-template-columns: 30% 5% 10% 5% 10% 12%;
+
+      .filter-h5 {
+        font-weight: 500;
+      }
+    }
+
+    .vl {
+      border-left: 2px solid gray;
+      height: 25px;
+    }
+
+    .chip {
+      display: inline-block;
+      text-align: center;
+      height: 25px;
+      font-size: 16px;
+      border-radius: 16px;
+      background-color: white;
+      margin-right: 8px;
+      background-color: cadetblue;
+      color: white;
+    }
+
+    .sort-by {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: center;
+    }
+
+    .sort-by-h6 {
+      margin-right: 10px;
+    }
+
+    .sort-by-select {
+      margin-top: -10px;
+      max-height: 40px;
+      max-width: 100px;
+      border-radius: 15px;
+    }
+  }
+
+  .cont3 {
+    margin-top: 30px;
+    border-bottom: 0;
+    padding-bottom: 20px;
+
+    .Hospital-card {
+      background-color: white;
+      height: 140px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+
+      display: grid;
+      grid-template-columns: 60% 40%;
+
+      .left-side {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-items: left;
+        align-items: center;
+        .img-container {
+          background-image: url("../../../../assets/img_sample.jpg");
+          background-size: 100% 100%;
+          border: 1px solid black;
+          border-radius: 12px;
+          height: 100px;
+          width: 100px;
+        }
+
+        .title-address {
+          padding: 0 20px;
+        }
+      }
+
+      .right-side {
+        padding-top: 20px;
+        display: grid;
+        grid-template-rows: 30% auto;
+        padding-right: 30px;
+        .right-side-top {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          margin-bottom: 15px;
+
+          .departments {
+            font-size: 16px;
+            .department-no {
+              color: cadetblue;
+              font-weight: 600;
+            }
+          }
+
+          .doctors {
+            font-size: 16px;
+            .doctor-no {
+              color: cadetblue;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .search-appointment-button-link {
+          .search-appointment-button {
+            background-color: cadetblue;
+            color: white;
+            font-size: 17px;
+            width: 100%;
+            height: 40px;
+          }
+        }
+      }
+    }
+    .doctor-card-sheet {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      justify-content: space-evenly;
+
+      .doctor-card {
+        background-color: white;
+        width: 260px;
+        height: 300px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        display: grid;
+        grid-template-rows: repeat(5, auto);
+
+        .doctor-card-circle-avatar {
+          width: 110px;
+          height: 110px;
+          border-radius: 100%;
+          border: solid 1px gray;
+          background-image: url("../../../../assets/profile.jpg");
+          background-size: 100% 100%;
+
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
+        }
+        .doctor-card-name {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .doctor-card-dept {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -20px;
+          color: gray;
+        }
+        .doctor-card-exp {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -25px;
+          color: gray;
+          font-size: small;
+        }
+        .doctor-card-hospital-name {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -25px;
+          color: black;
+        }
+        .doctor-card-view-profile-button {
+          margin-left: auto;
+          margin-right: auto;
+          height: 40px;
+          margin-bottom: 10px;
+          background-color: cadetblue;
+          color: white;
+
+          .doctor-card-view-profile-button-link {
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// DoctorList Page Styling end
+
+// Profile page styling start
+.profile {
+  background-color: whitesmoke;
+  padding: 30px 60px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+
+  // profile-card styling start
+  .profile-card1 {
+    background-color: white;
+    border-radius: 8px;
+    height: 390px;
+    width: 370px;
+    padding: 10px;
+
+    .profile-card1-grid {
+      display: grid;
+      grid-template-columns: auto auto;
+
+      .profile-card1-circle-avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 100%;
+        border: solid 1px gray;
+        background-image: url("../../../../assets/profile.jpg");
+        background-size: 100% 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+      }
+
+      .profile-card1-top-right {
+        margin-top: 10px;
+        margin-left: 5px;
+
+        .profile-card1-name {
+          font-weight: 500;
+        }
+
+        .profile-card1-dob {
+          font-size: 14px;
+          .profile-card1-dob-helper {
+            color: cadetblue;
+            font-weight: 500;
+            font-size: 16px;
+          }
+        }
+
+        .profile-card1-gender {
+          font-size: 14px;
+          .profile-card1-gender-helper {
+            color: cadetblue;
+            font-weight: 500;
+            font-size: 16px;
+          }
+        }
+
+        .profile-card1-edit-button {
+          background-color: cadetblue;
+          color: white;
+          width: 80px;
+          height: 30px;
+          font-size: 12px;
+          padding: 2px;
+        }
+      }
+    }
+
+    .profile-card1-details {
+      padding-left: 10px;
+      padding-right: 20px;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+      .profile-card1-details-helper {
+        color: cadetblue;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+  }
+}
+// profile card styling end

@@ -1,0 +1,86 @@
+.login-page {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-content: center;
+    height: 82vh;
+  
+    .login-page-container {
+    background-color: white;
+      width: 900px;
+      height: 450px;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: auto auto;
+      margin-top: 130px;
+  
+      .login-page-container-left {
+        width: 400px;
+        height: 200px;
+  
+        img {
+          margin-top: 50px;
+          align-content: center;
+          width: 400px;
+          height: 320px;
+        }
+      }
+  
+      .login-page-container-right {
+          margin-top: -20px;
+          width: 300px;
+          display: grid;
+          grid-template-columns: auto;
+          justify-content: center;
+          align-content: center;
+  
+        h5 {
+          color: black;
+          font-size: 50px;
+          text-align: center;
+          font-weight: 600;
+          margin-bottom: 10px;
+  
+          span {
+            color: red;
+            font-size: 50px;
+          }
+        }
+  
+        .email{
+          margin: 10px 5px 10px 5px;
+          width: 400px;
+        }
+        .password{
+          margin: 10px 5px 10px 5px;
+          width: 400px;
+        }
+  
+        .login-button{
+          margin: 10px 5px 10px 5px;
+          width: 400px;
+          height: 45px;
+          background-color: cadetblue;
+          color: white;
+          letter-spacing: 1.5px;
+          font-size: 18px;
+        }
+  
+        .loginnew{
+          margin: 10px 5px 10px 5px;
+          color: cadetblue;
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: center;
+  
+          .loginnew-link{
+            margin-left: 3px;
+            color: cadetblue;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  
+
