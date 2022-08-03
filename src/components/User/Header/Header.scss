@@ -10,12 +10,16 @@
     background-color: white;
 
     .navbar-left{
-        h5{
+        .navbar-link{
+            text-decoration: none;
+            h5{
             font-weight: 600;
+            color: black;
             font-size: 23px;
             span{
                 color: red;
             }
+        }
         }
     }
 
@@ -28,6 +32,11 @@
             font-weight: 500;
             font-size: 17px;
             letter-spacing: 1.5px;
+
+            a{
+                text-decoration: none;
+                color: cadetblue;
+            }
 
             a:hover{
                 color: teal;

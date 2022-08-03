@@ -9,49 +9,55 @@ let hospitals_list = [
     id: 1,
     img: "dg.png",
     name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 8,
+    doctors: 4,
   },
   {
     id: 2,
     img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    name: "Mims Hospital, Chala",
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 4,
+    doctors: 4,
   },
   {
     id: 3,
     img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    name: "BHMS, Chala",
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 2,
+    doctors: 84,
   },
   {
     id: 4,
     img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    name: "Dhanalakshmi Hospital, Thana",
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 21,
+    doctors: 47,
   },
   {
     id: 5,
     img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    name: "Speciality Hospital, Thana",
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 112,
+    doctors: 38,
   },
   {
     id: 6,
     img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 12,
-    doctors: 34
+    name: "HNC Hospital, Mattannur",
+    address:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
+    departments: 56,
+    doctors: 28,
   },
 ];
 
@@ -67,42 +73,42 @@ let doctors_list = [
   {
     id: 2,
     img: "profile.png",
-    name: "Feroz BK",
+    name: "Ashraf",
     department: "Dermatology",
     experience: 3,
-    hospital: "Sreechand Hospital",
+    hospital: "Koyili Hospital",
   },
   {
     id: 3,
     img: "profile.png",
-    name: "Feroz BK",
+    name: "Sreejith",
     department: "Dermatology",
     experience: 3,
-    hospital: "Sreechand Hospital",
+    hospital: "Dhanalakshmi Hospital",
   },
   {
     id: 4,
     img: "profile.png",
-    name: "Feroz BK",
+    name: "Hansiraj",
     department: "Dermatology",
     experience: 3,
-    hospital: "Sreechand Hospital",
+    hospital: "Speciality Hospital",
   },
   {
     id: 5,
     img: "profile.png",
-    name: "Feroz BK",
+    name: "Razak",
     department: "Dermatology",
     experience: 3,
-    hospital: "Sreechand Hospital",
+    hospital: "AKG Hospital",
   },
   {
     id: 6,
     img: "profile.png",
-    name: "Feroz BK",
+    name: "Majeed",
     department: "Dermatology",
     experience: 3,
-    hospital: "Sreechand Hospital",
+    hospital: "Smile Clinic",
   },
 ];
 
@@ -110,14 +116,7 @@ export default function DoctorList() {
   return (
     <div className="parent">
       <div className="container">
-        <Link to="/" className="link">
-          <div />
-          <div className="back-to-home">
-            <i className="fa-solid fa-angle-left back-icon"></i>
-            <h6 className="home-url">Back to Home</h6>
-          </div>
-        </Link>
-        <div className="container shadow doctor-list-search-card">
+        <div className="container shadow-sm doctor-list-search-card">
           <div className="search-boxes">
             <label>Enter District</label>
             <select className="form-select" aria-label="Default select example">
@@ -199,8 +198,8 @@ export default function DoctorList() {
                   hospital={doctor.hospital}
                 />
               );
-            })}
-            </div> */}
+            })} */
+            /* </div> */}
           </div>
         </div>
       </div>

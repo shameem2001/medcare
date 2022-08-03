@@ -8,7 +8,8 @@ import img from "../../../assets/elder.jpg";
 
 var cardStyle = {
   display: "block",
-  width: "42vw",
+  borderRadius: "10px",
+  width: "700px",
   transitionDuration: "0.3s",
   height: "7vw",
   color: "cadetblue",
@@ -63,7 +64,7 @@ export default function Dcard({ name, speciality, updateStep }) {
 
   return (
     <div className="mt-3">
-      <Card elevation={3} style={cardStyle}>
+      <div elevation={3} style={cardStyle} className="container shadow-sm">
         <CardHeader
           avatar={<img className="Dcard-circle-avatar" src={img} alt="I" />}
           action={
@@ -80,7 +81,7 @@ export default function Dcard({ name, speciality, updateStep }) {
         <CardContent>
           <Typography align="right"></Typography>
         </CardContent>
-      </Card>
+      </div>
       <div>{displayTime ? timeComponent() : null}</div>
     </div>
   );

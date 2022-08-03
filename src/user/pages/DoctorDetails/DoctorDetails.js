@@ -8,7 +8,7 @@ import {
   StepLabel,
 } from "@mui/material";
 import Dcard from "../../components/DoctorDetails/Dcard.js";
-import img from '../../../assets/akghospital.png';
+import img from '../../../assets/img_sample.jpg';
 import "./DoctorDetails.scss";
 
 let doctInitial = [
@@ -97,8 +97,8 @@ export default function Appointment({ hospital, address, moto }) {
           <div className="mt-5 contactcard">
             <Card
               sx={{ width: 300 }}
-              style={{ backgroundColor: "white" }}
-              elevation={6}
+              style={{ backgroundColor: "white", borderRadius:"4px" }}
+              elevation={1}
             >
               <CardContent>
                 <Typography

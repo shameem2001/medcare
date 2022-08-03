@@ -6,22 +6,24 @@ export default function Header() {
   return (
     <div className="shadow-sm navbar-new">
       <div className="navbar-left">
-        <h5>
-          MED<span>CARE</span>
-        </h5>
+        <Link className="navbar-link" to="/">
+          <h5>
+            MED<span>CARE</span>
+          </h5>
+        </Link>
       </div>
       <div className="navbar-right">
         <Link className="navbar-right-link" to="/">
-          <a>HOME</a>
-        </Link>
-        <Link className="navbar-right-link" to="/login">
-          <a>LOGIN/REGISTER</a>
+          <a href="d">Home</a>
         </Link>
         <Link className="navbar-right-link" to="/profile">
-          <a>PROFILE</a>
+          <a href="dh">Profile</a>
         </Link>
-        <Link className="navbar-right-link last" to="/doctor-list">
-          <a>SUPPORT</a>
+        <Link className="navbar-right-link" to="/">
+          <a href="#contact">Support</a>
+        </Link>
+        <Link className="navbar-right-link last" to="/login">
+          <a href="d">Login</a>
         </Link>
       </div>
     </div>

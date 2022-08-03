@@ -6,7 +6,7 @@
   height: 82vh;
 
   .signup-page-container {
-    min-width: 1280px;
+    min-width: 1050px;
     min-height: 550px;
     border-radius: 12px;
     display: grid;
@@ -17,140 +17,88 @@
       height: 500px;
 
       img{
-        margin-top: 50px;
+        margin-top: 30px;
         align-content: center;
         width: 500px;
+        height: 450px;
       }
     }
 
     .signup-page-container-right {
-      width: 700px;
+      width: 600px;
       h5 {
         color: black;
         font-size: 50px;
         text-align: center;
-        margin-top: 50px;
+        margin-top: 30px;
         font-weight: 600;
 
         span {
           color: red;
+          font-size: 50px;
         }
       }
 
-      .first-div {
-        margin: 10px 5px 10px 5px;
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: start;
 
-        .first-div-1 {
-          width: 335px;
-          margin-right: 5px;
+      .first-div{
+        display: grid;
+        grid-template-columns: 40% 25% 30%;
+        margin-bottom: 20px;
+          .first-div-1{
+            margin-right: 10px;
+          }
+          .first-div-2{
+            margin-right: 10px;
+          }
+      }
+
+      .second-div{
+        display: grid;
+        grid-template-columns: 40% 25% 30%;
+        margin-bottom: 20px;
+
+        .second-div-1{
+          margin-right: 10px;
         }
-        .first-div-2 {
-          width: 335px;
+        .second-div-2{
+          margin-right: 10px;
         }
       }
 
-      .second-div {
-        margin: 10px 5px 10px 5px;
+      .third-div{
         display: grid;
-        grid-template-columns: auto auto auto;
-        justify-content: start;
+        grid-template-columns: 95%;
+        margin-bottom: 20px;
+      }
 
-        .second-div-1 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .second-div-2 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .second-div-3 {
-          width: 225px;
+      .fourth-div{
+        display: grid;
+        grid-template-columns: 47.5% 47.5%;
+        margin-bottom: 20px;
+
+        .fourth-div-1{
+          margin-right: 10px;
         }
       }
 
-      .third-div {
-        margin: 10px 5px 10px 5px;
+      .fifth-div{
         display: grid;
-        grid-template-columns: auto auto auto;
-        justify-content: start;
+        grid-template-columns: 47.5% 47.5%;
+        margin-bottom: 20px;
 
-        .third-div-1 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .third-div-2 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .third-div-3 {
-          width: 225px;
-          margin-right: 5px;
-        }
-      }
-
-      .fourth-div {
-        margin: 10px 5px 10px 5px;
-        display: grid;
-        grid-template-columns: auto auto auto;
-        justify-content: start;
-
-        .fourth-div-1 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .fourth-div-2 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .fourth-div-3 {
-          width: 225px;
-          margin-right: 5px;
-        }
-      }
-
-      .fifth-div {
-        margin: 10px 5px 10px 5px;
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: start;
-
-        .fifth-div-1 {
-          width: 335px;
-          margin-right: 5px;
-        }
-        .fifth-div-2 {
-          width: 335px;
-          margin-right: 5px;
-        }
-      }
-
-      .sixth-div {
-        margin: 10px 5px 10px 5px;
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: start;
-
-        .sixth-div-1 {
-          width: 335px;
-          margin-right: 5px;
-        }
-        .sixth-div-2 {
-          width: 335px;
-          margin-right: 5px;
+        .fifth-div-1{
+          margin-right: 10px;
         }
       }
 
       .signup-button{
-        margin: 10px 5px 10px 5px;
-        width: 675px;
-        height: 40px;
+        width: 95%;
+        height: 45px;
         background-color: cadetblue;
         color: white;
         font-size: 18px;
         letter-spacing: 1.5px;
+        margin-bottom: 20px;
       }
     }
   }

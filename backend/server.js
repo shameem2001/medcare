@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
+app.use(express.json());
 const PORT = 5000;
 
 // mongodb connection
@@ -24,9 +27,13 @@ db.once("open", function () {
 });
 
 
-app.get("/", (req, res) => {
-  res.sendFile("/index.html");
-});
+const userRoute = './routes/user/';
+
+const userRegister = require(`${userRoute}Register`);
+app.use(userRegister);
+
+
+
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server Started at port ${PORT}`);
