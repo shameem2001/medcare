@@ -13,7 +13,7 @@ app.post("/api/register", async (req, res) => {
 
 app.get("/api/login", async (req, res) => {
   try {
-    let result = await usermodel.findOne({ email:req.params.email, password:req.params.password });
+    let result = await usermodel.find();
     res.send(result);
   } catch (error) {
     res.send(error);
