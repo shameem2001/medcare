@@ -2,7 +2,7 @@ const express = require("express");
 const usermodel = require("../../models/User.js");
 const app = express();
 
-app.post("/api/register", async (req, res) => {
+app.post("/api/add-user", async (req, res) => {
   const user = new usermodel(req.body);
   try {
     await user.save().then(() => res.json("details added"));

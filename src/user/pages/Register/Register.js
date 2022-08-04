@@ -28,7 +28,7 @@ export default function Register() {
   let submit = async (e) => {
     if (password === cpassword) {
       console.log("submitted");
-      await axios.post("http://localhost:5000/api/register", {
+      await axios.post("http://localhost:5000/api/add-user", {
         name: name,
         gender: gender,
         age: age,

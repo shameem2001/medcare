@@ -31,14 +31,14 @@ const userRoute = './routes/user/';
 const doctorRoute = './routes/doctor/';
 const adminRoute = './routes/admin/';
 
-const userRegister = require(`${userRoute}Register`);
-app.use(userRegister);
+const userAddUser = require(`${userRoute}AddUser`);
+app.use(userAddUser);
 
-const userLogin = require(`${userRoute}UserDetails`);
-app.use(userLogin);
+const userDetails = require(`${userRoute}UserDetails`);
+app.use(userDetails);
 
-const doctorLogin = require(`${doctorRoute}DoctorDetails`);
-app.use(doctorLogin);
+const doctorDetails = require(`${doctorRoute}DoctorDetails`);
+app.use(doctorDetails);
 
 const adminAddDoctor = require(`${adminRoute}AddDoctor`);
 app.use(adminAddDoctor);

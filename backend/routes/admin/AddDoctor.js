@@ -2,7 +2,7 @@ const express = require("express");
 const doctormodel = require("../../models/Doctor");
 const app = express();
 
-app.post("/api/doctor/add-doctor", async (req, res)=>{
+app.post("/api/admin/add-doctor", async (req, res)=>{
     const doctor = doctormodel(req.body);
 
     try{

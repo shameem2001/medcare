@@ -26,6 +26,7 @@ export default function Login() {
       console.log("Incorrect credentials")
     }
     else{
+      localStorage.setItem("_id", doesMatch[0]._id);
       navigate("/");
     }
   };
