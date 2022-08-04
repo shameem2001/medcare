@@ -28,9 +28,20 @@ db.once("open", function () {
 
 
 const userRoute = './routes/user/';
+const doctorRoute = './routes/doctor/';
+const adminRoute = './routes/admin/';
 
-const userData = require(`${userRoute}User`);
-app.use(userData);
+const userRegister = require(`${userRoute}Register`);
+app.use(userRegister);
+
+const userLogin = require(`${userRoute}UserDetails`);
+app.use(userLogin);
+
+const doctorLogin = require(`${doctorRoute}DoctorDetails`);
+app.use(doctorLogin);
+
+const adminAddDoctor = require(`${adminRoute}AddDoctor`);
+app.use(adminAddDoctor);
 
 
 

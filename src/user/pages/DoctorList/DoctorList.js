@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 import HospitalListCard from '../../components/DoctorList/HospitalListCard';
 import DoctorListCard from "../../components/DoctorList/DoctorListCard";
 import './DoctorList.scss';
@@ -93,26 +94,31 @@ let doctors_list = [
     department: "Dermatology",
     experience: 3,
     hospital: "Speciality Hospital",
-  },
-  {
-    id: 5,
-    img: "profile.png",
-    name: "Razak",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "AKG Hospital",
-  },
-  {
-    id: 6,
-    img: "profile.png",
-    name: "Majeed",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "Smile Clinic",
-  },
+  }
 ];
 
 export default function DoctorList() {
+  const props = useLocation().state;
+  console.log(props.location);
+
+  let [doctors, setDoctors] = useState(doctors_list);
+
+  useEffect(  () => {
+    let fetchData = async () =>{
+      let results;
+      await axios
+        .get("http://localhost:5000/api/doctor/doctor-details")
+        .then((data) => {results = data.data})
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log(results);
+      setDoctors(results);
+    }
+
+    fetchData();
+  });
+
   return (
     <div className="parent">
       <div className="container">
@@ -120,10 +126,9 @@ export default function DoctorList() {
           <div className="search-boxes">
             <label>Enter District</label>
             <select className="form-select" aria-label="Default select example">
-              <option selected>Kannur</option>
-              <option value="1">Kannur</option>
-              <option value="2">Kozhikode</option>
-              <option value="3">Wayanad</option>
+              <option value="Kannur">Kannur</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Wayanad">Wayanad</option>
             </select>
           </div>
 
@@ -174,7 +179,7 @@ export default function DoctorList() {
             </div>
           </div>
           <div class="container cont3">
-            {hospitals_list.map((hospital) => {
+            {/* {hospitals_list.map((hospital) => {
               return (
                 <HospitalListCard
                   id={hospital.id}
@@ -185,9 +190,9 @@ export default function DoctorList() {
                   doctors={hospital.doctors}
                 />
               );
-            })}
-            {/* <div className="doctor-card-sheet">
-              {doctors_list.map((doctor) => {
+            })} */}
+            <div className="doctor-card-sheet">
+              {doctors.map((doctor) => {
               return (
                 <DoctorListCard
                   id={doctor.id}
@@ -198,8 +203,8 @@ export default function DoctorList() {
                   hospital={doctor.hospital}
                 />
               );
-            })} */
-            /* </div> */}
+            })} 
+             </div>
           </div>
         </div>
       </div>

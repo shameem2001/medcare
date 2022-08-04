@@ -14,7 +14,7 @@ export default function Login() {
   let submit = async () => {
     let results;
     await axios
-      .get("http://localhost:5000/api/login")
+      .get("http://localhost:5000/api/user-details")
       .then((data) => {results = data.data})
       .catch((err) => console.log(err));
     
