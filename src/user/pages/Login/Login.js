@@ -12,13 +12,23 @@ export default function Login() {
   let [password, setpassword] = useState("");
 
   let submit = async () => {
+    let results;
     await axios
-      .get("http://localhost:5000/api/login", {
-        email: email,
-        password: password,
-      })
-      .then((data) => {if(data.status === 200){navigate("/");}})
+      .get("http://localhost:5000/api/user-details")
+      .then((data) => {results = data.data})
       .catch((err) => console.log(err));
+    
+    let doesMatch = results.filter((data)=>{
+      return data.email === email && data.password === password;
+    });
+
+    if(doesMatch.length === 0){
+      console.log("Incorrect credentials")
+    }
+    else{
+      localStorage.setItem("_id", doesMatch[0]._id);
+      navigate("/");
+    }
   };
 
   return (

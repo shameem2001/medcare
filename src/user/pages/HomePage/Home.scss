@@ -33,7 +33,7 @@
       .banner-container-text {
         width: 650px;
         background-color: #1d586c;
-        margin-left: 50px;
+        margin-left: 33px;
         border-radius: 12px;
 
         h2 {
@@ -68,34 +68,35 @@
               color: gray;
             }
 
-            .detect {
-              background-color: white;
-              position: absolute;
-              margin-top: 25px;
-              margin-left: 140px;
-              width: 70px;
-              padding-left: 8px;
-              padding-top: 2px;
-              height: 22px;
-              border-radius: 15px;
-              border: 1px solid gray;
-              font-size: 11px;
-              color: black;
+            // .detect {
+            //   background-color: white;
+            //   position: absolute;
+            //   margin-top: 25px;
+            //   margin-left: 140px;
+            //   width: 70px;
+            //   padding-left: 8px;
+            //   padding-top: 2px;
+            //   height: 22px;
+            //   border-radius: 15px;
+            //   border: 1px solid gray;
+            //   font-size: 11px;
+            //   color: black;
 
-              i {
-                color: gray;
-                margin-left: 5px;
-              }
-            }
+            //   i {
+            //     color: gray;
+            //     margin-left: 5px;
+            //   }
+            // }
 
-            input {
-              width: 230px;
+            select {
+              width: 200px;
               height: 70px;
               border-radius: 12px 0 0 12px;
               padding-left: 50px;
               border: 1px solid teal;
               border-right: 1px solid teal;
               font-size: 18px;
+              -webkit-appearance: none;
             }
           }
           .banner-container-search-bar-2 {

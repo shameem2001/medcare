@@ -1,10 +1,34 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
+import { useLocation } from 'react-router-dom';
+import axios from "axios";
 import AppointmentCard from "../../components/Profile/AppointmentCard";
 import DependantCard from "../../components/Profile/DependantCard";
 import PrescriptionCard from "../../components/Profile/PrescriptionCard";
 import './Profile.scss';
 
 export default function Profile() {
+  const location = useLocation();
+  const {user_id} = location.state;
+
+  let [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    let results;
+    const fetchUserData = async ()=>{
+      await axios.get("http://localhost:5000/api/user-details").then((data)=>{results = data.data}).catch((error)=>{console.log(error)});
+
+      const matchedUser = results.filter((item)=>{
+        return item._id === user_id;
+      });
+
+      if(matchedUser !== undefined){
+        setUserData(matchedUser[0]);
+      }
+    }
+
+    fetchUserData();  
+  });
+
   return (
     <div className="profile">
       {/* <div></div> */}
@@ -13,16 +37,16 @@ export default function Profile() {
           <div className="profile-card1-grid">
             <div className="profile-card1-circle-avatar"></div>
             <div className="profile-card1-top-right">
-              <h3 className="profile-card1-name">John Doe</h3>
+              <h3 className="profile-card1-name">{userData.name}</h3>
               <h6 className="profile-card1-dob">
                 <span className="profile-card1-dob-helper">
                   Date of Birth:{" "}
                 </span>
-                16-04-1989
+                {userData.dob}
               </h6>
               <h6 className="profile-card1-gender">
                 <span className="profile-card1-gender-helper">Gender: </span>
-                Male
+                {userData.gender}
               </h6>
               <button className="btn profile-card1-edit-button">
                 edit profile
@@ -31,7 +55,7 @@ export default function Profile() {
           </div>
           <hr />
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">age: </span>24 yrs
+            <span className="profile-card1-details-helper">age: </span>{userData.age} yrs
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">occupation: </span>
@@ -39,17 +63,17 @@ export default function Profile() {
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">email: </span>
-            johndoe16@gmail.com
+            {userData.email}
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">
               mobile number:{" "}
             </span>
-            +91 9446422189
+            +91 {userData.phoneNumber}
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">address: </span>
-            Walker House, Taliparamba, Kannur, Kerala
+            {userData.address}
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">blood group: </span>

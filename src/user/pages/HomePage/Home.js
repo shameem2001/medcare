@@ -9,7 +9,7 @@ import Service from "../../components/HomePage/Service";
 export default function Home() {
   return (
     <div>
-      <Banner />
+      <Banner/>
       <Service />
       <Contact />
     </div>

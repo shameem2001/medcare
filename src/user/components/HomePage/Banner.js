@@ -1,11 +1,16 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Banner() {
   const navigate = useNavigate();
 
-  const findloc = ()=>{};
+  let [location, setlocation] = useState("Kannur");
+  let [searchField, setsearchField] = useState("");
 
+  let searchData = () => {
+    navigate("/doctor-list", {state:{location: location, searchField: searchField}});
+  }
+  
   return (
     <div className="banner-bg">
       <div className="banner">
@@ -21,16 +26,20 @@ export default function Banner() {
               <div className="banner-container-search-bar">
                 <div className="banner-container-search-bar-1">
                   <i className="fa-solid fa-location-dot fa-lg loc-icon"></i>
-                  <div className="detect" onClick={findloc}>
+                  {/* <div className="detect">
                     Detect
                     <i class="fas fa-location fa-lg"></i>
-                  </div>
-                  <input
-                    id="search"
-                    type="text"
-                    placeholder="Kannur"
-                    name="location"
-                  />
+                  </div> */}
+                  <select
+                    onChange={(e) => {
+                      setlocation(e.target.value);
+                    }}
+                  >
+                    <option value="Kannur">Kannur</option>
+                    <option value="Kasargod">Kasargod</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Wayanad">Wayanad</option>
+                  </select>
                 </div>
                 <div className="banner-container-search-bar-2">
                   <input
@@ -38,19 +47,24 @@ export default function Banner() {
                     type="text"
                     placeholder="Clinic/Hospital/Speciality"
                     name="hospital"
+                    onChange={(e) => {
+                      setsearchField(e.target.value);
+                    }}
                     onKeyDown={(event) => {
                       if (event.key === "Enter") {
-                        navigate("/doctor-list");
+                        searchData();
+                        //navigate("/doctor-list");
                       }
                     }}
                   />
                 </div>
-                <div className="banner-container-search-bar-3">
-                  <Link to="/doctor-list">
-                    <button class="btn-search" type="button">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                  </Link>
+                <div
+                  className="banner-container-search-bar-3"
+                  onClick={searchData}
+                >
+                  <button class="btn-search" type="button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
             </form>
