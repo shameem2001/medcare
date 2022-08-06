@@ -39,7 +39,7 @@ const doctorSchema = mongoose.Schema({
     type: Array,
     required: true,
   },
-  address: {
+  hospital_address: {
     type: String,
     required: true,
   },
@@ -51,6 +51,7 @@ const doctorSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  appointments:[String]
 });
 
 const doctor = mongoose.model("doctor", doctorSchema);

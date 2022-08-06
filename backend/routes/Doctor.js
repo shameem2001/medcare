@@ -34,4 +34,15 @@ app.get("/api/doctor/:id", async (req, res)=> {
     }
 });
 
+app.put("/api/doctor/:id", async (req, res) => {
+  try {
+    console.log(req.body);
+    await doctormodel
+      .findByIdAndUpdate(req.params.id, req.body)
+      .then((data) => res.send(data));
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = app;

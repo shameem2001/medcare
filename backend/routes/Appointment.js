@@ -20,4 +20,23 @@ app.get("/api/appointment", async (req, res)=>{
     }
 });
 
+app.get("api/appointment/:id", async (req, res) => {
+    try{
+        const appointment = await appointmentmodel.findOne({_id: req.params.id});
+        res.send(appointment);
+    }
+    catch(error){
+        console.log(error);
+    }
+})
+
+app.put("/api/appointnment/:id", async (req, res) => {
+    try{
+        await appointmentmodel.findByIdAndUpdate(req.params.id, req.body).then((data)=> res.send(data));
+    }
+    catch(error){
+        console.log(error);
+    }
+})
+
 module.exports = app;

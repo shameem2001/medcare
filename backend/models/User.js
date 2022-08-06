@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
+  _id: {
+    type: mongoose.Types.ObjectId,
+  },
   name: {
     type: String,
     required: true,
@@ -79,6 +82,19 @@ const userSchema = mongoose.Schema({
           type: String,
         },
       },
+      medicine_prescription: [
+        {
+          medicine_name: {
+            type: String
+          },
+          dosage: {
+            type: String
+          },
+          duration: {
+            type: String
+          }
+        }
+      ]
     },
   ],
   appointments: [String]
