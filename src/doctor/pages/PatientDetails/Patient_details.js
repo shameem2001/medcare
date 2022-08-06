@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 
 
 export default function Patient_details() {
+
     return (
         <div className="Background">
           <div className="Doctorside-profile">
