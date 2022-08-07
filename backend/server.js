@@ -38,6 +38,9 @@ app.use(doctor);
 const appointment = require(`${route}Appointment`);
 app.use(appointment);
 
+const admin = require(`${route}Admin`);
+app.use(admin);
+
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server Started at port ${PORT}`);
