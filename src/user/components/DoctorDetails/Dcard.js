@@ -39,23 +39,22 @@ export default function Dcard({ name, speciality, updateStep }) {
   let i = 0;
   const [step, setStep] = useState(i);
 
-  let userfetcheddata;
-  let getUser = async (userId) => {
-    await apis
-      .get(`user/${userId}`)
-      .then((data) => {
-         userfetcheddata =  data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // let userfetcheddata;
+  // let getUser = async (userId) => {
+  //   await apis
+  //     .get(`user/${userId}`)
+  //     .then((data) => {
+  //        userfetcheddata =  data.data;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   let updateUser = async (userId, appointment_id) => {
-    await getUser(userId, appointment_id);
+    //await getUser(userId);
     await apis
-      .put(`user/${userfetcheddata._id}`, {
-        _id: mongoose.Types.ObjectId(userfetcheddata._id),
+      .put(`user/${userId}`, {
         $push: { appointments: appointment_id },
       })
       .then((data) => console.log(data))
@@ -63,23 +62,22 @@ export default function Dcard({ name, speciality, updateStep }) {
   }
 
 
-  let doctorfetchdata;
-  let getDoctor = async (doctor_id) => {
-    await apis
-      .get(`doctor/${doctor_id}`)
-      .then((data) => {
-        doctorfetchdata = data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // let doctorfetchdata;
+  // let getDoctor = async (doctor_id) => {
+  //   await apis
+  //     .get(`doctor/${doctor_id}`)
+  //     .then((data) => {
+  //       doctorfetchdata = data.data;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   let updateDoctor = async (doctor_id, appointment_id) => {
-    await getDoctor(doctor_id, appointment_id);
+    //await getDoctor(doctor_id);
     await apis
-      .put(`doctor/${doctorfetchdata._id}`, {
-        _id: mongoose.Types.ObjectId(doctorfetchdata._id),
+      .put(`doctor/${doctor_id}`, {
         $push: { appointments: appointment_id },
       })
       .then((data) => console.log(data))
@@ -90,7 +88,7 @@ export default function Dcard({ name, speciality, updateStep }) {
     let appointment_id;
     await apis
       .post("appointment", {
-        user_id: mongoose.Types.ObjectId("62ead769d81d326e5183f431"),
+        user_id: mongoose.Types.ObjectId("62eac78745c82de1c0ff6f31"),
         doctor_id: mongoose.Types.ObjectId("62eb986b17a3b1c03f675658"),
         date: "2020-02-23",
         session: "Afternoon",
@@ -100,7 +98,7 @@ export default function Dcard({ name, speciality, updateStep }) {
       .then((data) => (appointment_id = data.data))
       .catch((error) => console.log(error));
 
-      updateUser("62ead769d81d326e5183f431", appointment_id);
+      updateUser("62eac78745c82de1c0ff6f31", appointment_id);
       updateDoctor("62eb986b17a3b1c03f675658", appointment_id);
   };
 

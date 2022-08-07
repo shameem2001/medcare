@@ -40,7 +40,6 @@ export default function Patient_details() {
     console.log(user_id);
     await apis
       .put(`user/${user_id}`, {
-        _id: mongoose.Types.ObjectId(userData._id),
         $push: {
           history: {
             doctor_name: "Ayyappan",
