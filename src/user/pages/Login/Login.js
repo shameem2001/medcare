@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import "./Login.scss";
-import axios from "axios";
+import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
 import imga from "../../../assets/elder.jpg";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,8 +13,8 @@ export default function Login() {
 
   let submit = async () => {
     let results;
-    await axios
-      .get("http://localhost:5000/api/user-details")
+    await apis
+      .get("user")
       .then((data) => {results = data.data})
       .catch((err) => console.log(err));
     

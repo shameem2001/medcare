@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import apis from "../../../apis";
 import "./Register.scss";
 import design from "../../../assets/elder.jpg";
 import TextField from "@mui/material/TextField";
@@ -28,7 +28,7 @@ export default function Register() {
   let submit = async (e) => {
     if (password === cpassword) {
       console.log("submitted");
-      await axios.post("http://localhost:5000/api/add-user", {
+      await apis.post("user", {
         name: name,
         gender: gender,
         age: age,

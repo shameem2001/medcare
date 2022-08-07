@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import apis from "../../../apis";
 import HospitalListCard from '../../components/DoctorList/HospitalListCard';
 import DoctorListCard from "../../components/DoctorList/DoctorListCard";
 import './DoctorList.scss';
@@ -103,19 +103,24 @@ export default function DoctorList() {
 
   let [doctors, setDoctors] = useState(doctors_list);
 
-  useEffect(  () => {
-    let fetchData = async () =>{
-      let results;
-      await axios
-        .get("http://localhost:5000/api/doctor/doctor-details")
-        .then((data) => {results = data.data})
-        .catch((error) => {
-          console.log(error);
-        });
-      console.log(results);
+
+  let fetchData = async () => {
+    let results;
+    await apis
+      .get("doctor")
+      .then((data) => {
+        results = data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(results);
+    if (results != null) {
       setDoctors(results);
     }
+  };
 
+  useEffect(() => {
     fetchData();
   });
 

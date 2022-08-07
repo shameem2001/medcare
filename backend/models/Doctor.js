@@ -5,19 +5,14 @@ const doctorSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  department: {
+  img: {
     type: String,
-    required: true,
   },
   age: {
     type: Number,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  phoneNumber: {
+  gender: {
     type: String,
     required: true,
   },
@@ -25,7 +20,14 @@ const doctorSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  password: {
+  department: {
+    type: String,
+    required: true,
+  },
+  experience: {
+    type: Number,
+  },
+  phoneNumber: {
     type: String,
     required: true,
   },
@@ -34,15 +36,22 @@ const doctorSchema = mongoose.Schema({
     required: true,
   },
   hospital: {
+    type: Array,
+    required: true,
+  },
+  hospital_address: {
     type: String,
     required: true,
   },
-  img:{
-    type:String,
+  email: {
+    type: String,
+    required: true,
   },
-  experience:{
-    type:Number
-  }
+  password: {
+    type: String,
+    required: true,
+  },
+  appointments: [String],
 });
 
 const doctor = mongoose.model("doctor", doctorSchema);

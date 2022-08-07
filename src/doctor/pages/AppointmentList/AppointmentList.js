@@ -5,6 +5,7 @@ import { CalendarPicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+// import { useLocation } from "react-router-dom";
 import green from "@mui/material/colors/green";
 const theme = createTheme({
   palette: {
@@ -15,6 +16,9 @@ const theme = createTheme({
 
 export default function PatientList() {
   // const [value, setValue] = React.useState("2022-07-31");
+  const doctor_id = localStorage.getItem('doctor_id')
+  console.log(doctor_id)
+
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
@@ -29,7 +33,7 @@ export default function PatientList() {
             id="pills-tab"
             role="tablist"
           >
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
                 className="nav-link active  profile-tabbar1-tab"
                 id="All"
