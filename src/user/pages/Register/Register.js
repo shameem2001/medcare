@@ -12,7 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 
 export default function Register() {
   const navigate = useNavigate();
-
+  
   let [name, setname] = useState("");
   let [gender, setgender] = useState("");
   let [age, setage] = useState(0);

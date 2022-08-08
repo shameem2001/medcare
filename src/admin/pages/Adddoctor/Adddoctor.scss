@@ -92,19 +92,15 @@
       .adddoctor-fourth-div {
         margin: 10px 5px 10px 5px;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
         justify-content: start;
 
         .adddoctor-fourth-div-1 {
-          width: 220px;
+          width: 335px;
           margin-right: 5px;
         }
         .adddoctor-fourth-div-2 {
-          width: 220px;
-          margin-right: 5px;
-        }
-        .adddoctor-fourth-div-3 {
-          width: 225px;
+          width: 335px;
           margin-right: 5px;
         }
       }
