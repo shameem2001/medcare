@@ -1,25 +1,28 @@
 import React from "react";
-import './AppointmentList.scss';
+import "./AppointmentList.scss";
 import Pcard from "../../components/AppointmentList/Pcard";
 import { CalendarPicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import green from "@mui/material/colors/green";
+
 const theme = createTheme({
   palette: {
-    primary: { light: green[300], main: '#5F9EA0', dark: green[700] },
+    primary: { light: green[300], main: "#5F9EA0", dark: green[700] },
   },
 });
 
-
 export default function PatientList() {
-  // const [value, setValue] = React.useState("2022-07-31");
+  const doctor_id = localStorage.getItem("doctor_id");
+  console.log(doctor_id);
+
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  
   return (
     <div className="patient-list-cont">
       <div className="Patientlist">
@@ -29,7 +32,7 @@ export default function PatientList() {
             id="pills-tab"
             role="tablist"
           >
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
                 className="nav-link active  profile-tabbar1-tab"
                 id="All"
@@ -72,11 +75,10 @@ export default function PatientList() {
                 Consulted
               </button>
             </li>
-            
           </ul>
-          <div class="tab-content" id="pills-tabContent">
+          <div className="tab-content" id="pills-tabContent">
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="new-data"
               role="tabpanel"
               aria-labelledby="New"
@@ -84,7 +86,7 @@ export default function PatientList() {
               <Pcard flag={"to-be-consulted"} check={0} dateP={selectedDate} />
             </div>
             <div
-              class="tab-pane fade"
+              className="tab-pane fade"
               id="approved-data"
               role="tabpanel"
               aria-labelledby="Approved"
@@ -92,7 +94,7 @@ export default function PatientList() {
               <Pcard flag={"consulted"} check={0} dateP={selectedDate} />
             </div>
             <div
-              class="tab-pane fade show active"
+              className="tab-pane fade show active"
               id="all-data"
               role="tabpanel"
               aria-labelledby="All"
@@ -104,9 +106,15 @@ export default function PatientList() {
         <div className="datePickerPatient ">
           <div className="mb-4 mt-4">
             <ThemeProvider theme={theme}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <div className="container shadow calendar-ui" style={{ overflow: "hidden"}}>
-                  <CalendarPicker date={selectedDate} onChange={handleDateChange}  />
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <div
+                  className="container shadow calendar-ui"
+                  style={{ overflow: "hidden" }}
+                >
+                  <CalendarPicker
+                    date={selectedDate}
+                    onChange={handleDateChange}
+                  />
                 </div>
               </LocalizationProvider>
             </ThemeProvider>

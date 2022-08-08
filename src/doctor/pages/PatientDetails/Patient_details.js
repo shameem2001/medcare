@@ -2,15 +2,14 @@ import { React, useEffect, useState } from "react";
 import apis from "../../../apis";
 import "./Patient_details.scss";
 import PrescribtionCard from "../../components/PatientDetails/Prescribtion_card";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-const mongoose = require("mongoose");
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Patient_details() {
   const navigate = useNavigate();
   const location = useLocation().state;
   const user_id = location.user_id;
-  const doctor_id = location.doctor_id;
-  const appointment_id = location.appointment_id;
+  // const doctor_id = location.doctor_id;
+  // const appointment_id = location.appointment_id;
 
   let [userData, setUserData] = useState({
     name: "Shaji",
@@ -23,7 +22,8 @@ export default function Patient_details() {
 
   useEffect(() => {
     getPatientDetails();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getPatientDetails = async () => {
     let results;
@@ -32,6 +32,7 @@ export default function Patient_details() {
     });
 
     if (results !== null) {
+      console.log(results);
       setUserData(results);
     }
   };

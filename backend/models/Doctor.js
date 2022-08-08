@@ -36,7 +36,7 @@ const doctorSchema = mongoose.Schema({
     required: true,
   },
   hospital: {
-    type: Array,
+    type: String,
     required: true,
   },
   hospital_address: {

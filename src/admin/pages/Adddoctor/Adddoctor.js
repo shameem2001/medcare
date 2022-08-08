@@ -1,14 +1,54 @@
-import './Adddoctor.scss'
+import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import apis from "../../../apis";
+import "./Adddoctor.scss";
 import design from "../../../assets/Doctor.png";
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import {Link} from 'react-router-dom';
+import { TextField, MenuItem, FormControl, InputLabel } from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-function Add_Doctor() {
-  return ( 
+export default function Add_Doctor() {
+  const navigate = useNavigate();
+
+  let [name, setname] = useState("");
+  let [gender, setgender] = useState("");
+  let [age, setage] = useState(0);
+  let [email, setemail] = useState("");
+  let [phoneNumber, setphonenumber] = useState("");
+  let [dob, setdob] = useState("");
+  let [password, setpassword] = useState("");
+  let [cpassword, setcpassword] = useState("");
+  let [exp, setexp] = useState("");
+  let [hospital, sethospital] = useState("");
+  let [address, setaddress] = useState("");
+  let [district, setdistrict] = useState("");
+  let [hosp_addr, sethosp_addr] = useState("");
+  let [department, setdepartment] = useState("");
+
+  let submit = async (e) => {
+    if (password === cpassword) {
+      console.log("submitted");
+      await apis.post("doctor", {
+        name: name,
+        gender: gender,
+        age: age,
+        email: email,
+        department: department,
+        experience: exp,
+        district: district,
+        hospital: hospital,
+        hospital_address: hosp_addr,
+        phoneNumber: phoneNumber,
+        dob: dob,
+        password: password,
+        address: address,
+      });
+      navigate("/admin/dashboard");
+    } else {
+      console.log("Password not same");
+    }
+  };
+
+  return (
     <div className="adddoctor-page">
       <div className="container shadow adddoctor-page-container">
         <div className="adddoctor-page-container-left">
@@ -24,22 +64,49 @@ function Add_Doctor() {
               className="adddoctor-second-div-1"
               size="small"
               required
-              label="First-Name"
+              label="Name"
               variant="outlined"
+              onChange={(e) => setname(e.target.value)}
             />
             <TextField
               className="adddoctor-second-div-2"
               size="small"
-              label="Middle-Name"
-              variant="outlined"
-            />
-            <TextField
-              className="adddoctor-second-div-3"
-              size="small"
               required
-              label="Last-Name"
-              variant="outlined"
+              label="Age"
+              type="number"
+              onChange={(e) => setage(e.target.value)}
             />
+            <FormControl
+              className="adddoctor-second-div-3"
+              required
+              size="small"
+            >
+              <InputLabel>Gender</InputLabel>
+
+              <Select
+                label="gender"
+                onChange={(e) => setgender(e.target.value)}
+              >
+                <MenuItem
+                  value="Male"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Male
+                </MenuItem>
+                <MenuItem
+                  value="Female"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Female
+                </MenuItem>
+                <MenuItem
+                  value="Other"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Other
+                </MenuItem>
+              </Select>
+            </FormControl>
           </div>
           <div className="adddoctor-first-div">
             <TextField
@@ -48,13 +115,15 @@ function Add_Doctor() {
               required
               label="email-id"
               variant="outlined"
+              onChange={(e) => setemail(e.target.value)}
             />
             <TextField
               className="adddoctor-first-div-2"
               size="small"
               required
-              label="Doctor-id"
-              type="tel"
+              label="Experience"
+              type="number"
+              onChange={(e) => setexp(e.target.value)}
             />
           </div>
           <div className="adddoctor-third-div">
@@ -63,69 +132,130 @@ function Add_Doctor() {
               size="small"
               required
               type="date"
+              onChange={(e) => setdob(e.target.value)}
             />
             <TextField
               className="adddoctor-third-div-2"
-              size="small"
               required
-              label="Age"
-              type="number"
+              size="small"
+              label="Hospital"
+              type="text"
+              onChange={(e) => sethospital(e.target.value)}
             />
-
-            <FormControl className="adddoctor-third-div-3" required size="small">
-              <InputLabel>Gender</InputLabel>
-
+            <FormControl
+              className="adddoctor-third-div-3"
+              required
+              size="small"
+            >
+              <InputLabel>District</InputLabel>
               <Select
-                //value={age}
-                label="gender"
-                //onChange={handleChange}
+                label="District"
+                onChange={(e) => setdistrict(e.target.value)}
               >
-                <MenuItem>Male</MenuItem>
-                <MenuItem>Female</MenuItem>
-                <MenuItem>Other</MenuItem>
+                <MenuItem
+                  value="Kannur"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Kannur
+                </MenuItem>
+                <MenuItem
+                  value="Kasargod"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Kasaragod
+                </MenuItem>
+                <MenuItem
+                  value="Kozhikode"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Kozhikode
+                </MenuItem>
+                <MenuItem
+                  value="Wayanad"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Wayanad
+                </MenuItem>
+                <MenuItem
+                  value="Malappuram"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Malappuram
+                </MenuItem>
+                <MenuItem
+                  value="Palakkad"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Palakkad
+                </MenuItem>
+                <MenuItem
+                  value="Thrissur"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Thrissur
+                </MenuItem>
+                <MenuItem
+                  value="Ernakulam"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Ernakulam
+                </MenuItem>
+                <MenuItem
+                  value="Alappuzha"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Alappuzha
+                </MenuItem>
+                <MenuItem
+                  value="Kottayam"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Kottayam
+                </MenuItem>
+                <MenuItem
+                  value="Pattanamthitta"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Pattanamthitta
+                </MenuItem>
+                <MenuItem
+                  value="Idukki"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Idukki
+                </MenuItem>
+                <MenuItem
+                  value="Kollam"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Kollam
+                </MenuItem>
+                <MenuItem
+                  value="Thiruvananthapuram"
+                  onChange={(e) => setdistrict(e.target.value)}
+                >
+                  Thiruvananthapuram
+                </MenuItem>
               </Select>
             </FormControl>
           </div>
           <div className="adddoctor-fourth-div">
             <TextField
-              className="adddoctor-fourth-div-2"
+              className="adddoctor-fourth-div-1"
               size="small"
               required
               label="Address"
               multiline
-              // value={value}
-              // onChange={handleChange}
+              onChange={(e) => setaddress(e.target.value)}
             />
-            <FormControl className="adddoctor-fourth-div-1" required size="small">
-              <InputLabel>District</InputLabel>
-              <Select
-                label="District"
-                //value={age}
-
-                //onChange={handleChange}
-              >
-                <MenuItem>Kasaragod</MenuItem>
-                <MenuItem>Kannur</MenuItem>
-                <MenuItem>Kozhikode</MenuItem>
-                <MenuItem>Wayanad</MenuItem>
-                <MenuItem>Malappuram</MenuItem>
-                <MenuItem>Palakkad</MenuItem>
-                <MenuItem>Thrissur</MenuItem>
-                <MenuItem>Ernakulam</MenuItem>
-                <MenuItem>Alappuzha</MenuItem>
-                <MenuItem>Kottayam</MenuItem>
-                <MenuItem>Pattanamthitta</MenuItem>
-                <MenuItem>Idukki</MenuItem>
-                <MenuItem>Kollam</MenuItem>
-                <MenuItem>Thiruvananthapuram</MenuItem>
-              </Select>
-            </FormControl>
             <TextField
-              className="adddoctor-fourth-div-3"
-              required
+              className="adddoctor-forth-div-2"
               size="small"
-              label="Hospital"
+              required
+              label="Hospital address"
               type="text"
+              multiline
+              onChange={(e) => sethosp_addr(e.target.value)}
             />
           </div>
           <div className="adddoctor-fifth-div">
@@ -135,19 +265,15 @@ function Add_Doctor() {
               label="Department"
               required
               type="text"
-              multiline
-              // value={value}
-              // onChange={handleChange}
+              onChange={(e) => setdepartment(e.target.value)}
             />
             <TextField
               className="adddoctor-fifth-div-2"
               size="small"
               type="text"
-              multiline
               required
               label="Phone number"
-              // value={value}
-              // onChange={handleChange}
+              onChange={(e) => setphonenumber(e.target.value)}
             />
           </div>
           <div className="adddoctor-sixth-div">
@@ -157,6 +283,7 @@ function Add_Doctor() {
               required
               label="Password"
               type="password"
+              onChange={(e) => setpassword(e.target.value)}
             />
             <TextField
               className="adddoctor-sixth-div-2"
@@ -164,15 +291,14 @@ function Add_Doctor() {
               required
               label="Confirm Password"
               type="password"
+              onChange={(e) => setcpassword(e.target.value)}
             />
           </div>
-          <Link to='/admin/dashboard'>
-            <button className="btn adddoctor-button">REGISTER</button>
-          </Link>
+          <button className="btn adddoctor-button" onClick={submit}>
+            REGISTER
+          </button>
         </div>
       </div>
     </div>
   );
 }
-
-export default Add_Doctor;

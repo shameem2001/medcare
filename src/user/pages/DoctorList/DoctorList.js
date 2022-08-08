@@ -103,7 +103,6 @@ export default function DoctorList() {
 
   let [doctors, setDoctors] = useState(doctors_list);
 
-
   let fetchData = async () => {
     let results;
     await apis
@@ -122,7 +121,7 @@ export default function DoctorList() {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="parent">

@@ -34,11 +34,12 @@ export default function Profile() {
     if (results !== null) {
       setUserData(results);
     }
-  }
+  };
 
   useEffect(() => {
     fetchUserData();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   return (

@@ -41,7 +41,7 @@ export default function Psubcard({ name, status, phoneNumber, date, time }) {
                     appointment_id: "62ee55c7b4cfff02cedaf020",
                   }}
                 >
-                  <i class="fa-solid fa-arrow-right-long"></i>
+                  <i className="fa-solid fa-arrow-right-long"></i>
                 </Link>
               </button>
             </div>
