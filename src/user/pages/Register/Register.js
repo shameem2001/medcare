@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
+import bcrypt from 'bcryptjs';
 import "./Register.scss";
 import design from "../../../assets/elder.jpg";
 import TextField from "@mui/material/TextField";
@@ -20,14 +21,25 @@ export default function Register() {
   let [phoneNumber, setphonenumber] = useState("");
   let [dob, setdob] = useState("");
   let [password, setpassword] = useState("");
-  let [cpassword, setcpassword] = useState("");
   let [prev_docs, setprev_docs] = useState("");
   let [prev_cond, setprev_cond] = useState("");
   let [address, setaddress] = useState("");
 
+  let passwordHash = async(conpassword)=>{
+    if (password === conpassword) {
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(password, salt, function (err, hashedPassword) {
+          setpassword(hashedPassword);
+        });
+      });
+    } else {
+      console.log("Password not same");
+    }
+  }
+
   let submit = async (e) => {
-    if (password === cpassword) {
       console.log("submitted");
+      console.log(password);
       await apis.post("user", {
         name: name,
         gender: gender,
@@ -41,10 +53,6 @@ export default function Register() {
         address: address,
       });
       navigate("/login");
-    }
-    else{
-      console.log("Password not same");
-    }
   };
 
   return (
@@ -173,7 +181,7 @@ export default function Register() {
               required
               label="Confirm Password"
               type="password"
-              onChange={(e) => setcpassword(e.target.value)}
+              onChange={(e) => passwordHash(e.target.value)}
             />
           </div>
           <button className="btn signup-button" onClick={submit}>

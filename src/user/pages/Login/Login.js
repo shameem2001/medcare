@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import bcrypt from 'bcryptjs';
 import "./Login.scss";
 import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
@@ -17,18 +18,23 @@ export default function Login() {
       .get("user")
       .then((data) => {results = data.data})
       .catch((err) => console.log(err));
-    
-    let doesMatch = results.filter((data)=>{
-      return data.email === email && data.password === password;
+
+    let match = false;
+    results.map((data)=>{
+      bcrypt.compare(password, data.password, (err, res) => {
+        console.log(res);
+        if(res === true && email === data.email){
+          match = true;
+          localStorage.setItem("_id", data._id);
+          navigate("/");
+        }
+      });
+    if(match === false){
+      console.log("invalid credentials");
+    }
     });
 
-    if(doesMatch.length === 0){
-      console.log("Incorrect credentials")
-    }
-    else{
-      localStorage.setItem("_id", doesMatch[0]._id);
-      navigate("/");
-    }
+    
   };
 
   return (
