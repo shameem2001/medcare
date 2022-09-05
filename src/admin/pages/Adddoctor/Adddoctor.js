@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import bcrypt from 'bcryptjs';
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import "./Adddoctor.scss";
@@ -16,7 +17,6 @@ export default function Add_Doctor() {
   let [phoneNumber, setphonenumber] = useState("");
   let [dob, setdob] = useState("");
   let [password, setpassword] = useState("");
-  let [cpassword, setcpassword] = useState("");
   let [exp, setexp] = useState("");
   let [hospital, sethospital] = useState("");
   let [address, setaddress] = useState("");
@@ -24,8 +24,19 @@ export default function Add_Doctor() {
   let [hosp_addr, sethosp_addr] = useState("");
   let [department, setdepartment] = useState("");
 
+    let passwordHash = async (conpassword) => {
+      if (password === conpassword) {
+        bcrypt.genSalt(10, function (err, salt) {
+          bcrypt.hash(password, salt, function (err, hashedPassword) {
+            setpassword(hashedPassword);
+          });
+        });
+      } else {
+        console.log("Password not same");
+      }
+    };
+
   let submit = async (e) => {
-    if (password === cpassword) {
       console.log("submitted");
       await apis.post("doctor", {
         name: name,
@@ -43,9 +54,6 @@ export default function Add_Doctor() {
         address: address,
       });
       navigate("/admin/dashboard");
-    } else {
-      console.log("Password not same");
-    }
   };
 
   return (
@@ -291,7 +299,7 @@ export default function Add_Doctor() {
               required
               label="Confirm Password"
               type="password"
-              onChange={(e) => setcpassword(e.target.value)}
+              onChange={(e) => passwordHash(e.target.value)}
             />
           </div>
           <button className="btn adddoctor-button" onClick={submit}>
