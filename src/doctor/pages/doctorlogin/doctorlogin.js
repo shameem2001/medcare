@@ -4,6 +4,7 @@ import "./doctorlogin.scss";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import { React, useState } from "react";
+import bcrypt from 'bcryptjs';
 
 function Doctorlogin() {
   const navigate = useNavigate();
@@ -20,17 +21,20 @@ function Doctorlogin() {
       })
       .catch((err) => console.log(err));
 
-    let doesMatch_doclist = results.filter((data) => {
-      return data.email === email && data.password === password;
+    let match = false;
+    results.map((data) => {
+      bcrypt.compare(password, data.password, (err, res) => {
+        console.log(res);
+        if (res === true && email === data.email) {
+          match = true;
+          localStorage.setItem("doctor_id", data._id);
+          navigate("/doctor/");
+        }
+      });
+      if (match === false) {
+        console.log("invalid credentials");
+      }
     });
-    console.log(doesMatch_doclist);
-    console.log(results);
-    if (doesMatch_doclist.length !== 0) {
-      localStorage.setItem("doctor_id", doesMatch_doclist[0]._id);
-      navigate("/doctor/");
-    } else {
-      console.log("Incorrect credentials");
-    }
   };
   return (
     <div className="doctor-login-page">
