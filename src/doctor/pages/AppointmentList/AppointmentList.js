@@ -131,7 +131,6 @@ export default function PatientList() {
               </LocalizationProvider>
             </ThemeProvider>
           </div>
-          <div></div>
         </div>
       </div>
     </div>

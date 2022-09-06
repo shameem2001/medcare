@@ -35,6 +35,7 @@ export default function Medcare() {
           <Route path="/doctor-window" element={<Header />} />
           <Route path="/profile" element={<Header />} />
           <Route path="/doctor/" element={<DoctorHeader />} />
+          <Route path="/doctor/add-slot" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
         </Routes>
         <Routes>
@@ -60,6 +61,7 @@ export default function Medcare() {
           <Route path="/doctor-window" element={<Footer />} />
           <Route path="/profile" element={<Footer />} />
           <Route path="/doctor/" element={<DoctorFooter />} />
+          <Route path="/doctor/add-slot" element={<DoctorFooter />} />
           <Route path="/admin/" element={<AdminFooter />} />
         </Routes>
       </div>
