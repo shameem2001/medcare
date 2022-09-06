@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import "./doctorlogin.scss";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import bcrypt from 'bcryptjs';
 
 function Doctorlogin() {
@@ -28,6 +28,8 @@ function Doctorlogin() {
         if (res === true && email === data.email) {
           match = true;
           localStorage.setItem("doctor_id", data._id);
+          localStorage.setItem("doctor_name", data.name);
+          localStorage.setItem("doctor_img", data.img);
           navigate("/doctor/");
         }
       });

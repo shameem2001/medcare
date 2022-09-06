@@ -6,6 +6,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import green from "@mui/material/colors/green";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const theme = createTheme({
   palette: {
@@ -14,8 +16,18 @@ const theme = createTheme({
 });
 
 export default function PatientList() {
+  const navigate = useNavigate();
   const doctor_id = localStorage.getItem("doctor_id");
   console.log(doctor_id);
+
+  useEffect(()=>{
+    if (doctor_id !== null) {
+      console.log("no prob");
+    } else {
+      console.log("go to login");
+      navigate("/doctor/login");
+    }
+  }, []);
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 

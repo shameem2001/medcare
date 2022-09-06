@@ -26,6 +26,9 @@ export default function Login() {
         if(res === true && email === data.email){
           match = true;
           localStorage.setItem("_id", data._id);
+          localStorage.setItem("user_name", data.name);
+          localStorage.setItem("user_img", data.img);
+          console.log(data.img+"log");
           navigate("/");
         }
       });
