@@ -52,7 +52,17 @@ const doctorSchema = mongoose.Schema({
     required: true,
   },
   appointments: [String],
-});
+  bookings: [{
+    date: {
+      type: String
+    },
+    isLeave: {
+      type: String
+    },
+    slots: {
+      type: Array,
+    }
+  }]});
 
 const doctor = mongoose.model("doctor", doctorSchema);
 module.exports = doctor;
