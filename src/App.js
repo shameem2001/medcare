@@ -16,7 +16,6 @@ import Adminlogin from "../src/admin/pages/Adminlogin/Adminlogin";
 import Doctorlogin from "../src/doctor/pages/doctorlogin/doctorlogin";
 import AppointmentList from "../src/doctor/pages/AppointmentList/AppointmentList";
 import PatientDetails from "../src/doctor/pages/PatientDetails/Patient_details";
-import AddSlot from "../src/doctor/pages/AddSlot/AddSlot";
 import DoctorHeader from "./components/Doctor/Header/DoctorHeader";
 import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
@@ -35,7 +34,6 @@ export default function Medcare() {
           <Route path="/doctor-window" element={<Header />} />
           <Route path="/profile" element={<Header />} />
           <Route path="/doctor/" element={<DoctorHeader />} />
-          <Route path="/doctor/add-slot" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
         </Routes>
         <Routes>
@@ -48,7 +46,6 @@ export default function Medcare() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/doctor/login" element={<Doctorlogin />} />
           <Route path="/doctor/" element={<AppointmentList />} />
-          <Route path="/doctor/add-slot" element={<AddSlot />} />
           <Route path="/doctor/patient-details" element={<PatientDetails />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/add-doctor" element={<Adddoctor />} />

@@ -12,10 +12,6 @@ export default function DoctorHeader() {
     navigate("/doctor/login");
   };
 
-  const nav = ()=>{
-    navigate("/doctor/add-slot");
-  }
-
   const doc_name = localStorage.getItem("doctor_name");
   const doc_img = localStorage.getItem("doctor_img");
 
@@ -25,12 +21,6 @@ export default function DoctorHeader() {
         MED<span className="c11">CARE</span>
       </div>
       <div className="c2">
-        <button
-          className="btn add-appointment-slots"
-          onClick={nav}
-        >
-          Add Appointment Slots
-        </button>
         <div className="container shadow-sm doctor-header-profile">
           {doc_img === null || doc_img === "undefined" ? (
             <img src={img} alt="dv" />
