@@ -20,7 +20,7 @@ export default function PatientList() {
   const doctor_id = localStorage.getItem("doctor_id");
   console.log(doctor_id);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (doctor_id !== null) {
       console.log("no prob");
     } else {
@@ -30,13 +30,6 @@ export default function PatientList() {
   }, []);
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-
-
   // add-slot
   const [leave, setLeave] = useState("no");
   const [workHrsStart, setWorkHrsStart] = useState("10:00");
@@ -44,6 +37,16 @@ export default function PatientList() {
   const [breakStart, setBreakStart] = useState("12:00");
   const [breakEnd, setBreakEnd] = useState("13:00");
   const [duration, setDuration] = useState("30");
+
+  const handleDateChange = (date) => {
+    setLeave("no");
+    setWorkHrsStart("10:00");
+    setWorkHrsEnd("18:00");
+    setBreakStart("12:00");
+    setBreakEnd("13:00");
+    setDuration("30");
+    setSelectedDate(date);
+  };
 
   let formatTime = (timeG) => {
     let [hours, minutes] = timeG.split(":");
@@ -140,7 +143,7 @@ export default function PatientList() {
   };
 
   const [day, month, dayno, year] = selectedDate.toString().split(" ");
-  
+
   let isSlotEmpty = true;
 
   return (
@@ -182,6 +185,7 @@ export default function PatientList() {
                   className="add-slot-input"
                   type="time"
                   defaultValue={workHrsStart}
+                  value={workHrsStart}
                   onChange={(e) => {
                     setWorkHrsStart(e.target.value);
                   }}
@@ -190,6 +194,7 @@ export default function PatientList() {
                 <input
                   className="add-slot-input"
                   type="time"
+                  value={workHrsEnd}
                   defaultValue={workHrsEnd}
                   onChange={(e) => {
                     setWorkHrsEnd(e.target.value);
@@ -201,6 +206,7 @@ export default function PatientList() {
                 <input
                   className="add-slot-input"
                   type="time"
+                  value={breakStart}
                   defaultValue={breakStart}
                   onChange={(e) => {
                     setBreakStart(e.target.value);
@@ -210,6 +216,7 @@ export default function PatientList() {
                 <input
                   className="add-slot-input"
                   type="time"
+                  value={breakEnd}
                   defaultValue={breakEnd}
                   onChange={(e) => {
                     setBreakEnd(e.target.value);
@@ -220,8 +227,10 @@ export default function PatientList() {
                 <label>Enter time taken for each patient: </label>
                 <input
                   className="patient-duration"
+                  value={duration}
                   defaultValue={duration}
                   type="text"
+                  onFocus={()=>{setDuration("")}}
                   onChange={(e) => {
                     console.log(e.target.value);
                     setDuration(e.target.value);
