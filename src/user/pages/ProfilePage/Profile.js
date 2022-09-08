@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 import { useLocation } from 'react-router-dom';
-import axios from "axios";
+import apis from "../../../apis";
 import AppointmentCard from "../../components/Profile/AppointmentCard";
 import DependantCard from "../../components/Profile/DependantCard";
 import PrescriptionCard from "../../components/Profile/PrescriptionCard";
@@ -10,24 +10,37 @@ export default function Profile() {
   const location = useLocation();
   const {user_id} = location.state;
 
-  let [userData, setUserData] = useState({});
+  let [userData, setUserData] = useState({
+    name: "John Doe",
+    gender: "Male",
+    email: "johnDoe",
+    dob: "20201-09-23",
+    age: 22,
+    phoneNumber: "245676543"
+  });
 
-  useEffect(() => {
+  const fetchUserData = async () => {
     let results;
-    const fetchUserData = async ()=>{
-      await axios.get("http://localhost:5000/api/user-details").then((data)=>{results = data.data}).catch((error)=>{console.log(error)});
-
-      const matchedUser = results.filter((item)=>{
-        return item._id === user_id;
+    await apis
+      .get(`user/${user_id}`)
+      .then((data) => {
+        console.log(data.data);
+        results = data.data;
+      })
+      .catch((error) => {
+        console.log(error);
       });
 
-      if(matchedUser !== undefined){
-        setUserData(matchedUser[0]);
-      }
+    if (results !== null) {
+      setUserData(results);
     }
+  };
 
-    fetchUserData();  
-  });
+  useEffect(() => {
+    fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <div className="profile">

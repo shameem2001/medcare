@@ -27,23 +27,22 @@ db.once("open", function () {
 });
 
 
-const userRoute = './routes/user/';
-const doctorRoute = './routes/doctor/';
-const adminRoute = './routes/admin/';
+const route = './routes/';
 
-const userAddUser = require(`${userRoute}AddUser`);
-app.use(userAddUser);
+const user = require(`${route}User`);
+app.use(user);
 
-const userDetails = require(`${userRoute}UserDetails`);
-app.use(userDetails);
+const doctor = require(`${route}Doctor`);
+app.use(doctor);
 
-const doctorDetails = require(`${doctorRoute}DoctorDetails`);
-app.use(doctorDetails);
+const appointment = require(`${route}Appointment`);
+app.use(appointment);
 
-const adminAddDoctor = require(`${adminRoute}AddDoctor`);
-app.use(adminAddDoctor);
+const slot = require(`${route}Slot`);
+app.use(slot);
 
-
+const admin = require(`${route}Admin`);
+app.use(admin);
 
 
 app.listen(process.env.PORT || PORT, () => {

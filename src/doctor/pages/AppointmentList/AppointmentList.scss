@@ -16,6 +16,7 @@
     justify-content: space-around;
 
     .profile-tabbar1-tab {
+      background-color: white;
       width: 275px;
       border-radius: 8px;
       color: cadetblue;
@@ -136,4 +137,59 @@
 .psubcard-link {
   text-decoration: none;
   color: black;
+}
+
+.add-slot-page {
+  margin-left: 40px;
+  margin-top: 25px;
+  .add-slot-page-left {
+    padding: 20px;
+    width: 800px;
+    min-height: 300px;
+    border-radius: 12px;
+
+    label {
+      margin-right: 10px;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    input {
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+
+    .addslot-radio{
+      width: 15px;
+      height: 15px;
+    }
+
+    .add-slot-input{
+      border-radius: 6px;
+      padding: 0 5px;
+      width: 85px;
+    }
+
+    .patient-duration{
+      width: 50px;
+      border-radius: 6px;
+      padding: 0 5px;
+      padding-left: 12px;
+    }
+
+    .addslot-btn {
+      display: grid;
+      justify-content: center;
+      button {
+        width: 250px;
+        height: 40px;
+        border-radius: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        background-color: cadetblue;
+        color: white;
+        margin-top: 25px;
+      }
+    }
+  }
 }

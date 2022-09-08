@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import './Header.scss';
+import imgas from "../../../assets/profile.jpg";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ export default function Header() {
   }
 
   console.log("showLogin: "+ showLogin);
+  const username = localStorage.getItem("user_name");
+  const user_img = localStorage.getItem("user_img");
+  console.log("df"+user_img);
 
   return (
     <div className="shadow-sm navbar-new">
@@ -50,7 +54,14 @@ export default function Header() {
             to="/profile"
             state={{ user_id: userId }}
           >
-            <a href="dh">Profile</a>
+            <div className="container doctor-header-profile">
+              {user_img === "undefined" || user_img === null? (
+                <img src={imgas} alt="" />
+              ) : (
+                <img src={user_img} alt="" />
+              )}
+              <p>{username}</p>
+            </div>
           </Link>
         ) : null}
         {showLogin === true ? (
