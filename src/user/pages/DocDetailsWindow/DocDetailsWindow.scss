@@ -141,3 +141,32 @@
     // }
   }
 }
+
+.modalContents{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.chip-div{
+  width: 750px;
+}
+
+.slot-date-grid{
+  width: 740px;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: end;
+
+  .slot-date{
+  width: 160px;
+  height: 50px;
+  border-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border: 1px solid black;
+  padding: 10px;
+}
+}

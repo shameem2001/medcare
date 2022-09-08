@@ -128,14 +128,11 @@ export default function PatientList() {
       console.log(slots_for_day);
 
       await apis
-        .put(`doctor/${doctor_id}`, {
-          $push: {
-            bookings: {
+        .post("slot", {
+              doctor_id: doctor_id,
               date: formattedDateP,
               isLeave: leave,
               slots: slots_for_day,
-            },
-          },
         })
         .then((data) => console.log(data))
         .catch((e) => console.log(e));

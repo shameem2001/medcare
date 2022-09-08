@@ -7,7 +7,8 @@ import { Card, IconButton, Typography, Chip, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import BasicDatePicker from "../../components/DoctorDetails/BasicDatePicker";
 import "./DocDetailsWindow.scss";
-const mongoose = require("mongoose");
+import bcrypt from "bcryptjs";
+import image from "../../../assets/booked.png";
 
 var cardStyle = {
   display: "flex",
@@ -19,18 +20,25 @@ var cardStyle = {
   backgroundColor: "white",
 };
 
-const timeSelect = [
-  {
-    timeToken: ["4.00 am", "12.00 am", "1.00 am", "10.00 am"],
-  },
-];
-
 export default function DocDetailsWindow() {
   // Doctor data fetch start
 
+  const [selectedDate, setSelectedDate] = useState(
+    JSON.stringify(new Date()).split("T")[0].slice(1)
+  );
+  const [openModel, setOpenModel] = useState(false);
+  let [email, setemail] = useState("");
+  let [password, setpassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation().state;
-  const doctor_id = location.doctor_id;
+  const doctorId = location.doctor_id;
+  const userId = localStorage.getItem("_id");
+  const [timeShow, setTimeshow] = useState([]);
+  const [displayTime, setDisplayTime] = useState(false);
+  let i = 0;
+  const [step, setStep] = useState(i);
+
+  let timeSlot;
 
   let [doctorData, setDoctorData] = useState({
     name: "Dr.Feroz BK",
@@ -43,19 +51,29 @@ export default function DocDetailsWindow() {
 
   useEffect(() => {
     getDoctorDetails();
+    getSlotDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getDoctorDetails = async () => {
     let results;
-    await apis.get(`doctor/${doctor_id}`).then((data) => {
+    await apis.get(`doctor/${doctorId}`).then((data) => {
       results = data.data;
     });
 
     if (results !== null) {
-      console.log(results);
       setDoctorData(results);
     }
+  };
+
+  const getSlotDetails = async () => {
+    let results1;
+    await apis.get("slot").then((data) => {
+      results1 = data.data;
+    });
+
+    console.log(results1);
+    setTimeshow(results1);
   };
 
   // Doctor data fetch end
@@ -68,25 +86,7 @@ export default function DocDetailsWindow() {
 
   //Update appointment start
 
-  const [timeShow, setTimeshow] = useState(timeSelect);
-  const [displayTime, setDisplayTime] = useState(false);
-  let i = 0;
-  const [step, setStep] = useState(i);
-  /*
-  // let userfetcheddata;
-  // let getUser = async (userId) => {
-  //   await apis
-  //     .get(`user/${userId}`)
-  //     .then((data) => {
-  //        userfetcheddata =  data.data;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
   let updateUser = async (userId, appointment_id) => {
-    //await getUser(userId);
     await apis
       .put(`user/${userId}`, {
         $push: { appointments: appointment_id },
@@ -94,18 +94,6 @@ export default function DocDetailsWindow() {
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
   };
-
-  // let doctorfetchdata;
-  // let getDoctor = async (doctor_id) => {
-  //   await apis
-  //     .get(`doctor/${doctor_id}`)
-  //     .then((data) => {
-  //       doctorfetchdata = data.data;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   let updateDoctor = async (doctor_id, appointment_id) => {
     //await getDoctor(doctor_id);
@@ -117,47 +105,268 @@ export default function DocDetailsWindow() {
       .catch((error) => console.log(error));
   };
 
-  let addAppointment = async () => {
+  let updateDoctorSlots = async (slotTime) => {
+    const new_slots = [];
+    console.log(slotTime);
+    timeSlot.slots.forEach((slot) => {
+      if (slot !== slotTime) {
+        new_slots.push(slot);
+      }
+    });
+    console.log(new_slots);
+    await apis
+      .put(`slot/${timeSlot._id}`, {
+        slots: new_slots,
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  };
+
+  let addAppointment = async (time1) => {
     let appointment_id;
+    let session1 = "Morning";
+    if (time1.includes("PM")) {
+      session1 = "Afternoon";
+    }
+
     await apis
       .post("appointment", {
-        user_id: mongoose.Types.ObjectId("62eac78745c82de1c0ff6f31"),
-        doctor_id: mongoose.Types.ObjectId("62eb986b17a3b1c03f675658"),
-        date: "2020-02-23",
-        session: "Afternoon",
-        time: "12:00",
+        user_id: userId,
+        doctor_id: doctorId,
+        date: selectedDate,
+        session: session1,
+        time: time1,
         status: "Active",
       })
       .then((data) => (appointment_id = data.data))
       .catch((error) => console.log(error));
 
-    updateUser("62eac78745c82de1c0ff6f31", appointment_id);
-    updateDoctor("62eb986b17a3b1c03f675658", appointment_id);
+    updateUser(userId, appointment_id);
+    updateDoctor(doctorId, appointment_id);
   };
 
-//Update appointment end
-*/
+  let loggedIn;
 
-  // Basic date picker
-
-  let toggleDisplayTime = () => {
-    setDisplayTime(true);
-  };
+  //Update appointment end
 
   let timeComponent = () => {
-    let times = timeShow.map((item2) => {
-      return item2.timeToken;
-    })[0];
+    let isEmpty = true;
+    let times;
 
-    return (
-      <div className="mt-4 mb-7 " /*onClick={addAppointment}*/>
-        <Stack direction="row" spacing={3}>
-          {times.map((item3) => {
-            return <Chip label={item3} />;
-          })}
-        </Stack>
-      </div>
-    );
+    if (timeShow.length !== 0) {
+      isEmpty = false;
+      times = timeShow.filter((it) => {
+        return it.date === selectedDate && it.doctor_id === doctorId;
+      })[0];
+
+      timeSlot = times;
+    }
+
+    if(times === undefined){
+      isEmpty = true;
+    }
+
+    let submit = async () => {
+      console.log(email, password);
+      let results;
+      let match = false;
+      await apis
+        .get("user")
+        .then((data) => {
+          results = data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      results.map((data) => {
+        bcrypt.compare(password, data.password, (err, res) => {
+          console.log(res);
+          if (res === true && email === data.email) {
+            match = true;
+            localStorage.setItem("_id", data._id);
+            localStorage.setItem("user_name", data.name);
+            localStorage.setItem("_mail", data.email);
+            console.log("loggedIn");
+            loggedIn = true;
+            navigate("/doctor-window", {state:{doctor_id: doctorId}});
+            console.log(loggedIn);
+          }
+        });
+      });
+    };
+
+    let sendMail = () => {
+      navigate("/");
+    };
+
+    if (isEmpty === false) {
+      return (
+        <div className="mt-2 mb-7">
+          <div className="chip-div" direction="row" spacing={1}>
+            {times.slots.map((item3) => {
+              return (
+                <Chip
+                  style={{
+                    color: "white",
+                    backgroundColor: "cadetblue",
+                    width: "80px",
+                    margin: "15px",
+                    marginLeft: "0",
+                    marginTop: "30px",
+                  }}
+                  data-bs-toggle="modal"
+                  data-bs-target={
+                    localStorage.getItem("_id") != null
+                      ? "#exampleModalCenter"
+                      : "#exampleModal"
+                  }
+                  onClick={() => {
+                    console.log("clicked");
+                    if(localStorage.getItem("_id") !== null){
+                      addAppointment(item3);
+                      updateDoctorSlots(item3);
+                    }
+                    else{
+                      console.log("not logged in");
+                    }
+                  }}
+                  label={item3}
+                />
+              );
+            })}
+          </div>
+
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    Booking Status
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={sendMail}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <div className="modalContents">
+                      {" "}
+                      <img src={image} alt="here" height={100} width={100} />
+                    </div>
+                    <div className="modalContents">
+                      {" "}
+                      <h1>AWESOME..!</h1>
+                    </div>
+                  </div>
+                  <div className="modalContents">
+                    YOUR BOOKING HAS CONFIRMED
+                    <br />
+                    Check your email for your details
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onClick={sendMail}
+                  >
+                    Back to Home
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Log In
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">
+                        email
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        onChange={(e) => {
+                          setemail(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">
+                        password
+                      </label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        onChange={(e) => {
+                          setpassword(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    onClick={submit}
+                  >
+                    submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   };
 
   return (
@@ -239,24 +448,20 @@ export default function DocDetailsWindow() {
         <div className="Booking-slots">
           <div className="Booking-slots-left">
             <div className="mt-0 ">
-              <div
-                elevation={3}
-                style={cardStyle}
-                className="container shadow-sm"
-              >
-                <CardHeader
-                  action={
-                    <IconButton>
-                      <BasicDatePicker
-                        toggleDisplayTime={toggleDisplayTime}
-                        updateStep={updateStep}
-                      />
-                    </IconButton>
-                  }
+              <div className="input-group date slot-date-grid" id="datepicker">
+                {/* <div style={{width:"10px"}}></div> */}
+                <input
+                  className="container shadow-sm slot-date"
+                  defaultValue={selectedDate}
+                  value={selectedDate}
+                  onChange={async (e) => {
+                    setSelectedDate(e.target.value);
+                    await getSlotDetails(e.target.value);
+                    setDisplayTime(true);
+                  }}
+                  type="date"
+                  id="date"
                 />
-                <CardContent>
-                  <Typography align="right"></Typography>
-                </CardContent>
               </div>
               <div>{displayTime ? timeComponent() : null}</div>
             </div>
