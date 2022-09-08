@@ -10,7 +10,11 @@ export default function doctor_card({id, img, name, department, experience, hosp
       <p className="doctor-card-exp">{experience} years experience</p>
       <h6 className="doctor-card-hospital-name">{hospital}</h6>
       <button className="btn btn-large doctor-card-view-profile-button">
-        <Link className="doctor-card-view-profile-button-link" to="/doctor-details">
+        <Link
+          className="doctor-card-view-profile-button-link"
+          to="/doctor-window"
+          state={{ doctor_id: id }}
+        >
           Book now
         </Link>
       </button>

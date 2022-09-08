@@ -254,7 +254,7 @@ export default function DoctorList() {
               {doctors.map((doctor) => {
                 return (
                   <DoctorListCard
-                    id={doctor.id}
+                    id={doctor._id}
                     img={doctor.img}
                     name={doctor.name}
                     department={doctor.department}

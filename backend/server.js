@@ -38,6 +38,9 @@ app.use(doctor);
 const appointment = require(`${route}Appointment`);
 app.use(appointment);
 
+const slot = require(`${route}Slot`);
+app.use(slot);
+
 const admin = require(`${route}Admin`);
 app.use(admin);
 

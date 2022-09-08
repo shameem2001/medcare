@@ -52,7 +52,7 @@ const doctorSchema = mongoose.Schema({
     required: true,
   },
   appointments: [String],
-});
+  });
 
 const doctor = mongoose.model("doctor", doctorSchema);
 module.exports = doctor;
