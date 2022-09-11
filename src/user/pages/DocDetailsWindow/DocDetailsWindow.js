@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import apis from "../../../apis";
-import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
-import { Card, IconButton, Typography, Chip, Stack } from "@mui/material";
+import { Card, Typography, Chip } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
-import BasicDatePicker from "../../components/DoctorDetails/BasicDatePicker";
 import "./DocDetailsWindow.scss";
 import bcrypt from "bcryptjs";
 import image from "../../../assets/booked.png";
-
-var cardStyle = {
-  display: "flex",
-  borderRadius: "10px",
-  width: "300px",
-  transitionDuration: "0.3s",
-  height: "7vw",
-  color: "cadetblue",
-  backgroundColor: "white",
-};
 
 export default function DocDetailsWindow() {
   // Doctor data fetch start
@@ -26,7 +14,6 @@ export default function DocDetailsWindow() {
   const [selectedDate, setSelectedDate] = useState(
     JSON.stringify(new Date()).split("T")[0].slice(1)
   );
-  const [openModel, setOpenModel] = useState(false);
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
   const navigate = useNavigate();
@@ -72,7 +59,6 @@ export default function DocDetailsWindow() {
       results1 = data.data;
     });
 
-    console.log(results1);
     setTimeshow(results1);
   };
 
@@ -113,7 +99,6 @@ export default function DocDetailsWindow() {
         new_slots.push(slot);
       }
     });
-    console.log(new_slots);
     await apis
       .put(`slot/${timeSlot._id}`, {
         slots: new_slots,
@@ -137,8 +122,13 @@ export default function DocDetailsWindow() {
         session: session1,
         time: time1,
         status: "Active",
+        mail_id: localStorage.getItem("_mail"),
+        doctor_name: doctorData.name,
       })
-      .then((data) => (appointment_id = data.data))
+      .then((data) => {
+        console.log("Appointment posted.");
+        appointment_id = data.data;
+      })
       .catch((error) => console.log(error));
 
     updateUser(userId, appointment_id);
@@ -159,6 +149,7 @@ export default function DocDetailsWindow() {
         return it.date === selectedDate && it.doctor_id === doctorId;
       })[0];
 
+      console.log(times);
       timeSlot = times;
     }
 
@@ -196,10 +187,6 @@ export default function DocDetailsWindow() {
       });
     };
 
-    let sendMail = () => {
-      navigate("/");
-    };
-
     if (isEmpty === false) {
       return (
         <div className="mt-2 mb-7">
@@ -223,11 +210,10 @@ export default function DocDetailsWindow() {
                   }
                   onClick={() => {
                     console.log("clicked");
-                    if(localStorage.getItem("_id") !== null){
+                    if (localStorage.getItem("_id") !== null) {
                       addAppointment(item3);
                       updateDoctorSlots(item3);
-                    }
-                    else{
+                    } else {
                       console.log("not logged in");
                     }
                   }}
@@ -256,7 +242,7 @@ export default function DocDetailsWindow() {
                     class="close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
-                    onClick={sendMail}
+                    onClick={()=>navigate("/")}
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -283,7 +269,7 @@ export default function DocDetailsWindow() {
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
-                    onClick={sendMail}
+                    onClick={()=>navigate("/")}
                   >
                     Back to Home
                   </button>
@@ -413,8 +399,8 @@ export default function DocDetailsWindow() {
                       {doctorData.experience}
                     </li>
                     <li className="Docdata-elements2">
-                      <span className="leftside2">Registration Number : </span>
-                      167b54
+                      <span className="leftside2">Hospital Address : </span>
+                      {doctorData.hospital_address}
                     </li>
                   </ul>
                 </div>
@@ -449,7 +435,6 @@ export default function DocDetailsWindow() {
           <div className="Booking-slots-left">
             <div className="mt-0 ">
               <div className="input-group date slot-date-grid" id="datepicker">
-                {/* <div style={{width:"10px"}}></div> */}
                 <input
                   className="container shadow-sm slot-date"
                   defaultValue={selectedDate}
