@@ -12,4 +12,8 @@ app.get("/api/admin", async (req, res)=>{
     }
 });
 
+app.delete("/api/admin/:id", async(req, res)=>{
+    adminmodel.findByIdAndDelete({_id: req.params.id}).then((data)=>res.send(data)).catch((e)=>console.log(e));
+})
+
 module.exports = app;

@@ -59,7 +59,7 @@ export default function Medcare() {
           <Route path="/profile" element={<Footer />} />
           <Route path="/doctor/" element={<DoctorFooter />} />
           <Route path="/doctor/add-slot" element={<DoctorFooter />} />
-          <Route path="/admin/" element={<AdminFooter />} />
+          <Route path="/admin/dashboard" element={<AdminFooter />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,8 +1,69 @@
-import React from "react";
-import "./Dashboard.scss";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import apis from "../../../apis";
+import "./Dashboard.scss";
 
-export default function Dash_board() {
+export default function Dashboard() {
+  const [doctDetails, setDoctdetails] = useState([
+    {
+      name: "Jeevan",
+      department: "Physician",
+      email: "sample@gmail.com",
+      phoneNumber: "0987654312",
+    },
+  ]);
+
+  const removeDoctor = async (doctorId) => {
+    await apis
+      .delete(`doctor/${doctorId}`)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
+    
+    getDoctList();
+  };
+
+  const getDoctList = async () => {
+    console.log("hi from getdoctlist");
+    let results;
+    await apis
+      .get("doctor")
+      .then((data) => {
+        results = data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (results !== null) {
+      setDoctdetails(results);
+      console.log(results);
+    }
+  };
+
+  useEffect(() => {
+    getDoctList();
+  }, [doctDetails.length]);
+
+  let newRow = (e) => {
+    return (
+      <tr>
+        <td>{e.name}</td>
+        <td>{e.department}</td>
+        <td>{e.email}</td>
+        <td>{e.phoneNumber}</td>
+        <th>
+          <button
+            className="btn actionbutton"
+            onClick={() => {
+              removeDoctor(e._id);
+            }}
+          >
+            Remove
+          </button>
+        </th>
+      </tr>
+    );
+  };
   return (
     <div className="fullpage">
       <div className="mainpart">
@@ -11,7 +72,6 @@ export default function Dash_board() {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Doctor-id</th>
                   <th>Name</th>
                   <th>Department</th>
                   <th>Email</th>
@@ -20,62 +80,9 @@ export default function Dash_board() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
+                {doctDetails.map((item) => {
+                  return newRow(item);
+                })}
               </tbody>
             </table>
           </div>
