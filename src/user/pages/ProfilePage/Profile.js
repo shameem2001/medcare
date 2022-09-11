@@ -1,14 +1,16 @@
-import {React, useState, useEffect} from "react";
-import { useLocation } from 'react-router-dom';
+import { React, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import apis from "../../../apis";
 import AppointmentCard from "../../components/Profile/AppointmentCard";
 import DependantCard from "../../components/Profile/DependantCard";
 import PrescriptionCard from "../../components/Profile/PrescriptionCard";
-import './Profile.scss';
+import "./Profile.scss";
+import img from "../../../assets/profile.jpg";
+import * as filestack from "filestack-js";
 
 export default function Profile() {
   const location = useLocation();
-  const {user_id} = location.state;
+  const { user_id } = location.state;
 
   let [userData, setUserData] = useState({
     name: "John Doe",
@@ -16,8 +18,35 @@ export default function Profile() {
     email: "johnDoe",
     dob: "20201-09-23",
     age: 22,
-    phoneNumber: "245676543"
+    phoneNumber: "245676543",
   });
+
+  // image upload
+  const FILESTACK_APIKEY = "AR9a0fhrDRleWdYYiy68qz";
+  let [file_data, setFile_data] = useState({});
+  let [img_up, setImg] = useState("");
+  const client = filestack.init(FILESTACK_APIKEY);
+
+  const fileSelectedHandler = (filedata) => {
+    console.log(filedata);
+    setFile_data(filedata);
+  };
+  const fileUploadHandler = async () => {
+    console.log("Upload");
+    if(file_data !== {}){
+      await client.upload(file_data).then(async (data) => {
+        await apis
+          .put(`user/${user_id}`, {
+            img: data.url,
+          })
+          .then((data2) => {
+            setImg(data.url);
+            console.log(data);
+          })
+          .catch((error) => console.log(error));
+      });
+    }
+  }
 
   const fetchUserData = async () => {
     let results;
@@ -39,16 +68,51 @@ export default function Profile() {
   useEffect(() => {
     fetchUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [img_up]);
 
   return (
     <div className="profile">
-      {/* <div></div> */}
+      <div
+        className="modal fade modal-profile-img"
+        id="profileModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <input
+              type="file"
+              onChange={(e) => {
+                fileSelectedHandler(e.target.files[0]);
+              }}
+            />
+            <button className="btn" data-bs-dismiss="modal" onClick={fileUploadHandler}>
+              Upload
+            </button>
+          </div>
+        </div>
+      </div>
+      <div></div>
       <div className="profile-div-left">
         <div className="container shadow profile-card1">
           <div className="profile-card1-grid">
-            <div className="profile-card1-circle-avatar"></div>
+            {userData.img === undefined ? (
+              <img
+                src={img}
+                alt="34"
+                className="profile-card1-circle-avatar"
+                data-bs-toggle="modal"
+                data-bs-target="#profileModal"
+              />
+            ) : (
+              <img
+                src={userData.img}
+                alt="34"
+                className="profile-card1-circle-avatar"
+              />
+            )}
             <div className="profile-card1-top-right">
               <h3 className="profile-card1-name">{userData.name}</h3>
               <h6 className="profile-card1-dob">
@@ -68,7 +132,8 @@ export default function Profile() {
           </div>
           <hr />
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">age: </span>{userData.age} yrs
+            <span className="profile-card1-details-helper">age: </span>
+            {userData.age} yrs
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">occupation: </span>
@@ -107,7 +172,7 @@ export default function Profile() {
             id="pills-tab"
             role="tablist"
           >
-            <li class="nav-item" role="presentation">
+            <li className="nav-item" role="presentation">
               <button
                 className="nav-link active profile-tabbar-tab"
                 id="pills-home-tab"
