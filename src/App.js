@@ -2,6 +2,7 @@ import React from "react";
 import "./app.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/User/Header/Header.js";
+import FixedHeader from "./components/User/Header/FixedHeader.js";
 import Footer from "./components/User/Footer/Footer.js";
 import Home from "./user/pages/HomePage/Home.js";
 import DoctorList from "./user/pages/DoctorList/DoctorList.js";
@@ -32,7 +33,7 @@ export default function Medcare() {
           <Route path="/doctor-list" element={<Header />} />
           <Route path="/doctor-details" element={<Header />} />
           <Route path="/doctor-window" element={<Header />} />
-          <Route path="/profile" element={<Header />} />
+          <Route path="/profile" element={<FixedHeader />} />
           <Route path="/doctor/" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
         </Routes>

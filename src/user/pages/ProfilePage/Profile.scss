@@ -8,15 +8,18 @@
   justify-content: space-around;
 
   .profile-div-left {
-    // position: fixed;
-    // margin-left: 5%;
+    margin-top: 70px;
+    position: fixed;
+    margin-left: 3%;
 
-    // profile-card styling start
+    //profile-card styling start
     .profile-card1 {
       background-color: white;
       border-radius: 8px;
-      height: 390px;
-      width: 370px;
+      min-height: 350px;
+      max-height: 360px;
+      min-width: 370px;
+      max-width: 420px;
       padding: 10px;
 
       .profile-card1-grid {
@@ -28,7 +31,6 @@
           height: 110px;
           border-radius: 100%;
           border: solid 1px gray;
-          background-image: url("../../../../assets/profile.jpg");
           background-size: 100% 100%;
 
           margin-left: auto;
@@ -42,6 +44,7 @@
 
           .profile-card1-name {
             font-weight: 500;
+            font-size: 24px;
           }
 
           .profile-card1-dob {
@@ -54,7 +57,7 @@
           }
 
           .profile-card1-gender {
-            font-size: 14px;
+            font-size: 16px;
             .profile-card1-gender-helper {
               color: cadetblue;
               font-weight: 500;
@@ -77,7 +80,7 @@
         padding-left: 10px;
         padding-right: 20px;
         margin-bottom: 10px;
-        font-size: 14px;
+        font-size: 16px;
 
         .profile-card1-details-helper {
           color: cadetblue;
@@ -161,6 +164,7 @@
 // right side styling start
 
 .profile-div-right {
+  margin-top: 70px;
   // tabbar styling start
   .profile-tabbar-container {
     height: 50px;
@@ -471,3 +475,25 @@
 
 // right side styling end
 // Profile page styling end
+
+
+.modal-profile-img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 500px;
+
+  input{
+    size: 60px;
+  }
+
+  button{
+    background-color: cadetblue;
+    color: white;
+  }
+  button:hover{
+      background-color: teal;
+    }
+}

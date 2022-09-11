@@ -28,6 +28,7 @@ export default function Login() {
           localStorage.setItem("_id", data._id);
           localStorage.setItem("user_name", data.name);
           localStorage.setItem("user_img", data.img);
+          localStorage.setItem("_mail", data.email);
           console.log(data.img+"log");
           navigate("/");
         }
