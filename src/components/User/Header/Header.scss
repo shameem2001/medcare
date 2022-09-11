@@ -1,0 +1,71 @@
+.navbar-new {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+
+  .navbar-left {
+    .navbar-link {
+      text-decoration: none;
+      h5 {
+        font-weight: 600;
+        color: black;
+        font-size: 23px;
+        span {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    .navbar-right-link {
+      margin-bottom: 20px;
+      text-decoration: none;
+      margin-right: 40px;
+      color: cadetblue;
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 1.5px;
+
+      .doctor-header-profile {
+        display: inline;
+        min-width: 100px;
+        height: 40px;
+        border-radius: 16px;
+        border: 1px solid black;
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-left: -6px;
+          margin-bottom: 2px;
+          border-radius: 100%;
+          border: 1px solid black;
+        }
+        p {
+          display: inline;
+          margin-left: 5px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: cadetblue;
+      }
+
+      a:hover {
+        color: teal;
+      }
+    }
+
+    .last {
+      margin-right: 5px;
+    }
+  }
+}
