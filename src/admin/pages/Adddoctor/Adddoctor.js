@@ -67,71 +67,22 @@ export default function Add_Doctor() {
             MED<span>CARE</span>
           </h5>
           <br />
-          <div className="adddoctor-second-div">
+          <div className="adddoctor-first-div">
             <TextField
-              className="adddoctor-second-div-1"
+              className="adddoctor-first-div-1"
               size="small"
               required
               label="Name"
-              variant="outlined"
+              type="text"
               onChange={(e) => setname(e.target.value)}
             />
             <TextField
-              className="adddoctor-second-div-2"
               size="small"
-              required
-              label="Age"
-              type="number"
-              onChange={(e) => setage(e.target.value)}
-            />
-            <FormControl
-              className="adddoctor-second-div-3"
-              required
-              size="small"
-            >
-              <InputLabel>Gender</InputLabel>
-
-              <Select
-                label="gender"
-                onChange={(e) => setgender(e.target.value)}
-              >
-                <MenuItem
-                  value="Male"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Male
-                </MenuItem>
-                <MenuItem
-                  value="Female"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Female
-                </MenuItem>
-                <MenuItem
-                  value="Other"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Other
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="adddoctor-first-div">
-            <TextField
-              size="small"
-              className="adddoctor-first-div-1"
+              className="adddoctor-first-div-2"
               required
               label="email-id"
               variant="outlined"
               onChange={(e) => setemail(e.target.value)}
-            />
-            <TextField
-              className="adddoctor-first-div-2"
-              size="small"
-              required
-              label="Experience"
-              type="number"
-              onChange={(e) => setexp(e.target.value)}
             />
           </div>
           <div className="adddoctor-third-div">
@@ -247,6 +198,56 @@ export default function Add_Doctor() {
               </Select>
             </FormControl>
           </div>
+          <div className="adddoctor-second-div">
+            <TextField
+              className="adddoctor-second-div-1"
+              size="small"
+              required
+              label="Experience"
+              type="number"
+              variant="outlined"
+              onChange={(e) => setexp(e.target.value)}
+            />
+            <TextField
+              className="adddoctor-second-div-2"
+              size="small"
+              required
+              label="Age"
+              type="number"
+              onChange={(e) => setage(e.target.value)}
+            />
+            <FormControl
+              className="adddoctor-second-div-3"
+              required
+              size="small"
+            >
+              <InputLabel>Gender</InputLabel>
+
+              <Select
+                label="gender"
+                onChange={(e) => setgender(e.target.value)}
+              >
+                <MenuItem
+                  value="Male"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Male
+                </MenuItem>
+                <MenuItem
+                  value="Female"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Female
+                </MenuItem>
+                <MenuItem
+                  value="Other"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Other
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </div>
           <div className="adddoctor-fourth-div">
             <TextField
               className="adddoctor-fourth-div-1"
@@ -257,7 +258,7 @@ export default function Add_Doctor() {
               onChange={(e) => setaddress(e.target.value)}
             />
             <TextField
-              className="adddoctor-forth-div-2"
+              className="adddoctor-fourth-div-2"
               size="small"
               required
               label="Hospital address"

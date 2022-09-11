@@ -37,6 +37,13 @@ app.put("/api/appointnment/:id", async (req, res) => {
     catch(error){
         console.log(error);
     }
-})
+});
+
+app.delete("/api/appointment/:id", async (req, res) => {
+  appointmentmodel
+    .findByIdAndDelete({ _id: req.params.id })
+    .then((data) => res.send(data))
+    .catch((e) => console.log(e));
+});
 
 module.exports = app;
