@@ -53,6 +53,7 @@
 }
 .PatientSubcard {
   border-radius: 8px;
+  border: 1px solid lightgray;
   display: grid;
   grid-template-columns: 17% 83%;
   width: 90%;
@@ -86,17 +87,18 @@
       justify-content: space-between;
 
       img {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
 
         border: 1px solid black;
-        margin-left: 65px;
+        margin-top: -5px;
+        margin-left: 55px;
         border-radius: 100%;
       }
 
       .details-right-div-name {
         width: 250px;
-        font-size: 13px;
+        font-size: 15px;
         margin-left: 5px;
         display: grid;
         grid-template-columns: 70% 30%;
@@ -108,7 +110,7 @@
 
         .details-right-div-mob {
           h6 {
-            font-size: 13px;
+            font-size: 15px;
           }
         }
       }

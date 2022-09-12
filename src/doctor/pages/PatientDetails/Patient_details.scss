@@ -1,9 +1,9 @@
-
 .Background {
   display: flex;
   justify-content: center;
   margin-bottom: 3rem;
-  padding: 4rem 4rem;
+  padding: 4rem;
+  padding-top: 2rem;
   background-color: snow;
 }
 
@@ -30,10 +30,10 @@
     border-width: thin;
     display: grid;
     width: 497.2px;
-    background-color: white;
     grid-template-rows: 10% 90%;
     border-radius: 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: white;
 
     .patient-biodata-title {
       justify-content: center;
@@ -54,17 +54,17 @@
 
       .patient-pic {
         width: 160px;
-        height: 155px;
+        height: 160px;
+        border-radius: 12px;
         // border: solid 1px gray;
-        background-image: url("../../../../src/assets/cv.png");
         background-size: 100% 100%;
         margin-top: 10px;
-        margin-left: 2rem;
+        margin-left: 1rem;
       }
 
       .patient-biodata-right {
         padding-top: 1rem;
-        padding-left: 1rem;
+        padding-left: 0rem;
 
         .biodata-elements {
           list-style: none;
@@ -313,6 +313,10 @@
 
             .profile-prescription-card-body-sect-1 {
               font-size: 15px;
+
+              .table {
+                width: 50%;
+              }
             }
             .profile-prescription-card-body-sect-2 {
               display: grid;
@@ -332,11 +336,14 @@
             .profile-prescription-card-body-sect-3-header {
               margin-top: 10px;
               margin-bottom: 10px;
+              // text-decoration:dotted;
+              font-weight: bold;
             }
             .profile-prescription-card-body-sect-3 {
               table {
                 th {
                   font-size: 14px;
+                  color: black;
                 }
                 td {
                   font-size: 14px;
@@ -360,11 +367,10 @@
     row-gap: 2rem;
 
     .Basic-data-patient {
-      background-color: snow;
       border-radius: 12px;
       padding-bottom: 10px;
       display: grid;
-      grid-template-columns: 51% 43%;
+      grid-template-columns: 51% 46%;
       column-gap: 1rem;
 
       .Basic-data-patient-left {
@@ -372,7 +378,7 @@
         background-color: white;
         border-radius: 12px;
         padding-top: 1rem;
-        font-family: 'Poppins';
+        font-family: "Poppins";
 
         .biodata-elements {
           list-style: none;
@@ -389,25 +395,24 @@
         background-color: white;
         border-radius: 12px;
         padding-top: 1rem;
-        font-family: 'Poppins';
+        font-family: "Poppins";
 
-        .right
-        {
-            color: cadetblue;
-            font-weight: bold;
-            text-decoration: underline;
-            font-size: 17px;
+        .right {
+          color: cadetblue;
+          font-weight: bold;
+          text-decoration: underline;
+          font-size: 17px;
         }
 
         .biodata-elements {
-            list-style: none;
-  
-            .rightside-basic {
-              color: cadetblue;
-              font-weight: bold;
-              margin-right: 7px;
-            }
+          list-style: none;
+
+          .rightside-basic {
+            color: cadetblue;
+            font-weight: bold;
+            margin-right: 7px;
           }
+        }
       }
     }
 
@@ -418,12 +423,34 @@
     //     border-radius: 12px;
     // }
   }
+  .Observation {
+    max-height: 510px;
+    height: 100%;
+
+    #pills-pre {
+      max-height: 400px;
+      overflow: scroll;
+    }
+  }
 }
 
-.patient-detail-submit-link{
+.patient-detail-submit-link {
   color: white;
   text-decoration: none;
-  :hover{
+  :hover {
     color: teal;
   }
+}
+
+td {
+  text-align: left;
+}
+
+.biodata-elements-mail {
+  font-size: 14px;
+}
+.leftside-mail {
+  color: cadetblue;
+  font-weight: bold;
+  font-size: 16px;
 }

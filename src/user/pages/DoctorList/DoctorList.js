@@ -109,6 +109,7 @@ export default function DoctorList() {
 
   let [doctors, setDoctors] = useState(doctors_list);
 
+  //search start.
   let fetchData = async () => {
     let results;
     console.log(results);
@@ -137,7 +138,7 @@ export default function DoctorList() {
   useEffect(() => {
     fetchData();
   }, []);
-
+// search end.
   return (
     <div className="parent">
       <div className="container">

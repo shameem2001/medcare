@@ -73,7 +73,7 @@ app.get("api/appointment/:id", async (req, res) => {
   }
 });
 
-app.put("/api/appointnment/:id", async (req, res) => {
+app.put("/api/appointment/:id", async (req, res) => {
   try {
     await appointmentmodel
       .findByIdAndUpdate(req.params.id, req.body)

@@ -35,6 +35,7 @@ export default function Medcare() {
           <Route path="/doctor-window" element={<Header />} />
           <Route path="/profile" element={<FixedHeader />} />
           <Route path="/doctor/" element={<DoctorHeader />} />
+          <Route path="/doctor/patient-details" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
         </Routes>
         <Routes>

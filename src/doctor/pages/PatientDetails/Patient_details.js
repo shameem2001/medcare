@@ -3,33 +3,53 @@ import apis from "../../../apis";
 import "./Patient_details.scss";
 import PrescribtionCard from "../../components/PatientDetails/Prescribtion_card";
 import { useLocation, useNavigate } from "react-router-dom";
+import imga from "../../../assets/profile.jpg";
 
 export default function Patient_details() {
   const navigate = useNavigate();
   const location = useLocation().state;
-  const user_id = location.user_id;
-  // const doctor_id = location.doctor_id;
-  // const appointment_id = location.appointment_id;
+  let user_id = location.user_id;
+  let appointment_id = location.appointment_id;
+  const doctor_id = localStorage.getItem("doctor_id");
 
-  let [userData, setUserData] = useState({
-    name: "Shaji",
-    dob: "2020-12-23",
-    gender: "Male",
-    age: 22,
-    phoneNumber: "987654322",
-    email: "shaji@gmail.com",
-  });
+  const updateAppointmentStatus = async()=>{
+    await apis.put(`appointment/${appointment_id}`, {
+      status: "Inactive"
+    }).then((res)=>console.log(res)).catch((e)=>console.log(e));
+  }
 
-  useEffect(() => {
-    getPatientDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  let [title, settitle] = useState("");
+  let [observation, setobservation] = useState("");
+  let [prescription, setprescribtion] = useState("");
+
+  const postData = async () => {
+    await apis
+      .post("prescription", {
+        user_id: user_id,
+        doctor_id: doctor_id,
+        title: title,
+        observation: observation,
+        prescription: prescription,
+      })
+
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
+    updateAppointmentStatus();
+
+    navigate("/doctor/");
+  };
+
+  let [userData, setUserData] = useState({});
 
   const getPatientDetails = async () => {
+    console.log(user_id);
     let results;
     await apis.get(`user/${user_id}`).then((data) => {
+      console.log(data.data);
       results = data.data;
-    });
+    }).catch((e)=>console.log(e));
 
     if (results !== null) {
       console.log(results);
@@ -37,50 +57,88 @@ export default function Patient_details() {
     }
   };
 
-  const addPrescription = async () => {
-    console.log(user_id);
+  let presC = [
+    {
+      user_id: "62eac78745c82de1c0ff6f31",
+      doctor_id: "62efe3e72d916a9451598d70",
+      title: "21-10-2022",
+      observation: "heavy depression",
+      prescription: "pmol,dolo,cocaine",
+    },
+  ];
+
+  const [details, setDetails] = useState(presC);
+
+  const fetchPrescription = async () => {
+    let results;
     await apis
-      .put(`user/${user_id}`, {
-        $push: {
-          history: {
-            doctor_name: "Ayyappan",
-            hospital_name: "Mims",
-            condition: "Stomachache",
-            consultation_date: "2022-12-12",
-            consultation_day: "Sunday",
-            doctors_notes: ["Slightly anemic", "needs ors"],
-            body_condition: {
-              blood_pressure: "175",
-              body_temperature: "97.5",
-              blood_oxygen: "97",
-              blood_sugar: "120",
-            },
-            medicine_prescription: [
-              {
-                medicine_name: "Dolo",
-                dosage: "1-1-1",
-                duration: "5",
-              },
-            ],
-          },
-        },
+      .get("prescription")
+      .then((data) => {
+        results = data.data;
       })
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
-      console.log("change the status of appointment to be finished");
-    navigate("/doctor/");
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (results !== null) {
+      setDetails(results);
+    }
   };
+
+    useEffect(() => {
+      getPatientDetails();
+      fetchPrescription();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+  // const addPrescription = async () => {
+  //   console.log(user_id);
+  //   await apis
+  //     .put(`user/${user_id}`, {
+  //       $push: {
+  //         history: {
+  //           doctor_name: "Ayyappan",
+  //           hospital_name: "Mims",
+  //           condition: "Stomachache",
+  //           consultation_date: "2022-12-12",
+  //           consultation_day: "Sunday",
+  //           doctors_notes: ["Slightly anemic", "needs ors"],
+  //           body_condition: {
+  //             blood_pressure: "175",
+  //             body_temperature: "97.5",
+  //             blood_oxygen: "97",
+  //             blood_sugar: "120",
+  //           },
+  //           medicine_prescription: [
+  //             {
+  //               medicine_name: "Dolo",
+  //               dosage: "1-1-1",
+  //               duration: "5",
+  //             },
+  //           ],
+  //         },
+  //       },
+  //     })
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.log(error));
+  //     console.log("change the status of appointment to be finished");
+  //   navigate("/doctor/patient-details");
+  // };
 
   return (
     <div className="Background">
       <div className="Doctorside-profile">
-        <div className=" general-profile">
+        <div className="general-profile">
           <div className="container shadow patient-biodata">
             <div className="patient-biodata-title">
               <h3 className="Patient-Details">Patient Details</h3>
             </div>
             <div className="patient-biodata-main">
-              <div className="patient-pic"></div>
+              {userData.img !== null ? (
+                <img className="patient-pic" src={userData.img} alt="" />
+              ) : (
+                <img className="patient-pic" src={imga} alt="" />
+              )}
               <div className="patient-biodata-right">
                 <ul className="biodata">
                   <li className="biodata-elements">
@@ -100,8 +158,8 @@ export default function Patient_details() {
                     <span className="leftside">Contact :</span>{" "}
                     {userData.phoneNumber}
                   </li>
-                  <li className="biodata-elements">
-                    <span className="leftside">E-mail </span>:{userData.email}
+                  <li className="biodata-elements biodata-elements-mail">
+                    <span className="leftside leftside-mail">E-mail </span>:{userData.email}
                   </li>
                 </ul>
               </div>
@@ -208,7 +266,7 @@ export default function Patient_details() {
                 <li class="nav-item" role="presentation">
                   <button
                     className="nav-link active profile-tabbar-tab"
-                    id="add-prescribtion"
+                    id="add-prescription"
                     data-bs-toggle="pill"
                     data-bs-target="#pills-add"
                     type="radio"
@@ -216,13 +274,13 @@ export default function Patient_details() {
                     aria-controls="pills-add"
                     aria-selected="true"
                   >
-                    Add Prescribtion
+                    Add Prescription
                   </button>
                 </li>
                 <li className="nav-item" role="presentation">
                   <button
                     className="nav-link profile-tabbar-tab"
-                    id="old-prescribtion"
+                    id="old-prescription"
                     data-bs-toggle="pill"
                     data-bs-target="#pills-pre"
                     type="radio"
@@ -242,16 +300,17 @@ export default function Patient_details() {
                   className="tab-pane fade show active profile-tabbar-content-all-tab"
                   id="pills-add"
                   role="tab"
-                  aria-labelledby="add-prescribtion"
+                  aria-labelledby="add-prescription"
                 >
                   <div className=" profile-tabbar-content-all-tab-newpres-container">
                     <div className="fields">
-                      <label className="labels">Title</label>
+                      <label className="labels">Date</label>
                       <textarea
                         id="textarea-doctor1"
                         name="textarea-doctor"
                         rows="1.5"
                         cols="50"
+                        onChange={(e) => settitle(e.target.value)}
                       ></textarea>{" "}
                     </div>
                     <div className="fields">
@@ -261,18 +320,20 @@ export default function Patient_details() {
                         name="textarea-doctor"
                         rows="3"
                         cols="50"
+                        onChange={(e) => setobservation(e.target.value)}
                       ></textarea>{" "}
                     </div>
                     <div className="fields">
-                      <label className="labels">Prescribtions</label>
+                      <label className="labels">Prescriptions</label>
                       <textarea
                         id="textarea-doctor3"
                         name="textarea-doctor"
                         rows="3"
                         cols="50"
+                        onChange={(e) => setprescribtion(e.target.value)}
                       ></textarea>
                     </div>
-                    <button className="submit-button" onClick={addPrescription}>
+                    <button className="submit-button" onClick={postData}>
                       Submit
                     </button>
                   </div>
@@ -281,16 +342,29 @@ export default function Patient_details() {
                   className="tab-pane fade  profile-tabbar-content-all-tab"
                   id="pills-pre"
                   role="tab"
-                  aria-labelledby="old-prescribtion"
+                  aria-labelledby="old-prescription"
                 >
                   <div className=" profile-tabbar-content-all-tab-history-container">
                     <div
                       id="accordion"
                       className="profile-tabbar-content-all-tab-history-accordion"
                     >
-                      <PrescribtionCard no={"1"} />
-                      <PrescribtionCard no={"2"} />
-                      <PrescribtionCard no={"3"} />
+                      {details
+                        .filter((item1) => {
+                          return item1.user_id === user_id;
+                        })
+                        .map((item) => {
+                          return (
+                            <PrescribtionCard
+                              _id={item._id}
+                              use_id={item.user_id}
+                              doc_id={item.doctor_id}
+                              title={item.title}
+                              observation={item.observation}
+                              prescription={item.prescription}
+                            />
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
