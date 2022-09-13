@@ -57,24 +57,26 @@ export default function Patient_details() {
     }
   };
 
-  let presC = [
-    {
-      user_id: "62eac78745c82de1c0ff6f31",
-      doctor_id: "62efe3e72d916a9451598d70",
-      title: "21-10-2022",
-      observation: "heavy depression",
-      prescription: "pmol,dolo,cocaine",
-    },
-  ];
+  // let presC = [
+  //   {
+  //     user_id: "62eac78745c82de1c0ff6f31",
+  //     doctor_id: "62efe3e72d916a9451598d70",
+  //     title: "21-10-2022",
+  //     observation: "heavy depression",
+  //     prescription: "pmol,dolo,cocaine",
+  //   },
+  // ];
 
-  const [details, setDetails] = useState(presC);
+  const [details, setDetails] = useState([]);
 
   const fetchPrescription = async () => {
     let results;
     await apis
       .get("prescription")
       .then((data) => {
-        results = data.data;
+        results = data.data.filter((item)=>{
+          return item.user_id === user_id;
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -350,9 +352,6 @@ export default function Patient_details() {
                       className="profile-tabbar-content-all-tab-history-accordion"
                     >
                       {details
-                        .filter((item1) => {
-                          return item1.user_id === user_id;
-                        })
                         .map((item) => {
                           return (
                             <PrescribtionCard
