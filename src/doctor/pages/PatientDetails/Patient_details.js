@@ -25,13 +25,21 @@ export default function Patient_details() {
   let [condition, setCondition] = useState("");
   let [observation, setobservation] = useState("");
   let [prescription, setprescribtion] = useState("");
+  let [pressure, setPressure] = useState("");
+  let [temp, setTemp] = useState("");
+  let [oxyg, setOxyg] = useState("");
+  let [sugar, setSugar] = useState("");
 
   const postData = async () => {
     await apis
       .post("prescription", {
         user_id: user_id,
         doctor_id: doctor_id,
-        title: date,
+        date: date,
+        blood_pressure: pressure,
+        body_temperature: temp,
+        blood_oxygen: oxyg,
+        blood_sugar: sugar,
         observation: observation,
         prescription: prescription,
       })
@@ -284,6 +292,9 @@ export default function Patient_details() {
                         <input
                           className="body-condition-pt-dt-input"
                           type="text"
+                          onChange={(e) => {
+                            setPressure(e.target.value);
+                          }}
                         />
                         <label> mmHg</label>
                       </div>
@@ -294,6 +305,9 @@ export default function Patient_details() {
                         <input
                           className="body-condition-pt-dt-input"
                           type="text"
+                          onChange={(e) => {
+                            setTemp(e.target.value);
+                          }}
                         />
                         <label> degress</label>
                       </div>
@@ -305,6 +319,9 @@ export default function Patient_details() {
                         <input
                           className="body-condition-pt-dt-input"
                           type="text"
+                          onChange={(e) => {
+                            setOxyg(e.target.value);
+                          }}
                         />
                         <label> %</label>
                       </div>
@@ -315,6 +332,9 @@ export default function Patient_details() {
                         <input
                           className="body-condition-pt-dt-input"
                           type="text"
+                          onChange={(e) => {
+                            setSugar(e.target.value);
+                          }}
                         />
                         <label> mg/dL</label>
                       </div>
@@ -332,7 +352,9 @@ export default function Patient_details() {
                       name="textarea-doctor"
                       rows="3"
                       cols="50"
-                      onChange={(e) => setobservation(e.target.value)}
+                      onChange={(e) =>{ 
+                        setobservation(e.target.value)}
+                        }
                     ></textarea>{" "}
                   </div>
                   <div className="fields">
@@ -353,7 +375,9 @@ export default function Patient_details() {
                   <button
                     style={{ marginTop: "5px", borderRadius: "12px" }}
                     className="submit-button"
-                    onClick={postData}
+                    onClick={()=>{
+                      postData();
+                    }}
                   >
                     Submit
                   </button>
@@ -376,7 +400,11 @@ export default function Patient_details() {
                           _id={item._id}
                           use_id={item.user_id}
                           doc_id={item.doctor_id}
-                          title={item.title}
+                          date={item.date}
+                          blood_pressure={item.blood_pressure}
+                          body_temperature={item.body_temperature}
+                          blood_oxygen={item.blood_oxygen}
+                          blood_sugar={item.blood_oxygen}
                           observation={item.observation}
                           prescription={item.prescription}
                         />

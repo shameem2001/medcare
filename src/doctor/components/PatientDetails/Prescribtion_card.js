@@ -11,6 +11,9 @@ export default function Prescribtion_card({
   observation,
   prescription,
 }) {
+    let observationList = observation.split("\n");
+    let prescriptionList = prescription.split("\n");
+
   let [doctorData, setDoctorData] = useState({
     name: "Dr.Feroz BK",
     hospital: "Sreechand Hospital",
@@ -36,8 +39,6 @@ export default function Prescribtion_card({
     }
   };
 
-  let observationList = observation.split("\n");
-  let prescriptionList = prescription.split("\n");
 
   let newRow = (e) => {
     let data = e.split(",");
