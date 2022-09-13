@@ -55,7 +55,7 @@ export default function Pcard({usersData, flag, dateP }) {
 
               return (
                 <Psubcard
-                  user_id={user._id}
+                  user_id={item.user_id}
                   name={user.name}
                   phone={user.phoneNumber}
                   img={user.img}
@@ -79,7 +79,7 @@ export default function Pcard({usersData, flag, dateP }) {
 
                 return (
                   <Psubcard
-                    id={item.user_id}
+                    user_id={item.user_id}
                     name={user.name}
                     phone={user.phoneNumber}
                     img={user.img}
@@ -102,7 +102,7 @@ export default function Pcard({usersData, flag, dateP }) {
 
                 return (
                   <Psubcard
-                    id={item.user_id}
+                    user_id={item.user_id}
                     name={user.name}
                     phone={user.phoneNumber}
                     img={user.img}
