@@ -49,6 +49,7 @@ export default function Psubcard({
                     state: {
                       user_id: user_id,
                       appointment_id: appointment_id,
+                      date: date
                     },
                   });
                 }}

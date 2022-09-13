@@ -5,7 +5,7 @@ import apis from "../../../apis";
 
 export default function Prescribtion_card({
   _id,
-  user_id,
+  use_id,
   doc_id,
   title,
   observation,
