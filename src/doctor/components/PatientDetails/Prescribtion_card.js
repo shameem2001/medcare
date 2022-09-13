@@ -7,12 +7,16 @@ export default function Prescribtion_card({
   _id,
   use_id,
   doc_id,
-  title,
+  date,
+  blood_pressure,
+  body_temperature,
+  blood_oxygen,
+  blood_sugar,
   observation,
   prescription,
 }) {
-    let observationList = observation.split("\n");
-    let prescriptionList = prescription.split("\n");
+  let observationList = observation.split("\n");
+  let prescriptionList = prescription.split("\n");
 
   let [doctorData, setDoctorData] = useState({
     name: "Dr.Feroz BK",
@@ -22,6 +26,8 @@ export default function Prescribtion_card({
     district: "Kannur",
     email: "ferozbk@gmail.com",
   });
+
+  let [hintText, setHintText] = useState("View more");
 
   useEffect(() => {
     getDoctorDetails();
@@ -39,26 +45,6 @@ export default function Prescribtion_card({
     }
   };
 
-
-  let newRow = (e) => {
-    let data = e.split(",");
-    return (
-      <tr>
-        <td>{data[0]}</td>
-        <td>{data[1]}</td>
-        <td>{data[2]}</td>
-      </tr>
-    );
-  };
-
-  let newRow1 = (e) => {
-    return (
-      <tr>
-        <td>{e}</td>
-      </tr>
-    );
-  };
-
   const newheading = "heading" + _id;
   const newCollapse = "collapse" + _id;
 
@@ -73,16 +59,23 @@ export default function Prescribtion_card({
           <p>{doctorData.department}</p>
         </div>
         <div className="profile-prescription-card-head-right">
-          <h6>{title}</h6>
+          <h6>{date}</h6>
           {/* <h6>Wednesday</h6> */}
           <button
             className="btn profile-description-card-button"
             data-bs-toggle="collapse"
             data-bs-target={`#${newCollapse}`}
             aria-expanded="false"
+            onClick={()=>{if(hintText === "View less"){
+                setHintText("View more");
+            }
+            else{
+              setHintText("View less");
+            }
+            }}
             aria-controls={newCollapse}
           >
-            expand
+            {hintText}
           </button>
         </div>
       </div>
@@ -95,59 +88,89 @@ export default function Prescribtion_card({
         <div className="card-body profile-prescription-card-body">
           <div className="profile-prescription-card-body-sect-1">
             <div>
-              <br />
-              <h6 className="profile-prescription-card-body-sect-3-header">
-                Observation
+              <h6
+                style={{
+                  marginTop: "5px",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                }}
+              >
+                Body Condition
+              </h6>
+              <ul style={{ fontSize: "15.5px" }}>
+                <li>Blood Pressure : {blood_pressure} mmHg</li>
+                <li>Body Temperature : {body_temperature} Degrees</li>
+                <li>Blood Oxygen Level : {blood_oxygen}%</li>
+                <li>Blood Sugar Level : {blood_sugar} mg/DL</li>
+              </ul>
+            </div>
+            <div>
+              <h6
+                style={{
+                  marginTop: "15px",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                }}
+              >
+                Doctor's Notes
               </h6>
               {/* <ul>{observationList}</ul> */}
-              <table className="table">
-                <tbody>
-                  {observationList.map((item) => {
-                    return newRow1(item);
-                  })}
-                </tbody>
-              </table>
+              <ul style={{ fontSize: "15.5px" }}>
+                {observationList.map((item) => {
+                  return <li>{item}</li>;
+                })}
+              </ul>
             </div>
-            <br />
-            <h6 className="profile-prescription-card-body-sect-3-header">
-              Prescriptions
-            </h6>
             <div className="profile-prescription-card-body-sect-3">
-              <table className="table">
+              <h6
+                style={{
+                  marginTop: "10px",
+                  marginBottom: "10px",
+                  fontWeight: "500",
+                  fontSize: "16px",
+                }}
+              >
+                Medicine Prescriptions
+              </h6>
+              <table
+                style={{ width: "500px" }}
+                className="table table-borderless"
+              >
                 <thead>
                   <tr>
-                    <th scope="col">Medicine Name</th>
-                    <th scope="col">Dosage</th>
-                    <th scope="col">Duration</th>
+                    <th
+                      style={{ fontSize: "15.5px", color: "teal" }}
+                      scope="col"
+                    >
+                      Medicine Name
+                    </th>
+                    <th
+                      style={{ fontSize: "15.5px", color: "teal" }}
+                      scope="col"
+                    >
+                      Dosage
+                    </th>
+                    <th
+                      style={{ fontSize: "15.5px", color: "teal" }}
+                      scope="col"
+                    >
+                      Duration
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {prescriptionList.map((item) => {
-                    return newRow(item);
+                    let data = item.split(",");
+                    return (
+                      <tr>
+                        <td style={{ fontSize: "15.5px" }}>{data[0]}</td>
+                        <td style={{ fontSize: "15.5px" }}>{data[1]}</td>
+                        <td style={{ fontSize: "15.5px" }}>{data[2]}</td>
+                      </tr>
+                    );
                   })}
                 </tbody>
               </table>
-              {/* <table className="table"> */}
-              {/* <ul>{prescription}</ul> */}
-              {/* 
-                <tbody>
-                  <tr>
-                    <td>Dapsone</td>
-                    <td>1-0-1</td>
-                    <td>2 weeks</td>
-                  </tr>
-                  <tr>
-                    <td>hydrocortisone cream</td>
-                    <td>1-1-1</td>
-                    <td>30 days</td>
-                  </tr>
-                  <tr>
-                    <td>RoC Retinol Correxion Eye Cream</td>
-                    <td>1-0-1</td>
-                    <td>7 days</td>
-                  </tr>
-                </tbody> */}
-              {/* </table> */}
             </div>
           </div>
         </div>
