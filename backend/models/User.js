@@ -45,55 +45,6 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   overview: [String],
-  history: [
-    {
-      doctor_name: {
-        type: String,
-      },
-      hospital_name: {
-        type: String,
-      },
-      condition: {
-        type: String,
-      },
-      consultation_date: {
-        type: String,
-      },
-      consultation_day: {
-        type: String,
-      },
-      doctors_notes: {
-        type: Array,
-      },
-      body_condition: {
-        blood_pressure: {
-          type: String,
-        },
-        body_temperature: {
-          type: String,
-        },
-        blood_oxygen: {
-          type: String,
-        },
-        blood_sugar: {
-          type: String,
-        },
-      },
-      medicine_prescription: [
-        {
-          medicine_name: {
-            type: String
-          },
-          dosage: {
-            type: String
-          },
-          duration: {
-            type: String
-          }
-        }
-      ]
-    },
-  ],
   appointments: [String]
 });
 
