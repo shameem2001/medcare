@@ -74,6 +74,8 @@ export default function PrescriptionCard({
         // eslint-disable-next-line react-hooks/exhaustive-deps
       });
 
+      const [hint, setHint] = useState("View more");
+
   return (
     <div className="container shadow-sm profile-prescription-card">
       <div
@@ -92,8 +94,15 @@ export default function PrescriptionCard({
             data-bs-target={`#${newCollapse}`}
             aria-expanded="false"
             aria-controls={newCollapse}
+            style={{
+              width:"100px",
+              height:"25px"
+            }}
+            onClick={()=>{
+              hint === "View more"? setHint("View less"):setHint("View more");
+            }}
           >
-            expand
+            {hint}
           </button>
         </div>
       </div>

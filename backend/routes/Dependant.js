@@ -45,4 +45,11 @@ app.put("/api/dependant/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/dependant/:id", async (req, res) => {
+  dependantmodel
+    .findByIdAndDelete({ _id: req.params.id })
+    .then((data) => res.send(data))
+    .catch((e) => console.log(e));
+});
+
 module.exports = app;

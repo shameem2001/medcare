@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import apis from '../../../apis';
 
-export default function DependantCard({ name, rel }) {
+export default function DependantCard({ id, name, rel }) {
+
+  const navigate = useNavigate();
+
+  const deleteDep = async()=>{
+    await apis.delete(`dependant/${id}`).then((res)=>{
+      navigate("/profile", {
+        state: {
+          user_id: localStorage.getItem("_id")
+        },
+      });
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  }
+
   return (
     <div>
       <div className="dependant-list-card">
@@ -13,7 +31,7 @@ export default function DependantCard({ name, rel }) {
         </div>
         <div className="dependant-list-card-right">
           <i class="fa-solid fa-pen-to-square dependant-list-card-right-icons fa-lg"></i>
-          <i className="fa-solid fa-trash-can dependant-list-card-right-icons fa-lg"></i>
+          <i className="fa-solid fa-trash-can dependant-list-card-right-icons fa-lg" onClick={deleteDep}></i>
         </div>
       </div>
       <hr className="dependants-list-card-hr" />

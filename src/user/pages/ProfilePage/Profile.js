@@ -135,7 +135,7 @@ export default function Profile() {
       .then((data) => {
         // console.log(data.data);
         results = data.data.filter((doc) => {
-          return doc.user_id === user_id;
+          return doc.user_id === user_id && doc.status === "Active";
         });
       })
       .catch((error) => {
@@ -207,14 +207,17 @@ export default function Profile() {
     }
   };
 
-  useEffect(() => {
-    fetchUserData();
-    fetchDependant();
-    appointmentData();
-    fetchPrescription();
-    // getDoctorDetails()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [img_up]);
+
+  useEffect(
+    () => {
+      fetchUserData();
+      fetchDependant();
+      appointmentData();
+      fetchPrescription();
+      // getDoctorDetails()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [img_up]);
 
   let newRow = (e) => {
     return (
@@ -320,7 +323,7 @@ export default function Profile() {
           <h5>Registered Dependants</h5>
           <hr className="dependants-card-hr" />
           {dependantData.map((itemd) => {
-            return <DependantCard name={itemd.name} rel={itemd.relationship} />;
+            return <DependantCard id={itemd._id} name={itemd.name} rel={itemd.relationship} />;
           })}
           <button
             className="btn dependents-card-btn"

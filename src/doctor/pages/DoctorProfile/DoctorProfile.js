@@ -35,6 +35,7 @@ export default function DoctorProfile() {
   useEffect(() => {
     fetch();
   }, []);
+  
   let fetch = async () => {
     let results;
     await apis
@@ -101,9 +102,10 @@ export default function DoctorProfile() {
                 <div className="mdbtool mb-2">
                   <div className="mdbbutton mb-2">
                     <Button
+                      style={{backgroundColor:"cadetblue", color:"white"}}
                       className="mx-2"
                       type="button"
-                      class="btn btn-primary"
+                      class="btn"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModalCenter"
                       active

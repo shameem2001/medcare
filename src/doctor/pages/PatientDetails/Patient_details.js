@@ -29,6 +29,7 @@ export default function Patient_details() {
   let [temp, setTemp] = useState("");
   let [oxyg, setOxyg] = useState("");
   let [sugar, setSugar] = useState("");
+  let [priority, setPriority] = useState("low");
 
   const postData = async () => {
     await apis
@@ -42,6 +43,7 @@ export default function Patient_details() {
         blood_sugar: sugar,
         observation: observation,
         prescription: prescription,
+        priority: priority
       })
 
       .then((res) => {
@@ -280,6 +282,24 @@ export default function Patient_details() {
                 aria-labelledby="add-prescription"
               >
                 <div className=" profile-tabbar-content-all-tab-newpres-container">
+                  <div className="fields" style={{marginTop:"10px", marginBottom:"10px"}}>
+                    <label style={{ marginTop: "5px" }} className="labels">
+                      High Priority?
+                    </label>
+                    <input
+                      className="form-check-input"
+                      style={{
+                        marginLeft: "10px",
+                        width: "20px",
+                        height: "20px",
+                      }}
+                      type="checkbox"
+                      value="high"
+                      onChange={(e) => {
+                        setPriority(e.target.value);
+                      }}
+                    />
+                  </div>
                   <div className="fields">
                     <label style={{ marginTop: "5px" }} className="labels">
                       Body Condition
@@ -352,9 +372,9 @@ export default function Patient_details() {
                       name="textarea-doctor"
                       rows="3"
                       cols="50"
-                      onChange={(e) =>{ 
-                        setobservation(e.target.value)}
-                        }
+                      onChange={(e) => {
+                        setobservation(e.target.value);
+                      }}
                     ></textarea>{" "}
                   </div>
                   <div className="fields">
@@ -375,7 +395,7 @@ export default function Patient_details() {
                   <button
                     style={{ marginTop: "5px", borderRadius: "12px" }}
                     className="submit-button"
-                    onClick={()=>{
+                    onClick={() => {
                       postData();
                     }}
                   >

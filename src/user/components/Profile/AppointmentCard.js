@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import apis from "../../../apis";
 
 export default function AppointmentCard({
@@ -12,21 +13,9 @@ export default function AppointmentCard({
   status,
 }) {
 
-    let defDoc = [
-      {
-        name: "Dr.Feroz BK",
-        hospital: "Sreechand Hospital",
-        department: "Consulting Physician",
-        experience: 3,
-        district: "Kannur",
-        hospital: "ASTER MIMS, KANNUR",
-        hospital_address:
-          "Chala East, Kannur, 670003, Kerala, India, 9446422189",
-        email: "ferozbk@gmail.com",
-      },
-    ];
+    const navigate = useNavigate();
 
-    let [doctorData, setDoctorData] = useState(defDoc);
+    let [doctorData, setDoctorData] = useState({});
 
     const getDoctorDetails = async () => {
       let results;
@@ -38,6 +27,20 @@ export default function AppointmentCard({
         setDoctorData(results);
       }
     };
+
+
+     const cancelAppointment = async () => {
+       await apis
+         .delete(`appointment/${_id}`)
+         .then((res) => {
+          navigate("/profile", {
+            state: {
+              user_id: localStorage.getItem("_id"),
+            },
+          });
+          console.log(res)})
+         .catch((e) => console.log(e));
+     };
 
     useEffect(() => {
       getDoctorDetails();
@@ -51,7 +54,7 @@ export default function AppointmentCard({
       </div>
 
       <div className="profile-tabbar-content-all-tab-appointment-card-sect-2">
-        <div className="profile-tabbar-content-all-tab-appointment-card-sect-2-pic"></div>
+        <img src={doctorData.img} alt="" className="profile-tabbar-content-all-tab-appointment-card-sect-2-pic"></img>
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-2-data">
           <h6>{doctorData.name}</h6>
           <p>{doctorData.department}</p>
@@ -85,7 +88,7 @@ export default function AppointmentCard({
           <p>Confirmed</p>
         </div>
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-4-right">
-          <p>CANCEL</p>
+          <p onClick={cancelAppointment}>CANCEL</p>
           <p>VIEW</p>
         </div>
       </div>

@@ -32,6 +32,9 @@ const prescriptionSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  priority:{
+    type: String
+  }
 });
 
 const prescription = mongoose.model("prescription", prescriptionSchema);
