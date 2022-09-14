@@ -1,0 +1,43 @@
+.popup{
+    position:fixed;
+    font-family: "Poppins";
+    border-radius: 20px;
+    top: 30%;
+    left: 30%;
+    width: 30%;
+    min-height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    .popup-inner{
+        position: relative;
+        padding: 32px;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto auto;
+        row-gap: 2 rem;
+        .top{
+            display: grid;
+            grid-template-rows: auto auto;
+            row-gap: 1rem;
+
+            .dependant-name{
+                border-radius: 20px;
+            }
+        }
+        .bottom{
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 25% 25%;
+            column-gap: 2rem;
+            .close-btn{
+                background-color: cadetblue;
+                color: white;
+            }
+            .submit-button{
+                border:black;
+            }
+        }
+    }
+}

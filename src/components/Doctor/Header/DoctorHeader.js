@@ -17,11 +17,11 @@ export default function DoctorHeader() {
 
   return (
     <div className="shadow-sm header">
-      <div className="c1">
+      <div className="c1" onClick={()=>{navigate("/doctor/")}}>
         MED<span className="c11">CARE</span>
       </div>
       <div className="c2">
-        <div className="container shadow-sm doctor-header-profile">
+        <div className="container shadow-sm doctor-header-profile" onClick={()=>{navigate("/doctor/profile")}}>
           {doc_img === null || doc_img === "undefined" ? (
             <img src={img} alt="dv" />
           ) : (

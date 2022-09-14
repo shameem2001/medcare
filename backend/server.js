@@ -32,6 +32,9 @@ const route = './routes/';
 const user = require(`${route}User`);
 app.use(user);
 
+const dependant = require(`${route}Dependant`);
+app.use(dependant);
+
 const doctor = require(`${route}Doctor`);
 app.use(doctor);
 
