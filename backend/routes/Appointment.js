@@ -37,7 +37,7 @@ app.post("/api/appointment", async (req, res)=>{
         <h2 style="float: left;color:white">CARE</h2>
         </div>
         </br></br></br>
-    <div><p sty>Thank You</p></div>
+    <div><p>Thank You</p></div>
       
         
     </div>

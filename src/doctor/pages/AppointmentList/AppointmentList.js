@@ -141,7 +141,7 @@ export default function PatientList() {
 
   const [day, month, dayno, year] = selectedDate.toString().split(" ");
 
-  let isSlotEmpty = true;
+  let isSlotEmpty = false;
 
   return (
     <div className="patient-list-cont">

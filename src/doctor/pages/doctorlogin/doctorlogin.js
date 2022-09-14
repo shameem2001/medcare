@@ -18,6 +18,7 @@ function Doctorlogin() {
       .get("doctor")
       .then((data) => {
         results = data.data;
+
       })
       .catch((err) => console.log(err));
 
@@ -30,7 +31,8 @@ function Doctorlogin() {
           localStorage.setItem("doctor_id", data._id);
           localStorage.setItem("doctor_name", data.name);
           localStorage.setItem("doctor_img", data.img);
-          navigate("/doctor/");
+          // navigate("/doctor/");
+          navigate("/doctor-profile",{state:{doctorId:data._id}});
         }
       });
       if (match === false) {
