@@ -1,0 +1,154 @@
+.pharmacy-page {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-content: center;
+    height: 82vh;
+  
+    .pharmacy-page-container {
+      margin-top: 130px;
+      min-width: 1280px;
+      min-height: 550px;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: auto auto;
+  
+      .pharmacy-page-container-left {
+        width: 550px;
+        height: 500px;
+  
+        img {
+          margin-top: 50px;
+          align-content: center;
+          width: 500px;
+        }
+      }
+  
+      .pharmacy-page-container-right {
+        width: 700px;
+        h5 {
+          color: black;
+          font-size: 50px;
+          text-align: center;
+          margin-top: 50px;
+          font-weight: 600;
+  
+          span {
+            color: red;
+            font-size: 50px;
+          }
+        }
+        .pharmacy-first-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: start;
+  
+          .pharmacy-first-div-1 {
+            width: 335px;
+            margin-right: 5px;
+          }
+          .pharmacy-first-div-2 {
+            width: 335px;
+          }
+        }
+        .pharmacy-second-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          justify-content: start;
+  
+          .pharmacy-second-div-1 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-second-div-2 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-second-div-3 {
+            width: 225px;
+          }
+        }
+        .pharmacy-third-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          justify-content: start;
+  
+          .pharmacy-third-div-1 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-third-div-2 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-third-div-3 {
+            width: 225px;
+            margin-right: 5px;
+          }
+        }
+        .pharmacy-fourth-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          justify-content: start;
+  
+          .pharmacy-fourth-div-1 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-fourth-div-2 {
+            width: 220px;
+            margin-right: 5px;
+          }
+          .pharmacy-fourth-div-3 {
+            width: 225px;
+            margin-right: 5px;
+          }
+        }
+        .pharmacy-fifth-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: start;
+  
+          .pharmacy-fifth-div-1 {
+            width: 335px;
+            margin-right: 5px;
+          }
+          .pharmacy-fifth-div-2 {
+            width: 335px;
+            margin-right: 5px;
+          }
+        }
+        .pharmacy-sixth-div {
+          margin: 10px 5px 10px 5px;
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: start;
+  
+          .pharmacy-sixth-div-1 {
+            width: 335px;
+            margin-right: 5px;
+          }
+          .pharmacy-sixth-div-2 {
+            width: 335px;
+            margin-right: 5px;
+          }
+        }
+  
+        .pharmacy-button {
+          margin: 10px 5px 10px 5px;
+          width: 675px;
+          height: 40px;
+          background-color: cadetblue;
+          color: white;
+          font-size: 18px;
+          letter-spacing: 1.5px;
+        }
+      }
+    }
+  }
+  

@@ -21,6 +21,7 @@ import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
 import AdminFooter from "./components/Admin/Footer/AdminFooter";
 import DoctorProfile from "./doctor/pages/DoctorProfile/DoctorProfile";
+import RegisterPage from "./pharmacy/pages/RegisterPage/RegisterPage";
 
 export default function Medcare() {
   return (
@@ -53,6 +54,7 @@ export default function Medcare() {
           <Route path="/admin/add-doctor" element={<Adddoctor />} />
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/doctor-profile" element={<DoctorProfile/>}></Route>
+          <Route path="/admin/add-pharmacist" element={<RegisterPage/>}></Route>
         </Routes>
         <Routes>
           <Route path="/" element={<Footer />} />

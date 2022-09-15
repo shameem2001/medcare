@@ -1,12 +1,12 @@
 const express = require("express");
-const storemodel = require("../models/Store");
+const pharmacymodel = require("../models/Pharmacy");
 const app = express();
 
-app.post("/api/store", async (req, res)=>{
-    const store = storemodel(req.body);
+app.post("/api/pharmacy", async (req, res)=>{
+    const pharmacy = pharmacymodel(req.body);
 
     try{
-        store.save().then(()=>{
+        pharmacy.save().then(()=>{
             res.json("details added");
         })
     }catch(error){
@@ -14,19 +14,19 @@ app.post("/api/store", async (req, res)=>{
     }
 });
 
-app.get("/api/store", async (req, res) => {
+app.get("/api/pharmacy", async (req, res) => {
   try {
-    let stores = await storemodel.find({});
-    console.log(stores);
-    res.send(stores);
+    let pharmacy = await pharmacymodel.find({});
+    console.log(pharmacy);
+    res.send(pharmacy);
   } catch (error) {
     res.send(error);
   }
 });
 
-app.get("/api/store/:id", async (req, res)=> {
+app.get("/api/pharmacy/:id", async (req, res)=> {
     try{
-        let store = await doctormodel.findOne({'_id': req.params.id});
+        let pharmacy = await pharmacymodel.findOne({'_id': req.params.id});
         res.send(store);
     }
     catch(error){
@@ -34,7 +34,7 @@ app.get("/api/store/:id", async (req, res)=> {
     }
 });
 
-app.put("/api/store/:id", async (req, res) => {
+app.put("/api/pharmacy/:id", async (req, res) => {
   try {
     console.log(req.body);
     await doctormodel
@@ -45,8 +45,8 @@ app.put("/api/store/:id", async (req, res) => {
   }
 });
 
-app.delete("/api/store/:id", async(req, res)=>{
-    await storemodel
+app.delete("/api/pharmacy/:id", async(req, res)=>{
+    await pharmacymodel
       .findByIdAndDelete(req.params.id)
       .then((data) => res.send(data)).catch ((error)=> {
     console.log(error);
