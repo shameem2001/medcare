@@ -1,9 +1,13 @@
 import { React, useEffect, useState } from "react";
+import { PureComponent } from "react";
+import ReactDOM from 'react-dom';
 import apis from "../../../apis";
 import "./Patient_details.scss";
 import PrescribtionCard from "../../components/PatientDetails/Prescribtion_card";
 import { useLocation, useNavigate } from "react-router-dom";
 import imga from "../../../assets/profile.jpg";
+import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+
 
 export default function Patient_details() {
   const navigate = useNavigate();
@@ -22,6 +26,26 @@ export default function Patient_details() {
       .catch((e) => console.log(e));
   };
 
+
+let [userData, setUserData] = useState({});
+
+  const getPatientDetails = async () => {
+    console.log(user_id);
+    let results;
+    await apis
+      .get(`user/${user_id}`)
+      .then((data) => {
+        console.log(data.data);
+        results = data.data;
+      })
+      .catch((e) => console.log(e));
+
+    if (results !== null) {
+      console.log(results);
+      setUserData(results);
+    }
+  };
+
   let [condition, setCondition] = useState("");
   let [observation, setobservation] = useState("");
   let [prescription, setprescribtion] = useState("");
@@ -29,6 +53,86 @@ export default function Patient_details() {
   let [temp, setTemp] = useState("");
   let [oxyg, setOxyg] = useState("");
   let [sugar, setSugar] = useState("");
+
+
+const styles = StyleSheet.create({
+	page: {
+		flexDirection: 'colomn',
+	},
+	section: {
+		fontSize:40,
+    paddingLeft:250,
+    paddingTop: 20,
+    paddingBottom: 20
+    
+	},
+  section1: {
+    fontSize:20,
+    paddingLeft:10,
+    paddingBottom: 10
+  },
+  section2: {
+      padding:30
+  },
+  viewer: {
+    width: window.innerWidth, //the pdf viewer will take up all of the width and height
+    height: window.innerHeight,
+  },
+});
+
+const MyDocument = (
+	<Document>
+		<Page  style={styles.page}>
+			<View  style={styles.section}>
+				<Text>Insights</Text>
+			</View>
+      
+			<View  style={styles.section1}>
+				<Text>Name : {userData.name}</Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Number : {userData.phoneNumber}</Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Email : {userData.email}</Text>
+			</View>
+
+      <View  style={styles.section2}>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Blood Pressure : {pressure} </Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Body Temperature : {temp} </Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Blood oxygen level : {oxyg} </Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Blood sugar level : {sugar} </Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>Observation : {observation} </Text>
+			</View>
+
+      <View  style={styles.section1}>
+				<Text>prescription : {prescription} </Text>
+			</View>
+
+		</Page>
+	</Document>
+);
+
+
+
+ 
 
   const postData = async () => {
     await apis
@@ -53,24 +157,20 @@ export default function Patient_details() {
     navigate("/doctor/");
   };
 
-  let [userData, setUserData] = useState({});
-
-  const getPatientDetails = async () => {
-    console.log(user_id);
-    let results;
-    await apis
-      .get(`user/${user_id}`)
-      .then((data) => {
-        console.log(data.data);
-        results = data.data;
-      })
-      .catch((e) => console.log(e));
-
-    if (results !== null) {
-      console.log(results);
-      setUserData(results);
+  const printpdf = async () => {
+    if(observation ==="") {
+      console.log("no value entered")
     }
-  };
+    else {
+      ReactDOM.render(
+        <PDFViewer className="pdfpage">{MyDocument}</PDFViewer>,
+        document.getElementById('root'),
+      );
+
+    }
+  }
+
+  
 
   // let presC = [
   //   {
@@ -380,6 +480,15 @@ export default function Patient_details() {
                     }}
                   >
                     Submit
+                  </button>
+                  <button
+                    style={{ marginTop: "5px", borderRadius: "12px" }}
+                    className="submit-button"
+                    onClick={()=>{
+                      printpdf();
+                    }}
+                  >
+                    Print 
                   </button>
                 </div>
               </div>
