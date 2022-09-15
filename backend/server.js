@@ -41,6 +41,9 @@ app.use(appointment);
 const slot = require(`${route}Slot`);
 app.use(slot);
 
+const store = require(`${route}Store`);
+app.use(store);
+
 const admin = require(`${route}Admin`);
 app.use(admin);
 
