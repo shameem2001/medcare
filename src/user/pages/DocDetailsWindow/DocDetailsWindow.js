@@ -35,8 +35,8 @@ export default function DocDetailsWindow() {
   const userId = localStorage.getItem("_id");
   const [timeShow, setTimeshow] = useState([]);
   const [displayTime, setDisplayTime] = useState(false);
-  let i = 0;
-  const [step, setStep] = useState(i);
+  
+  // const [step, setStep] = useState();
 
   let timeSlot;
 
@@ -79,9 +79,9 @@ export default function DocDetailsWindow() {
   // Doctor data fetch end
 
   // const [tasks, setTasks] = useState(doctorData);
-  const [activeStep, setActiveStep] = useState(0);
-  let updateStep = () => {
-    setActiveStep(1);
+  const [activeStep, setActiveStep] = useState(1);
+  let updateStep = (i) => {
+    setActiveStep(i);
   };
 
   //Update appointment start
@@ -141,6 +141,7 @@ export default function DocDetailsWindow() {
       .then((data) => (appointment_id = data.data))
       .catch((error) => console.log(error));
 
+      updateStep(4);
     updateUser(userId, appointment_id);
     updateDoctor(doctorId, appointment_id);
   };
@@ -226,6 +227,7 @@ export default function DocDetailsWindow() {
                     if(localStorage.getItem("_id") !== null){
                       addAppointment(item3);
                       updateDoctorSlots(item3);
+                      updateStep(3);
                     }
                     else{
                       console.log("not logged in");
@@ -429,16 +431,16 @@ export default function DocDetailsWindow() {
                 </div>
                 <Stepper activeStep={activeStep} orientation="vertical">
                   <Step>
+                    <StepLabel> Choose Doctor</StepLabel>
+                  </Step>
+                  <Step>
                     <StepLabel> Choose Date</StepLabel>
                   </Step>
                   <Step>
-                    <StepLabel> Confirm Appointment</StepLabel>
+                    <StepLabel> Choose Time</StepLabel>
                   </Step>
                   <Step>
-                    <StepLabel> login</StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel> Booking Confirmed</StepLabel>
+                    <StepLabel> Book Appointment</StepLabel>
                   </Step>
                 </Stepper>
               </div>
@@ -458,6 +460,7 @@ export default function DocDetailsWindow() {
                     setSelectedDate(e.target.value);
                     await getSlotDetails(e.target.value);
                     setDisplayTime(true);
+                    updateStep(2);
                   }}
                   type="date"
                   id="date"

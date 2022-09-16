@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import bcrypt from 'bcryptjs';
+import { React, useState,useEffect } from "react";
+import bcrypt from "bcryptjs";
 import "./Login.scss";
 import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
@@ -11,33 +11,55 @@ export default function Login() {
 
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
+  let [match, setMatch] = useState(false);
+  let [Result,setResult]=useState({});
+
+  let updateResult=()=>{
+    console.log("Inside updateResult function");
+    setMatch(true);
+    console.log(match);
+  }
+useEffect(()=>{
+  submit();
+},[])
 
   let submit = async () => {
     let results;
     await apis
       .get("user")
-      .then((data) => {results = data.data})
+      .then((data) => {
+        results = data.data;
+      })
       .catch((err) => console.log(err));
 
-    let match = false;
-    results.map((data)=>{
+    // let match = false;
+    try{
+    results.filter((data) => {
       bcrypt.compare(password, data.password, (err, res) => {
         console.log(res);
-        if(res === true && email === data.email){
-          match = true;
+        if (res === true && email === data.email) {
+          // match = true;
+          updateResult();
+          console.log(match);
           localStorage.setItem("_id", data._id);
           localStorage.setItem("user_name", data.name);
           localStorage.setItem("user_img", data.img);
-          console.log(data.img+"log");
-          navigate("/");
+          console.log(data.img + "log");
+          console.log(data);
+          setResult(data);
+          console.log(Result);
+          //  navigate("/");  
         }
       });
-    if(match === false){
+    });}catch(err){console.log(err)}
+    finally{
+      console.log(match)
+    console.log(Result);
+    if (match===false) {
       console.log("invalid credentials");
+      // alert("Invalid Credentials");
     }
-    });
-
-    
+  }
   };
 
   return (
