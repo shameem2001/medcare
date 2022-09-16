@@ -1,0 +1,48 @@
+.footer-page{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: white;
+
+    .footer-page-copyright{
+        margin-left: 60px;
+        font-size: 18px;
+        color: cadetblue;
+    }
+
+    .footer-page-buttons{
+        .footer-page-button1{
+            border-radius: 100%;
+            margin-right: 20px;
+        }
+        .footer-page-button2{
+            border-radius: 100%;
+            margin-right: 20px;
+        }
+        .footer-page-button3{
+            border-radius: 100%;
+        }
+    }
+
+    .footer-page-links{
+        margin-right: 50px;
+        .footer-page-link1{
+            text-decoration: none;
+            margin-right: 20px;
+            color: cadetblue;
+            font-size: 17px;
+        }
+        .footer-page-link2{
+            text-decoration: none;
+            margin-right: 10px;
+            color: cadetblue;
+            font-size: 17px;
+        }
+
+        :hover{
+            color: teal;
+        }
+    }
+}
