@@ -1,0 +1,102 @@
+.pharmacy-page {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-content: center;
+  height: 82vh;
+
+  .pharmacy-page-container {
+    margin-top: 130px;
+    width: 1000px;
+    height: 420px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: auto auto;
+
+    .pharmacy-page-container-left {
+      width: 350px;
+      height: 500px;
+
+      img {
+        margin-left: 50px;
+        margin-top: 60px;
+        align-content: center;
+        width: 300px;
+      }
+    }
+
+    .pharmacy-page-container-right {
+      width: 650px;
+      h5 {
+        color: black;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 50px;
+        font-weight: 600;
+
+        span {
+          color: red;
+          font-size: 50px;
+        }
+      }
+
+      .pharmacy-div-1 {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+        .pharmacy-div-child-1 {
+          padding: 10px;
+          border: 1px solid gray;
+          width: 255px;
+          height: 40px;
+          margin-right: 10px;
+          border-radius: 6px;
+        }
+      }
+
+      .pharmacy-div-2 {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+        .pharmacy-div-child-2 {
+          padding: 10px;
+          border: 1px solid gray;
+          width: 170px;
+          height: 40px;
+          margin-right: 5px;
+          border-radius: 6px;
+        }
+      }
+
+      .pharmacy-div-3 {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+        .pharmacy-div-child-3 {
+          padding: 10px;
+          border: 1px solid gray;
+          width: 255px;
+          height: 40px;
+          margin-right: 5px;
+          border-radius: 6px;
+        }
+      }
+
+      .pharmacy-button {
+        margin: 10px 5px 10px 60px;
+        width: 530px;
+        height: 40px;
+        background-color: cadetblue;
+        color: white;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+      }
+    }
+  }
+}

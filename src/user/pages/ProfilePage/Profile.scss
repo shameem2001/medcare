@@ -1,0 +1,499 @@
+// Profile page styling start
+.profile {
+  font-family: "Poppins", sans-serif;
+  background-color: snow;
+  padding: 30px 60px;
+  display: grid;
+  grid-template-columns: 40% auto;
+  justify-content: space-around;
+
+  .profile-div-left {
+    margin-top: 70px;
+    position: fixed;
+    margin-left: 3%;
+
+    //profile-card styling start
+    .profile-card1 {
+      background-color: white;
+      border-radius: 8px;
+      min-height: 350px;
+      max-height: 360px;
+      min-width: 370px;
+      max-width: 420px;
+      padding: 10px;
+
+      .profile-card1-grid {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        .profile-card1-circle-avatar {
+          width: 110px;
+          height: 110px;
+          border-radius: 100%;
+          border: solid 1px gray;
+          background-size: 100% 100%;
+
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 10px;
+        }
+
+        .profile-card1-top-right {
+          margin-top: 10px;
+          margin-left: 5px;
+
+          .profile-card1-name {
+            font-weight: 500;
+            font-size: 24px;
+          }
+
+          .profile-card1-dob {
+            font-size: 14px;
+            .profile-card1-dob-helper {
+              color: cadetblue;
+              font-weight: 500;
+              font-size: 16px;
+            }
+          }
+
+          .profile-card1-gender {
+            font-size: 16px;
+            .profile-card1-gender-helper {
+              color: cadetblue;
+              font-weight: 500;
+              font-size: 16px;
+            }
+          }
+
+          .profile-card1-edit-button {
+            background-color: cadetblue;
+            color: white;
+            width: 80px;
+            height: 30px;
+            font-size: 12px;
+            padding: 2px;
+          }
+        }
+      }
+
+      .profile-card1-details {
+        padding-left: 10px;
+        padding-right: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+
+        .profile-card1-details-helper {
+          color: cadetblue;
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+    }
+    // profile card styling end
+
+    // dependents card styling start
+    .dependents-card {
+      margin-top: 20px;
+      width: 370px;
+      min-height: 100px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+
+      .dependants-card-hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .dependant-list-card {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+
+        .dependant-list-card-left {
+          display: grid;
+          grid-template-columns: auto auto;
+
+          .dependant-list-card-left-circle-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: cadetblue;
+            color: white;
+            font-size: 22px;
+            text-align: center;
+            padding-top: 2px;
+          }
+
+          .dependant-list-card-left-details {
+            h5 {
+              font-size: large;
+            }
+            h6 {
+              color: gray;
+              font-size: 14px;
+              margin-top: -7px;
+            }
+          }
+        }
+
+        .dependant-list-card-right {
+          .dependant-list-card-right-icons {
+            margin-right: 15px;
+            color: gray;
+            margin-top: 15px;
+          }
+        }
+      }
+      .dependants-list-card-hr {
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      .dependents-card-btn {
+        width: 340px;
+        background-color: cadetblue;
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // dependents card styling end
+}
+
+// right side styling start
+
+.profile-div-right {
+  margin-top: 70px;
+  // tabbar styling start
+  .profile-tabbar-container {
+    height: 50px;
+    width: 100%;
+    border-radius: 12px;
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: white;
+
+    .profile-tabbar {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: space-around;
+
+      .profile-tabbar-tab {
+        width: 275px;
+        border-radius: 12px;
+        color: cadetblue;
+      }
+
+      .nav-item .nav-link.active {
+        background-color: cadetblue;
+        font-size: 18px;
+        color: white;
+      }
+    }
+  }
+
+  .profile-tabbar-contents-container {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    // overflow-y: scroll;
+    // height: 75vh;
+    // border-radius: 8px;
+    // //padding-bottom: 8px;
+    // scrollbar-width: none; /* Firefox */
+    // -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+    .profile-tabbar-content-all-tab-overview-container {
+      min-height: 150px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      padding-top: 16px;
+      padding-bottom: 4px;
+      background-color: white;
+
+      h5 {
+        margin-bottom: 2px;
+        margin-left: 10px;
+      }
+
+      hr {
+        margin-top: 4px;
+        background-color: black;
+      }
+
+      ul li {
+        margin: 8px;
+      }
+    }
+
+    .profile-tabbar-content-all-tab-appointments-container {
+      padding-top: 16px;
+      padding-bottom: 4px;
+      min-height: 150px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color: white;
+
+      h5 {
+        margin-left: 10px;
+      }
+
+      hr {
+        margin-top: 4px;
+        margin-bottom: 25px;
+        background-color: black;
+      }
+
+      .profile-tabbar-content-all-tab-appointment-card {
+        height: 400px;
+        width: 350px;
+        padding: 0;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        background-color: white;
+        border: 1px solid black;
+        margin-left: 10px;
+
+        .profile-tabbar-content-all-tab-appointment-card-sect-1 {
+          background-color: cadetblue;
+          color: white;
+          border-bottom: 1px solid gray;
+          border-radius: 12px 12px 0 0;
+          padding: 12px;
+          height: 100px;
+
+          h6 {
+            margin-top: 8px;
+            margin-bottom: 2px;
+          }
+          p {
+            font-size: 15px;
+          }
+        }
+
+        .profile-tabbar-content-all-tab-appointment-card-sect-2 {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: start;
+          height: 80px;
+          border-bottom: 1px solid gray;
+          padding: 12px;
+
+          .profile-tabbar-content-all-tab-appointment-card-sect-2-pic {
+            width: 50px;
+            height: 50px;
+            background-image: url("../../../../assets/profile.jpg");
+            background-size: 100% 100%;
+            // border-radius: 100%;
+            margin-right: 15px;
+            margin-left: 10px;
+            border: 1px solid black;
+          }
+
+          .profile-tabbar-content-all-tab-appointment-card-sect-2-data {
+            margin-top: 10px;
+            h6 {
+              margin-bottom: 1px;
+            }
+            p {
+              margin-top: 0;
+              font-size: 12px;
+              color: gray;
+            }
+          }
+        }
+
+        .profile-tabbar-content-all-tab-appointment-card-sect-3 {
+          display: grid;
+          grid-template-columns: auto auto auto;
+          justify-content: space-around;
+          height: 170px;
+          border-bottom: 1px solid gray;
+          padding: 12px;
+
+          p {
+            font-size: 15px;
+            margin-bottom: 7px;
+          }
+
+          .profile-tabbar-content-all-tab-appointment-card-sect-3-right {
+            color: cadetblue;
+            margin-right: 30px;
+          }
+        }
+
+        .profile-tabbar-content-all-tab-appointment-card-sect-4 {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          height: 48px;
+          border-radius: 0 0 12px 12px;
+          color: white;
+          padding: 12px;
+          background-color: cadetblue;
+
+          .profile-tabbar-content-all-tab-appointment-card-sect-4-left {
+            margin-left: 12px;
+          }
+
+          .profile-tabbar-content-all-tab-appointment-card-sect-4-right {
+            display: grid;
+            grid-template-columns: auto auto;
+            margin-right: 12px;
+
+            p {
+              margin-top: 2px;
+              text-decoration: underline;
+              margin-right: 12px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    .profile-tabbar-content-all-tab-history-container {
+      min-height: 350px;
+      border-radius: 8px;
+      background-color: white;
+      padding: 20px;
+
+      h5 {
+        margin-left: 10px;
+      }
+
+      hr {
+        margin-top: 4px;
+        margin-bottom: 25px;
+        background-color: black;
+      }
+
+      .profile-prescription-card {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        min-height: 20px;
+        border: 1px solid cadetblue;
+        border-radius: 8px;
+
+        .profile-prescription-card-head {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          padding: 12px;
+
+          .profile-prescription-card-head-left {
+            :nth-child(1) {
+              margin-bottom: 2px;
+              font-size: 16px;
+            }
+            :nth-child(2) {
+              margin-top: 4px;
+              margin-bottom: 2px;
+              font-size: 14px;
+            }
+            :nth-child(3) {
+              margin-top: 4px;
+              margin-bottom: 2px;
+              font-size: 14px;
+              font-weight: 500;
+            }
+          }
+
+          .profile-prescription-card-head-right {
+            :nth-child(1) {
+              font-size: 14px;
+              margin-bottom: 4px;
+            }
+            :nth-child(2) {
+              font-size: 14px;
+              margin-bottom: 6px;
+            }
+          }
+
+          .profile-description-card-button {
+            background-color: cadetblue;
+            color: white;
+            width: 85px;
+            height: 25px;
+            font-size: 12px;
+            padding: 0;
+          }
+        }
+        .profile-prescription-card-body {
+          border-top: 1px solid black;
+          padding: 12px;
+
+          .profile-prescription-card-body-sect-1 {
+            font-size: 15px;
+          }
+          .profile-prescription-card-body-sect-2 {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: start;
+            font-size: 15px;
+
+            ul li {
+              margin-right: 8px;
+            }
+            p {
+              margin: 0;
+              margin-bottom: 0px;
+              margin-right: 8px;
+            }
+          }
+          .profile-prescription-card-body-sect-3-header {
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          .profile-prescription-card-body-sect-3 {
+            table {
+              th {
+                font-size: 14px;
+              }
+              td {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .profile-tabbar-content-appointments-tab-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-left: 2px;
+
+      .profile-tabbar-content-appointments-tab-container-h5 {
+        margin-bottom: 2px;
+      }
+    }
+  }
+  // tabbar styling end
+}
+
+// right side styling end
+// Profile page styling end
+
+
+.modal-profile-img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 500px;
+
+  input{
+    size: 60px;
+  }
+
+  button{
+    background-color: cadetblue;
+    color: white;
+  }
+  button:hover{
+      background-color: teal;
+    }
+}
