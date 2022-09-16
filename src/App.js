@@ -13,11 +13,14 @@ import Login from "./user/pages/Login/Login.js";
 import Register from "./user/pages/Register/Register.js";
 import Dashboard from "./admin/pages/Dashboard/Dashboard";
 import Adddoctor from "./admin/pages/Adddoctor/Adddoctor";
+import AddPharmacy from "./admin/pages/AddPharmacy/AddPharmacy";
 import Adminlogin from "../src/admin/pages/Adminlogin/Adminlogin";
 import Doctorlogin from "../src/doctor/pages/doctorlogin/doctorlogin";
 import DoctorProfile from "../src/doctor/pages/DoctorProfile/DoctorProfile";
 import AppointmentList from "../src/doctor/pages/AppointmentList/AppointmentList";
 import PatientDetails from "../src/doctor/pages/PatientDetails/Patient_details";
+import PharmacyLogin from "../src/pharmacy/pages/LoginPage/Login";
+import PharmacyDashboard from "../src/pharmacy/pages/Dashboard/Dashboard";
 import DoctorHeader from "./components/Doctor/Header/DoctorHeader";
 import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
@@ -52,7 +55,10 @@ export default function Medcare() {
           <Route path="/doctor/" element={<AppointmentList />} />
           <Route path="/doctor/profile" element={<DoctorProfile />} />
           <Route path="/doctor/patient-details" element={<PatientDetails />} />
+          <Route path="/pharmacy/login" element={<PharmacyLogin />} />
+          <Route path="/pharmacy/dashboard" element={<PharmacyDashboard />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/add-pharmacy" element={<AddPharmacy />} />
           <Route path="/admin/add-doctor" element={<Adddoctor />} />
           <Route path="/admin/login" element={<Adminlogin />} />
         </Routes>

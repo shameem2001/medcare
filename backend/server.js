@@ -47,6 +47,9 @@ app.use(slot);
 const prescription = require(`${route}Prescription`);
 app.use(prescription);
 
+const pharmacy = require(`${route}Pharmacy`);
+app.use(pharmacy);
+
 const admin = require(`${route}Admin`);
 app.use(admin);
 
