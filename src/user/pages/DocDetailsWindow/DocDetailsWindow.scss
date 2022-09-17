@@ -1,0 +1,172 @@
+
+.Main-Background {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  padding: 4rem 4rem;
+  background-color: snow;
+  font-family: "Poppins";
+}
+
+.Wrapper {
+  display: grid;
+  grid-template-rows: 45% 45%;
+  row-gap: 2rem;
+  width: 1288px;
+  height: 100%;
+
+  .Wrapper-in-top {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    column-gap: 4rem;
+
+    .Doctor-details {
+      display: grid;
+      grid-template-columns: 25% 70%;
+      font-family: "Poppins";
+      background-color: white;
+      box-sizing: border-box;
+      width: 741px;
+      height: 256px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+      .Doctor-details-left {
+        padding: 1rem;
+        height: 256px;
+        .Doctor-photo {
+          width: 190px;
+          height: 195px;
+          // border: solid 1px gray;
+          background-image: url("../../../assets/cv.png");
+          background-size: 100% 100%;
+          margin-top: 10px;
+        }
+      }
+
+      .Doctor-details-right {
+        font-family: "Poppins";
+        grid-template-rows: 20% 80%;
+
+        .Doctor-data-title {
+          margin-left: 150px;
+          font-family: "Poppins";
+          font-weight: bolder;
+          color: cadetblue;
+          font-size:medium;
+          margin-bottom: 0%;
+          margin-top: 20px;
+        }
+
+        .Doctor-data-main {
+          display: grid;
+          grid-template-columns: 60% 40%;
+          padding-bottom: 2rem;
+          margin-top: 2rem;
+
+          .Doctor-data-right {
+            // padding-top: 1rem;
+            // padding-left: 0.2rem;
+            margin-bottom: 40px;
+
+            .Docdata-elements {
+              list-style: none;
+
+              .leftside {
+                color: cadetblue;
+                font-weight: bold;
+                margin-right: 10px;
+              }
+            }
+          }
+          .Doctor-data-right2 {
+            // padding-top: 1rem;
+            // padding-left: 0.2rem;
+            margin-bottom: 40px;
+
+            .Docdata-elements2 {
+              list-style: none;
+
+              .leftside2 {
+                color: cadetblue;
+                font-weight: bold;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .stepcontact
+    {
+        font-family: "Poppins";
+    }
+  }
+
+  .Booking-slots{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    column-gap: 4rem;
+    margin-top: 2rem;
+    
+    .Booking-slots-left
+    {
+        padding-left: 0%;
+        width: 365px;
+
+        // .mt-0{
+        //   width: 300px;
+        // }
+    }
+    
+    // .Booking-slots-right{
+    //     .datePickerPatient {
+    //         display: grid;
+    //         justify-content: center;
+    //         border-radius: 15px;
+    //         padding-right: 20px;
+    //         width: 400px;
+    //       }
+          
+    //       .calendar-ui {
+    //         border-radius: 12px;
+    //       }
+          
+    //       .psubcard-link {
+    //         text-decoration: none;
+    //         color: black;
+    //       }
+          
+    // }
+  }
+}
+
+.modalContents{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.chip-div{
+  width: 750px;
+}
+
+.slot-date-grid{
+  width: 740px;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: end;
+
+  .slot-date{
+  width: 160px;
+  height: 50px;
+  border-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border: 1px solid black;
+  padding: 10px;
+}
+}

@@ -1,0 +1,106 @@
+.signup-page {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-content: center;
+  height: 82vh;
+
+  .signup-page-container {
+    min-width: 1050px;
+    min-height: 550px;
+    border-radius: 12px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+
+    .signup-page-container-left {
+      width: 550px;
+      height: 500px;
+
+      img{
+        margin-top: 30px;
+        align-content: center;
+        width: 500px;
+        height: 450px;
+      }
+    }
+
+    .signup-page-container-right {
+      width: 600px;
+      h5 {
+        color: black;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 30px;
+        font-weight: 600;
+
+        span {
+          color: red;
+          font-size: 50px;
+        }
+      }
+
+
+      .first-div{
+        display: grid;
+        grid-template-columns: 40% 25% 30%;
+        margin-bottom: 20px;
+          .first-div-1{
+            margin-right: 10px;
+          }
+          .first-div-2{
+            margin-right: 10px;
+          }
+      }
+
+      .second-div{
+        display: grid;
+        grid-template-columns: 40% 25% 30%;
+        margin-bottom: 20px;
+
+        .second-div-1{
+          margin-right: 10px;
+        }
+        .second-div-2{
+          margin-right: 10px;
+        }
+      }
+
+      .third-div{
+        display: grid;
+        grid-template-columns: 95%;
+        margin-bottom: 20px;
+      }
+
+      .fourth-div{
+        display: grid;
+        grid-template-columns: 47.5% 47.5%;
+        margin-bottom: 20px;
+
+        .fourth-div-1{
+          margin-right: 10px;
+        }
+      }
+
+      .fifth-div{
+        display: grid;
+        grid-template-columns: 47.5% 47.5%;
+        margin-bottom: 20px;
+
+        .fifth-div-1{
+          margin-right: 10px;
+        }
+      }
+
+      .signup-button{
+        width: 95%;
+        height: 45px;
+        background-color: cadetblue;
+        color: white;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
