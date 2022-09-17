@@ -260,17 +260,11 @@ export default function Profile() {
         <div className="container shadow profile-card1">
           <div className="profile-card1-grid">
             {userData.img === undefined ? (
-              <img
-                src={img}
-                alt="34"
-                className="profile-card1-circle-avatar"
-                data-bs-toggle="modal"
-                data-bs-target="#profileModal"
-              />
+              <img src={img} alt="" className="profile-card1-circle-avatar" />
             ) : (
               <img
                 src={userData.img}
-                alt="34"
+                alt=""
                 className="profile-card1-circle-avatar"
               />
             )}
@@ -286,7 +280,11 @@ export default function Profile() {
                 <span className="profile-card1-gender-helper">Gender: </span>
                 {userData.gender}
               </h6>
-              <button className="btn profile-card1-edit-button">
+              <button
+                className="btn profile-card1-edit-button"
+                data-bs-toggle="modal"
+                data-bs-target="#profileModal"
+              >
                 edit profile
               </button>
             </div>
@@ -410,9 +408,7 @@ export default function Profile() {
                     return newRow(item);
                   })
                 ) : (
-                  <div style={{ textAlign: "center" }}>
-                    No Overview Given
-                  </div>
+                  <div style={{ textAlign: "center" }}>No Overview Given</div>
                 )}
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
