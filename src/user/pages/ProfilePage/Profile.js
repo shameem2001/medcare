@@ -417,6 +417,7 @@ export default function Profile() {
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
                 <h5>Latest Appointment</h5>
                 <hr />
+                {details2.length !== 0?
                 <AppointmentCard
                   uName={userData.name}
                   _id={details2[0]._id}
@@ -427,6 +428,7 @@ export default function Profile() {
                   time={details2[0].time}
                   status={details2[0].status}
                 />
+              : <div></div>}
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-history-container">
                 <h5>History</h5>
@@ -435,7 +437,7 @@ export default function Profile() {
                   id="accordion"
                   className="profile-tabbar-content-all-tab-history-accordion"
                 >
-                  {details.slice(0, 3).map((item3) => {
+                  {details.length !== 0 ?details.slice(0, 3).map((item3) => {
                     return (
                       <PrescriptionCard
                         _id={item3._id}
@@ -450,7 +452,7 @@ export default function Profile() {
                         prescription={item3.prescription}
                       />
                     );
-                  })}
+                  }):<div></div>}
                 </div>
               </div>
             </div>

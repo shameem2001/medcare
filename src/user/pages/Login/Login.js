@@ -80,6 +80,14 @@ export default function Login() {
               Sign Up
             </Link>
           </h6>
+          <div className="navigateToDocPharm">
+              <button className="btn" onClick={()=>{
+                navigate("/doctor/login");
+              }}>Login as a Doctor</button>
+              <button className="btn" onClick={()=>{
+                navigate("/pharmacy/login");
+              }}>Login as a Pharmacist</button>
+          </div>
         </div>
       </div>
     </div>

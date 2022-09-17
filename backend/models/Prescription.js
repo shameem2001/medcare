@@ -9,8 +9,14 @@ const prescriptionSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  date:{
-    type: String
+  patient_name: {
+    type: String,
+  },
+  doctor_name: {
+    type: String,
+  },
+  date: {
+    type: String,
   },
   blood_pressure: {
     type: String,
@@ -32,9 +38,15 @@ const prescriptionSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  priority:{
-    type: String
-  }
+  priority: {
+    type: String,
+  },
+  hospital_name: {
+    type: String,
+  },
+  submitted_time: {
+    type: String,
+  },
 });
 
 const prescription = mongoose.model("prescription", prescriptionSchema);

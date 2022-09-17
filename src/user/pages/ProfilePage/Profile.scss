@@ -4,6 +4,7 @@
   background-color: snow;
   padding: 30px 60px;
   display: grid;
+  min-height: 90vh;
   grid-template-columns: 40% auto;
   justify-content: space-around;
 
@@ -164,6 +165,7 @@
 // right side styling start
 
 .profile-div-right {
+  min-height: 70vh;
   margin-top: 70px;
   // tabbar styling start
   .profile-tabbar-container {

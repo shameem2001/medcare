@@ -32,10 +32,16 @@ export default function Patient_details() {
   let [priority, setPriority] = useState("low");
 
   const postData = async () => {
+    const hours = new Date().getHours();
+    const min = new Date().getMinutes();
+    const submitted_time = `${hours}:${min}`;
+    console.log(submitted_time);
     await apis
       .post("prescription", {
         user_id: user_id,
         doctor_id: doctor_id,
+        patient_name: userData.name,
+        doctor_name: localStorage.getItem("doctor_name"),
         date: date,
         blood_pressure: pressure,
         body_temperature: temp,
@@ -43,7 +49,9 @@ export default function Patient_details() {
         blood_sugar: sugar,
         observation: observation,
         prescription: prescription,
-        priority: priority
+        priority: priority,
+        hospital_name: localStorage.getItem("hospital_name"),
+        submitted_time: submitted_time,
       })
 
       .then((res) => {

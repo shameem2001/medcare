@@ -28,14 +28,7 @@ export default function DocDetailsWindow() {
 
   let timeSlot;
 
-  let [doctorData, setDoctorData] = useState({
-    name: "Dr.Feroz BK",
-    hospital: "Sreechand Hospital",
-    department: "Consulting Physician",
-    experience: 3,
-    district: "Kannur",
-    email: "ferozbk@gmail.com",
-  });
+  let [doctorData, setDoctorData] = useState({});
 
   useEffect(() => {
     getDoctorDetails();
@@ -72,25 +65,6 @@ export default function DocDetailsWindow() {
   };
 
   //Update appointment start
-
-  let updateUser = async (userId, appointment_id) => {
-    await apis
-      .put(`user/${userId}`, {
-        $push: { appointments: appointment_id },
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
-  };
-
-  let updateDoctor = async (doctor_id, appointment_id) => {
-    //await getDoctor(doctor_id);
-    await apis
-      .put(`doctor/${doctor_id}`, {
-        $push: { appointments: appointment_id },
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
-  };
 
   let updateDoctorSlots = async (slotTime) => {
     const new_slots = [];
@@ -133,8 +107,6 @@ export default function DocDetailsWindow() {
       .catch((error) => console.log(error));
 
     updateStep(4);
-    updateUser(userId, appointment_id);
-    updateDoctor(doctorId, appointment_id);
   };
 
   let loggedIn;

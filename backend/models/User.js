@@ -44,8 +44,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  overview: [String],
-  appointments: [String]
+  overview: [String]
 });
 
 const user = mongoose.model("user", userSchema);

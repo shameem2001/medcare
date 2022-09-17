@@ -29,6 +29,7 @@ function Doctorlogin() {
           match = true;
           localStorage.setItem("doctor_id", data._id);
           localStorage.setItem("doctor_name", data.name);
+          localStorage.setItem("hospital_name", data.hospital);
           localStorage.setItem("doctor_img", data.img);
           navigate("/doctor/");
         }

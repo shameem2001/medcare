@@ -25,6 +25,7 @@ import DoctorHeader from "./components/Doctor/Header/DoctorHeader";
 import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
 import AdminFooter from "./components/Admin/Footer/AdminFooter";
+import PharmacyHeader from "./components/Pharmacy/Header/PharmacyHeader";
 
 export default function Medcare() {
   return (
@@ -42,6 +43,7 @@ export default function Medcare() {
           <Route path="/doctor/profile" element={<DoctorHeader />} />
           <Route path="/doctor/patient-details" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
+          <Route path="/pharmacy/" element={<PharmacyHeader />} />
         </Routes>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -56,7 +58,7 @@ export default function Medcare() {
           <Route path="/doctor/profile" element={<DoctorProfile />} />
           <Route path="/doctor/patient-details" element={<PatientDetails />} />
           <Route path="/pharmacy/login" element={<PharmacyLogin />} />
-          <Route path="/pharmacy/dashboard" element={<PharmacyDashboard />} />
+          <Route path="/pharmacy/" element={<PharmacyDashboard />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/add-pharmacy" element={<AddPharmacy />} />
           <Route path="/admin/add-doctor" element={<Adddoctor />} />

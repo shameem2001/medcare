@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import bcrypt from 'bcryptjs';
@@ -25,6 +25,15 @@ export default function Register() {
   let [prev_cond, setprev_cond] = useState("");
   let [address, setaddress] = useState("");
 
+  let [users, setUsers] = useState([]);
+  useEffect(()=>{
+    let results;
+    apis.get("user").then((data)=>{
+      results = data.data;
+      setUsers(results);
+    }).catch((e)=>{console.log(e)});
+  }, []);
+
   let passwordHash = async(conpassword)=>{
     if (password === conpassword) {
       bcrypt.genSalt(10, function (err, salt) {
@@ -32,14 +41,13 @@ export default function Register() {
           setpassword(hashedPassword);
         });
       });
-    } else {
-      console.log("Password not same");
     }
   }
 
   let submit = async (e) => {
-      console.log("submitted");
-      console.log(password);
+    console.log(users);
+    const same_email = users.filter((user)=> {return user.email === email});
+    if(same_email.length === 0 ){
       await apis.post("user", {
         name: name,
         gender: gender,
@@ -51,8 +59,15 @@ export default function Register() {
         prev_docs: prev_docs,
         prev_cond: prev_cond,
         address: address,
-      });
+      }).then((data)=>{
+        console.log("submitted");
+        console.log(data.data);
+      }).catch((e)=>{alert("Error")});
       navigate("/login");
+    }
+    else{
+      alert("Email exists. Recheck Credentials.");
+    }
   };
 
   return (
