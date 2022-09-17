@@ -178,7 +178,7 @@ export default function Profile() {
       // getDoctorDetails()
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [img_up]);
+    [img_up, dependantData.length]);
 
   let newRow = (e) => {
     return (

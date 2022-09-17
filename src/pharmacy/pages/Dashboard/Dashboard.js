@@ -59,7 +59,7 @@ export default function Dashboard() {
             <span>{hospital_name}</span>
           </li>
           <li className="pharma-basic">
-            <span className="li-left">e-mail:</span>
+            <span className="li-left">Email:</span>
             <span> {pharm.email}</span>
           </li>
           <li className="pharma-basic">

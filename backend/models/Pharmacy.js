@@ -7,6 +7,9 @@ const pharmacySchema = mongoose.Schema({
   hospital_name: {
     type: String,
   },
+  img:{
+    type: String,
+  },
   email: {
     type: String,
   },

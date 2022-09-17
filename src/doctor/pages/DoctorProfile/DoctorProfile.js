@@ -15,21 +15,8 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function DoctorProfile() {
-  const [doctData, setDoctData] = useState({
-    name: "sugunan",
-    age: "19",
-    gender: "male",
-    department: "physician",
-    district: "kannur",
-    dob: "20-20-200",
-    email: "sugunan@gmail.com",
-    hospital: "kims",
-    phoneNumber: "098765543",
-    hospital_address: "address of hospital here",
-    experience: 90,
-  });
+  const [doctData, setDoctData] = useState({});
 
-  let results;
   const doctor_id = localStorage.getItem("doctor_id");
 
   useEffect(() => {
