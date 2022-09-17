@@ -136,12 +136,12 @@ export default function DoctorList() {
 
         <div className="container shadow doctor-list-card-container">
           <div className="container cont1">
-            <h6 className="cont1-h6">{location} / Doctors</h6>
+            <h6 className="cont1-h6">{location} / {doctors.length} Doctors</h6>
           </div>
 
-          <div className="container cont2">
+          {/* <div className="container cont2">
             <div className="filter">
-              <h5 className="filter-h5">11 Doctor(s)</h5>
+              <h5 className="filter-h5">{doctors.length} Doctor(s)</h5>
               <div className="vl" />
               <h5>Filter By: </h5>
               <div class="chip">All</div>
@@ -157,7 +157,7 @@ export default function DoctorList() {
                 <option value="3">Price</option>
               </select>
             </div>
-          </div>
+          </div> */}
           <div class="container cont3">
             <div className="doctor-card-sheet">
               {doctors.map((doctor) => {

@@ -54,6 +54,7 @@ export default function Profile() {
           })
           .then((data2) => {
             setImg(data.url);
+            localStorage.setItem("user_img", data.url);
             console.log(data);
           })
           .catch((error) => console.log(error));

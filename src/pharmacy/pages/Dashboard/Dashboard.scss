@@ -1,14 +1,14 @@
 .Store-Boundary {
     font-family: "Poppins", sans-serif;
     background-color: snow;
-    padding-top: 1rem;
+    padding-top: 2rem;
     display: grid;
     margin-left: 0;
     grid-template-columns: 20% 80%;
     column-gap: 5rem;;
     justify-content: space-around;
-    width: 1536px;
-    height: 791px;
+    width: 100vw;
+    height: 90vh;
   
     .Store-basic-card {
       background-color: white;
@@ -38,7 +38,7 @@
     }
     .column-right {
       width: 1000px;
-      height: 650px;
+      height: 80vh;
       border-radius: 20px;
       background-color: white;
       display: grid;
@@ -57,13 +57,13 @@
               margin-left: 400px;
               margin-top: 10px;
               color: white;
-              font-weight: bold;
+              font-weight: 500;
           }
       }
       .delivery-card{
           width: 940px;
           height: 540px;
-          overflow: scroll;
+          overflow-y: auto;
           margin-top: 0;
           margin-left: 1.5rem;
   

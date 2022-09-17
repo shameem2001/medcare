@@ -26,7 +26,8 @@ function Doctorlogin() {
             if (res === true) {
               console.log("Logged in");
               localStorage.setItem("pharmacy_id", same_email._id);
-              localStorage.setItem("pharmacy_name", same_email.name);
+              console.log(same_email.hospital_name);
+              localStorage.setItem("pharmacy_name", same_email.hospital_name);
               navigate("/pharmacy/");
             } else {
               alert("Incorrect Password!!");

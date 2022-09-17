@@ -13,6 +13,7 @@ export default function PharmacyHeader() {
   };
 
   const pharmacy_name = localStorage.getItem("pharmacy_name");
+  console.log(pharmacy_name);
 //   const doc_img = localStorage.getItem("pharmacy_img");
 
   return (
