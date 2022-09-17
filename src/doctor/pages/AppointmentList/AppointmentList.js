@@ -8,6 +8,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import green from "@mui/material/colors/green";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const theme = createTheme({
   palette: {
@@ -20,9 +22,13 @@ export default function PatientList() {
   const doctor_id = localStorage.getItem("doctor_id");
   console.log(doctor_id);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   // add-slot
-  const [leave, setLeave] = useState("no");
+  const [leave, setLeave] = useState("Yes");
   const [workHrsStart, setWorkHrsStart] = useState("10:00");
   const [workHrsEnd, setWorkHrsEnd] = useState("18:00");
   const [breakStart, setBreakStart] = useState("12:00");
@@ -71,6 +77,7 @@ export default function PatientList() {
   };
 
   let addSlot = async () => {
+    setShow(true);
     let formattedDateP = JSON.stringify(selectedDate).split("T")[0].slice(1);
     console.log(formattedDateP);
 
@@ -164,23 +171,23 @@ export default function PatientList() {
       });
   };
 
-    let [usersData, setUsersData] = useState([]);
+  let [usersData, setUsersData] = useState([]);
 
-    const getUserNameAndPhone = async (id) => {
-      let results;
-      await apis
-        .get(`user`)
-        .then((data) => {
-          results = data.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  const getUserNameAndPhone = async (id) => {
+    let results;
+    await apis
+      .get(`user`)
+      .then((data) => {
+        results = data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-      if (results !== null) {
-        setUsersData(results);
-      }
-    };
+    if (results !== null) {
+      setUsersData(results);
+    }
+  };
 
   useEffect(() => {
     if (doctor_id !== null) {
@@ -293,6 +300,16 @@ export default function PatientList() {
                 <button className="btn" onClick={addSlot}>
                   ADD
                 </button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Slots added!</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
           </div>

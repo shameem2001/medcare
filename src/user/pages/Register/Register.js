@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import "./Register.scss";
 import design from "../../../assets/elder.jpg";
 import TextField from "@mui/material/TextField";
@@ -10,9 +10,32 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import { useEffect } from "react";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState();
+
+  const fetchUsers = async () => {
+    let result;
+    await apis
+      .get("user")
+      .then((data1) => {
+        result = data1.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (result !== null) {
+      setUserData(result);
+    }
+  };
+
+  useEffect(()=>
+  {
+      fetchUsers();
+  },[])
 
   let [name, setname] = useState("");
   let [gender, setgender] = useState("");
@@ -25,7 +48,7 @@ export default function Register() {
   let [prev_cond, setprev_cond] = useState("");
   let [address, setaddress] = useState("");
 
-  let passwordHash = async(conpassword)=>{
+  let passwordHash = async (conpassword) => {
     if (password === conpassword) {
       bcrypt.genSalt(10, function (err, salt) {
         bcrypt.hash(password, salt, function (err, hashedPassword) {
@@ -35,11 +58,15 @@ export default function Register() {
     } else {
       console.log("Password not same");
     }
-  }
+  };
 
   let submit = async (e) => {
-      console.log("submitted");
-      console.log(password);
+    console.log("submitted");
+    console.log(password);
+    let userList = userData.filter((user) => {
+      return user.email === email;
+    });
+    if (userList === null) {
       await apis.post("user", {
         name: name,
         gender: gender,
@@ -53,6 +80,11 @@ export default function Register() {
         address: address,
       });
       navigate("/login");
+    }
+    else
+    {
+      alert("Existing user \n Use new email address")
+    }
   };
 
   return (
@@ -135,7 +167,9 @@ export default function Register() {
               size="small"
               required
               type="date"
-              onChange={(e) => {setdob(e.target.value)}}
+              onChange={(e) => {
+                setdob(e.target.value);
+              }}
             />
           </div>
           <div className="third-div">

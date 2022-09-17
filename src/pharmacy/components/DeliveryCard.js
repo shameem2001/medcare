@@ -1,36 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import apis from "../../apis";
 
-export default function DeliveryCard({doctor_id}) {
-  const newheading = "heading" ;
-  const newCollapse = "collapse" ;
-
-  
-  const [DetailsDoc, setDetailsdoc] = useState();
-
-  const fetchDoctorName = async () => {
-    let result;
-    await apis
-      .get(`doctor/${doctor_id}`)
-      .then((data1) => {
-        console.log(data1.data);
-        result = data1.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    if (result !== null) {
-      setDetailsdoc(result);
-      console.log(result);
-    }
-  };
-
-  useEffect(()=>{
-    fetchDoctorName();
-  })  
+export default function DeliveryCard({ no }) {
+  const newheading = "heading" + no;
+  const newCollapse = "collapse" + no;
 
 
   return (
@@ -41,7 +13,7 @@ export default function DeliveryCard({doctor_id}) {
       >
         <div className="profile-prescription-card-head-left-pharmacy">
           <h6>Patient : Muhammed Shameem</h6>
-          <p>Doctor : {DetailsDoc.name}</p>
+          <p>Doctor : Aiswarya Rajesh</p>
         </div>
         <div className="profile-prescription-card-head-right-pharmacy">
           <h6>26-05-2022</h6>
