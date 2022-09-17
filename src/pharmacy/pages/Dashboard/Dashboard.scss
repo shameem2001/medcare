@@ -1,0 +1,181 @@
+.Store-Boundary {
+    font-family: "Poppins", sans-serif;
+    background-color: snow;
+    padding-top: 1rem;
+    display: grid;
+    margin-left: 0;
+    grid-template-columns: 20% 80%;
+    column-gap: 5rem;;
+    justify-content: space-around;
+    width: 1536px;
+    height: 791px;
+  
+    .Store-basic-card {
+      background-color: white;
+      border-radius: 20px;
+      width: 370px;
+      height: 200px;
+      margin-left: 5rem;
+  
+      .basicHeader{
+          padding: 20px;
+          margin-top: 15px;
+          margin-left: 10px;
+          color: cadetblue;
+          font-weight: bold;
+      }
+      .pharma-details{
+          list-style: none;
+          .li-left{
+              font-weight: bold;
+              margin-right: 5px;
+          }
+  
+          .pharma-basic{
+              margin-bottom: 5px;
+          }
+      }
+    }
+    .column-right {
+      width: 1000px;
+      height: 650px;
+      border-radius: 20px;
+      background-color: white;
+      display: grid;
+      grid-template-rows: 15% 80%;
+      row-gap: 0rem;
+  
+  
+      .right-header{
+          width:970px;
+          margin-top: 1rem;
+          height: 50px;
+          border-radius: 17px;
+          background-color: cadetblue;
+  
+          .right-header-inner{
+              margin-left: 400px;
+              margin-top: 10px;
+              color: white;
+              font-weight: bold;
+          }
+      }
+      .delivery-card{
+          width: 940px;
+          height: 540px;
+          overflow: scroll;
+          margin-top: 0;
+          margin-left: 1.5rem;
+  
+          .profile-prescription-card-pharmacy {
+              margin-top: 12px;
+              margin-bottom: 12px;
+              min-height: 20px;
+              border: 1px solid cadetblue;
+              border-radius: 14px;
+      
+              .profile-prescription-card-head-pharmacy {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: space-between;
+                padding: 12px;
+      
+                .profile-prescription-card-head-left-pharmacy {
+                  :nth-child(1) {
+                    margin-bottom: 2px;
+                    font-size: 16px;
+                  }
+                  :nth-child(2) {
+                    margin-top: 4px;
+                    margin-bottom: 2px;
+                    font-size: 14px;
+                  }
+                  :nth-child(3) {
+                    margin-top: 4px;
+                    margin-bottom: 2px;
+                    font-size: 14px;
+                    font-weight: 500;
+                  }
+                }
+      
+                .profile-prescription-card-head-right-pharmacy {
+                  :nth-child(1) {
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                  }
+                  :nth-child(2) {
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                  }
+                  .priority{
+                      color: rgb(242, 74, 74);
+                      margin-left: 5px;
+                      font-weight: bold;
+                  }
+                }
+      
+                .profile-description-card-button-pharmacy {
+                  background-color: cadetblue;
+                  color: white;
+                  width: 85px;
+                  height: 25px;
+                  font-size: 12px;
+                  padding: 0;
+                }
+              }
+              .profile-prescription-card-body-pharmacy {
+                border-top: 1px solid black;
+                padding: 12px;
+  
+                .delete-prescription{
+                  background-color: cadetblue;
+                  color: white;
+                  width: 85px;
+                  height: 25px;
+                  font-size: 12px;
+                  padding: 0;
+                }
+                .profile-prescription-card-body-sect-1-pharmacy {
+                  font-size: 15px;
+                  margin-top: 0;
+                }
+                .profile-prescription-card-body-sect-2-pharmacy {
+                  display: grid;
+                  grid-template-columns: auto auto auto;
+                  justify-content: start;
+                  font-size: 15px;
+      
+                  ul li {
+                    margin-right: 8px;
+                  }
+                  p {
+                    margin: 0;
+                    margin-bottom: 0px;
+                    margin-right: 8px;
+                  }
+                }
+                .profile-prescription-card-body-sect-2-header-pharmacy{
+                  font-weight: bold;
+                }
+  
+                .profile-prescription-card-body-sect-3-header-pharmacy {
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  font-weight: bold;
+                }
+                .profile-prescription-card-body-sect-3-pharmacy {
+                  table {
+                    th {
+                      font-size: 14px;
+                    }
+                    td {
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+            }
+      }
+    }
+  }
+  

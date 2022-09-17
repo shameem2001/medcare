@@ -34,16 +34,23 @@ const userSchema = mongoose.Schema({
   },
   prev_docs: {
     type: String,
+<<<<<<< HEAD
     required: true,
   },
   prev_cond: {
     type: String,
     required: true,
+=======
+  },
+  prev_cond: {
+    type: String,
+>>>>>>> origin/pharmacy-final
   },
   address: {
     type: String,
     required: true,
   },
+<<<<<<< HEAD
   overview: [String],
   history: [
     {
@@ -95,6 +102,8 @@ const userSchema = mongoose.Schema({
     },
   ],
   appointments: [String]
+=======
+>>>>>>> origin/pharmacy-final
 });
 
 const user = mongoose.model("user", userSchema);

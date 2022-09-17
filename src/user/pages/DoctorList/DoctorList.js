@@ -5,6 +5,7 @@ import HospitalListCard from '../../components/DoctorList/HospitalListCard';
 import DoctorListCard from "../../components/DoctorList/DoctorListCard";
 import './DoctorList.scss';
 
+<<<<<<< HEAD
 let hospitals_list = [
   {
     id: 1,
@@ -97,6 +98,8 @@ let doctors_list = [
   }
 ];
 
+=======
+>>>>>>> origin/pharmacy-final
 export default function DoctorList() {
   const props = useLocation().state;
 
@@ -107,8 +110,14 @@ export default function DoctorList() {
   console.log(location, criteria, searchField);
 
 
+<<<<<<< HEAD
   let [doctors, setDoctors] = useState(doctors_list);
 
+=======
+  let [doctors, setDoctors] = useState([]);
+
+  //search start.
+>>>>>>> origin/pharmacy-final
   let fetchData = async () => {
     let results;
     console.log(results);
@@ -137,7 +146,11 @@ export default function DoctorList() {
   useEffect(() => {
     fetchData();
   }, []);
+<<<<<<< HEAD
 
+=======
+// search end.
+>>>>>>> origin/pharmacy-final
   return (
     <div className="parent">
       <div className="container">

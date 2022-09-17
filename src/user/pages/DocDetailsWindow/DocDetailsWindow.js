@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import apis from "../../../apis";
+<<<<<<< HEAD
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import { Card, IconButton, Typography, Chip, Stack } from "@mui/material";
@@ -19,6 +20,15 @@ var cardStyle = {
   color: "cadetblue",
   backgroundColor: "white",
 };
+=======
+import CardContent from "@mui/material/CardContent";
+import { Card, Typography, Chip } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./DocDetailsWindow.scss";
+import bcrypt from "bcryptjs";
+import image from "../../../assets/booked.png";
+import docImage from "../../../assets/cv.png";
+>>>>>>> origin/pharmacy-final
 
 export default function DocDetailsWindow() {
   // Doctor data fetch start
@@ -26,7 +36,10 @@ export default function DocDetailsWindow() {
   const [selectedDate, setSelectedDate] = useState(
     JSON.stringify(new Date()).split("T")[0].slice(1)
   );
+<<<<<<< HEAD
   const [openModel, setOpenModel] = useState(false);
+=======
+>>>>>>> origin/pharmacy-final
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
   const navigate = useNavigate();
@@ -40,6 +53,7 @@ export default function DocDetailsWindow() {
 
   let timeSlot;
 
+<<<<<<< HEAD
   let [doctorData, setDoctorData] = useState({
     name: "Dr.Feroz BK",
     hospital: "Sreechand Hospital",
@@ -48,6 +62,9 @@ export default function DocDetailsWindow() {
     district: "Kannur",
     email: "ferozbk@gmail.com",
   });
+=======
+  let [doctorData, setDoctorData] = useState({});
+>>>>>>> origin/pharmacy-final
 
   useEffect(() => {
     getDoctorDetails();
@@ -72,20 +89,30 @@ export default function DocDetailsWindow() {
       results1 = data.data;
     });
 
+<<<<<<< HEAD
     console.log(results1);
+=======
+>>>>>>> origin/pharmacy-final
     setTimeshow(results1);
   };
 
   // Doctor data fetch end
 
   // const [tasks, setTasks] = useState(doctorData);
+<<<<<<< HEAD
   const [activeStep, setActiveStep] = useState(0);
   let updateStep = () => {
     setActiveStep(1);
+=======
+  const [activeStep, setActiveStep] = useState(1);
+  let updateStep = (i) => {
+    setActiveStep(i);
+>>>>>>> origin/pharmacy-final
   };
 
   //Update appointment start
 
+<<<<<<< HEAD
   let updateUser = async (userId, appointment_id) => {
     await apis
       .put(`user/${userId}`, {
@@ -105,6 +132,8 @@ export default function DocDetailsWindow() {
       .catch((error) => console.log(error));
   };
 
+=======
+>>>>>>> origin/pharmacy-final
   let updateDoctorSlots = async (slotTime) => {
     const new_slots = [];
     console.log(slotTime);
@@ -113,7 +142,10 @@ export default function DocDetailsWindow() {
         new_slots.push(slot);
       }
     });
+<<<<<<< HEAD
     console.log(new_slots);
+=======
+>>>>>>> origin/pharmacy-final
     await apis
       .put(`slot/${timeSlot._id}`, {
         slots: new_slots,
@@ -137,12 +169,25 @@ export default function DocDetailsWindow() {
         session: session1,
         time: time1,
         status: "Active",
+<<<<<<< HEAD
       })
       .then((data) => (appointment_id = data.data))
       .catch((error) => console.log(error));
 
     updateUser(userId, appointment_id);
     updateDoctor(doctorId, appointment_id);
+=======
+        mail_id: localStorage.getItem("_mail"),
+        doctor_name: doctorData.name,
+      })
+      .then((data) => {
+        console.log("Appointment posted.");
+        appointment_id = data.data;
+      })
+      .catch((error) => console.log(error));
+
+    updateStep(4);
+>>>>>>> origin/pharmacy-final
   };
 
   let loggedIn;
@@ -159,6 +204,10 @@ export default function DocDetailsWindow() {
         return it.date === selectedDate && it.doctor_id === doctorId;
       })[0];
 
+<<<<<<< HEAD
+=======
+      console.log(times);
+>>>>>>> origin/pharmacy-final
       timeSlot = times;
     }
 
@@ -196,10 +245,13 @@ export default function DocDetailsWindow() {
       });
     };
 
+<<<<<<< HEAD
     let sendMail = () => {
       navigate("/");
     };
 
+=======
+>>>>>>> origin/pharmacy-final
     if (isEmpty === false) {
       return (
         <div className="mt-2 mb-7">
@@ -223,11 +275,19 @@ export default function DocDetailsWindow() {
                   }
                   onClick={() => {
                     console.log("clicked");
+<<<<<<< HEAD
                     if(localStorage.getItem("_id") !== null){
                       addAppointment(item3);
                       updateDoctorSlots(item3);
                     }
                     else{
+=======
+                    if (localStorage.getItem("_id") !== null) {
+                      addAppointment(item3);
+                      updateDoctorSlots(item3);
+                      updateStep(2);
+                    } else {
+>>>>>>> origin/pharmacy-final
                       console.log("not logged in");
                     }
                   }}
@@ -256,7 +316,11 @@ export default function DocDetailsWindow() {
                     class="close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
+<<<<<<< HEAD
                     onClick={sendMail}
+=======
+                    onClick={()=>navigate("/")}
+>>>>>>> origin/pharmacy-final
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -283,7 +347,11 @@ export default function DocDetailsWindow() {
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
+<<<<<<< HEAD
                     onClick={sendMail}
+=======
+                    onClick={()=>navigate("/")}
+>>>>>>> origin/pharmacy-final
                   >
                     Back to Home
                   </button>
@@ -375,7 +443,15 @@ export default function DocDetailsWindow() {
         <div className="Wrapper-in-top">
           <div className="Doctor-details">
             <div className="Doctor-details-left">
+<<<<<<< HEAD
               <div className="Doctor-photo"></div>
+=======
+              {docImage === null ? (
+                <img src={docImage} alt="" className="Doctor-photo" />
+              ) : (
+                <img className="Doctor-photo" src={doctorData.img} alt="" />
+              )}
+>>>>>>> origin/pharmacy-final
             </div>
             <div className="Doctor-details-right">
               <div className="Doctor-data-title">
@@ -393,6 +469,7 @@ export default function DocDetailsWindow() {
                       {doctorData.hospital}
                     </li>
                     <li className="Docdata-elements">
+<<<<<<< HEAD
                       <span className="leftside">Speciality : </span>{" "}
                       {doctorData.department}
                     </li>
@@ -400,11 +477,27 @@ export default function DocDetailsWindow() {
                       <span className="leftside">E-mail : </span>
                       {doctorData.email}
                     </li>
+=======
+                      <span className="leftside">E-mail : </span>
+                      {doctorData.email}
+                    </li>
+                    <li className="Docdata-elements">
+                      <span className="leftside">Hospital Address : </span>
+                      {doctorData.hospital_address}
+                    </li>
+>>>>>>> origin/pharmacy-final
                   </ul>
                 </div>
                 <div className="Doctor-data-right2">
                   <ul className="Docdata2">
                     <li className="Docdata-elements2">
+<<<<<<< HEAD
+=======
+                      <span className="leftside2">Speciality : </span>{" "}
+                      {doctorData.department}
+                    </li>
+                    <li className="Docdata-elements2">
+>>>>>>> origin/pharmacy-final
                       <span className="leftside2">Location : </span>
                       {doctorData.district}
                     </li>
@@ -412,10 +505,13 @@ export default function DocDetailsWindow() {
                       <span className="leftside2">Experience : </span>
                       {doctorData.experience}
                     </li>
+<<<<<<< HEAD
                     <li className="Docdata-elements2">
                       <span className="leftside2">Registration Number : </span>
                       167b54
                     </li>
+=======
+>>>>>>> origin/pharmacy-final
                   </ul>
                 </div>
               </div>
@@ -449,7 +545,10 @@ export default function DocDetailsWindow() {
           <div className="Booking-slots-left">
             <div className="mt-0 ">
               <div className="input-group date slot-date-grid" id="datepicker">
+<<<<<<< HEAD
                 {/* <div style={{width:"10px"}}></div> */}
+=======
+>>>>>>> origin/pharmacy-final
                 <input
                   className="container shadow-sm slot-date"
                   defaultValue={selectedDate}
@@ -458,6 +557,10 @@ export default function DocDetailsWindow() {
                     setSelectedDate(e.target.value);
                     await getSlotDetails(e.target.value);
                     setDisplayTime(true);
+<<<<<<< HEAD
+=======
+                    updateStep(3);
+>>>>>>> origin/pharmacy-final
                   }}
                   type="date"
                   id="date"

@@ -12,6 +12,7 @@ function Doctorlogin() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
+<<<<<<< HEAD
   let submit = async () => {
     let results;
     await apis
@@ -38,6 +39,38 @@ function Doctorlogin() {
       }
     });
   };
+=======
+  let submit = () => {
+    apis
+      .get("doctor")
+      .then((data) => {
+        const same_email = data.data.filter((user) => {
+          return email === user.email;
+        })[0];
+
+        console.log(same_email);
+        if (same_email !== undefined) {
+          bcrypt.compare(password, same_email.password, (err, res) => {
+            if (res === true) {
+              console.log("Logged in");
+              localStorage.setItem("doctor_id", same_email._id);
+              localStorage.setItem("doctor_name", same_email.name);
+              localStorage.setItem("doctor_img", same_email.img);
+              localStorage.setItem("hospital_name", same_email.hospital);
+              navigate("/doctor/");
+            } else {
+              alert("Incorrect Password!!");
+            }
+          });
+        } else {
+          alert("Email doesn't exists!!");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+>>>>>>> origin/pharmacy-final
   return (
     <div className="doctor-login-page">
       <div className=" container shadow doctor-login-page-container">

@@ -1,5 +1,9 @@
 import { React, useState } from "react";
+<<<<<<< HEAD
 import bcrypt from 'bcryptjs';
+=======
+import bcrypt from "bcryptjs";
+>>>>>>> origin/pharmacy-final
 import "./Login.scss";
 import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
@@ -12,6 +16,7 @@ export default function Login() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
+<<<<<<< HEAD
   let submit = async () => {
     let results;
     await apis
@@ -38,6 +43,35 @@ export default function Login() {
     });
 
     
+=======
+  let submit = () => {
+    apis
+      .get("user")
+      .then((data) => {
+        const same_email = data.data.filter((user) => {
+          return email === user.email;
+        })[0];
+
+        console.log(same_email);
+        if (same_email !== undefined) {
+          bcrypt.compare(password, same_email.password, (err, res) => {
+            if (res === true) {
+              console.log("Logged in");
+              localStorage.setItem("_id", same_email._id);
+              localStorage.setItem("user_name", same_email.name);
+              localStorage.setItem("user_img", same_email.img);
+              localStorage.setItem("_mail", same_email.email);
+              navigate("/");
+            } else {
+              alert("Incorrect Password!!");
+            }
+          });
+        } else {
+          alert("Email doesn't exists!!");
+        }
+      })
+      .catch((err) => console.log(err));
+>>>>>>> origin/pharmacy-final
   };
 
   return (
@@ -79,6 +113,27 @@ export default function Login() {
               Sign Up
             </Link>
           </h6>
+<<<<<<< HEAD
+=======
+          <div className="navigateToDocPharm">
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/doctor/login");
+              }}
+            >
+              Login as a Doctor
+            </button>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/pharmacy/login");
+              }}
+            >
+              Login as a Pharmacist
+            </button>
+          </div>
+>>>>>>> origin/pharmacy-final
         </div>
       </div>
     </div>

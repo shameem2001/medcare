@@ -12,4 +12,18 @@ app.get("/api/admin", async (req, res)=>{
     }
 });
 
+<<<<<<< HEAD
+=======
+app.put("/api/admin/:id", async(req, res)=>{
+    adminmodel
+      .findByIdAndUpdate(req.params.id, req.body)
+      .then((data) => res.send(data))
+      .catch((e) => console.log(e));
+})
+
+app.delete("/api/admin/:id", async(req, res)=>{
+    adminmodel.findByIdAndDelete({_id: req.params.id}).then((data)=>res.send(data)).catch((e)=>console.log(e));
+})
+
+>>>>>>> origin/pharmacy-final
 module.exports = app;

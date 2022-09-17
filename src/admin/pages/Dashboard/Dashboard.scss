@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .fullpage {
     height: 82vh;
     width: 100vw;
@@ -73,4 +74,87 @@ tr:hover {
 .link{
     text-decoration: none;
     color: white;
+=======
+.fullpage{
+    background-color: snow;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    min-height: 90vh;
+    padding-top: 80px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    .leftpart{
+        min-width: 500px;
+
+        .divtable{
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid lightgray;
+
+            th{
+                text-align: center;
+            }
+
+            td{
+                text-align: center;
+            }
+        }
+
+        button{
+            padding: 4px;
+            font-size: 13px;
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .add-button{
+            padding: 6px;
+            font-size: 16px;
+            width: 180px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-left: 40%;
+            background-color: cadetblue;
+            color: white;
+        }
+    }
+
+    .rightpart{
+        min-width: 500px;
+
+        .divtable{
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid lightgray;
+
+            th{
+                text-align: center;
+            }
+
+            td{
+                text-align: center;
+            }
+        }
+
+        button{
+            padding: 4px;
+            font-size: 13px;
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .add-button{
+            padding: 6px;
+            font-size: 16px;
+            width: 180px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-left: 40%;
+            background-color: cadetblue;
+            color: white;
+        }
+    }
+>>>>>>> origin/pharmacy-final
 }
