@@ -62,8 +62,8 @@ export default function Register() {
       }).then((data)=>{
         console.log("submitted");
         console.log(data.data);
+        navigate("/login");
       }).catch((e)=>{alert("Error")});
-      navigate("/login");
     }
     else{
       alert("Email exists. Recheck Credentials.");

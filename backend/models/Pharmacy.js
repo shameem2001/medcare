@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const pharmacySchema = mongoose.Schema({
+  admin_id: {
+    type: String,
+  },
   hospital_name: {
     type: String,
   },

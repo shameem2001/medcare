@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const doctorSchema = mongoose.Schema({
+  admin_id: {
+    type: String
+  },
   name: {
     type: String,
     required: true,

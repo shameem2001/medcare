@@ -12,31 +12,31 @@ function Doctorlogin() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
-  let submit = async () => {
-    let results;
-    await apis
+  let submit = () => {
+    apis
       .get("pharmacy")
       .then((data) => {
-        results = data.data;
+        const same_email = data.data.filter((user) => {
+          return email === user.email;
+        })[0];
 
+        console.log(same_email);
+        if (same_email !== undefined) {
+          bcrypt.compare(password, same_email.password, (err, res) => {
+            if (res === true) {
+              console.log("Logged in");
+              localStorage.setItem("pharmacy_id", same_email._id);
+              localStorage.setItem("pharmacy_name", same_email.name);
+              navigate("/pharmacy/");
+            } else {
+              alert("Incorrect Password!!");
+            }
+          });
+        } else {
+          alert("Email doesn't exists!!");
+        }
       })
       .catch((err) => console.log(err));
-
-    let match = false;
-    results.map((data) => {
-      bcrypt.compare(password, data.password, (err, res) => {
-        console.log(res);
-        if (res === true && email === data.email) {
-          match = true;
-          localStorage.setItem("pharmacy_id", data._id);
-          localStorage.setItem("pharmacy_name", data.name);
-          navigate("/pharmacy/",{state:{pharmacyId:data._id}});
-        }
-      });
-      if (match === false) {
-        console.log("invalid credentials");
-      }
-    });
   };
   return (
     <div className="doctor-login-page">

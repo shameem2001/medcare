@@ -135,7 +135,7 @@ export default function Profile() {
       .then((data) => {
         // console.log(data.data);
         results = data.data.filter((doc) => {
-          return doc.user_id === user_id && doc.status === "Active";
+          return doc.user_id === user_id;
         });
       })
       .catch((error) => {
@@ -323,7 +323,13 @@ export default function Profile() {
           <h5>Registered Dependants</h5>
           <hr className="dependants-card-hr" />
           {dependantData.map((itemd) => {
-            return <DependantCard id={itemd._id} name={itemd.name} rel={itemd.relationship} />;
+            return (
+              <DependantCard
+                id={itemd._id}
+                name={itemd.name}
+                rel={itemd.relationship}
+              />
+            );
           })}
           <button
             className="btn dependents-card-btn"
@@ -417,18 +423,20 @@ export default function Profile() {
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
                 <h5>Latest Appointment</h5>
                 <hr />
-                {details2.length !== 0?
-                <AppointmentCard
-                  uName={userData.name}
-                  _id={details2[0]._id}
-                  use_id={details2[0].user_id}
-                  doctor_id={details2[0].doctor_id}
-                  date={details2[0].date}
-                  session={details2[0].session}
-                  time={details2[0].time}
-                  status={details2[0].status}
-                />
-              : <div></div>}
+                {details2.length !== 0 && details2[0].status === "Active" ? (
+                  <AppointmentCard
+                    uName={userData.name}
+                    _id={details2[0]._id}
+                    use_id={details2[0].user_id}
+                    doctor_id={details2[0].doctor_id}
+                    date={details2[0].date}
+                    session={details2[0].session}
+                    time={details2[0].time}
+                    status={details2[0].status}
+                  />
+                ) : (
+                  <div></div>
+                )}
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-history-container">
                 <h5>History</h5>
@@ -437,22 +445,26 @@ export default function Profile() {
                   id="accordion"
                   className="profile-tabbar-content-all-tab-history-accordion"
                 >
-                  {details.length !== 0 ?details.slice(0, 3).map((item3) => {
-                    return (
-                      <PrescriptionCard
-                        _id={item3._id}
-                        use_id={item3.user_id}
-                        doc_id={item3.doctor_id}
-                        date={item3.date}
-                        blood_p={item3.blood_pressure}
-                        body_t={item3.body_temperature}
-                        blood_o={item3.blood_oxygen}
-                        blood_s={item3.blood_sugar}
-                        observation={item3.observation}
-                        prescription={item3.prescription}
-                      />
-                    );
-                  }):<div></div>}
+                  {details.length !== 0 ? (
+                    details.slice(0, 3).map((item3) => {
+                      return (
+                        <PrescriptionCard
+                          _id={item3._id}
+                          use_id={item3.user_id}
+                          doc_id={item3.doctor_id}
+                          date={item3.date}
+                          blood_p={item3.blood_pressure}
+                          body_t={item3.body_temperature}
+                          blood_o={item3.blood_oxygen}
+                          blood_s={item3.blood_sugar}
+                          observation={item3.observation}
+                          prescription={item3.prescription}
+                        />
+                      );
+                    })
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
               </div>
             </div>

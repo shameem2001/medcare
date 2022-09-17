@@ -1,24 +1,20 @@
 import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
-  const [doctDetails, setDoctdetails] = useState([
-    {
-      name: "Jeevan",
-      department: "Physician",
-      email: "sample@gmail.com",
-      phoneNumber: "0987654312",
-    },
-  ]);
+  const navigate = useNavigate();
+  const admin_id = localStorage.getItem("admin_id");
+
+  const [doctDetails, setDoctdetails] = useState([]);
 
   const removeDoctor = async (doctorId) => {
     await apis
       .delete(`doctor/${doctorId}`)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
-    
+
     getDoctList();
   };
 
@@ -28,7 +24,9 @@ export default function Dashboard() {
     await apis
       .get("doctor")
       .then((data) => {
-        results = data.data;
+        results = data.data.filter((doc) => {
+          return doc.admin_id === admin_id;
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -40,22 +38,78 @@ export default function Dashboard() {
     }
   };
 
+    let newRow = (e) => {
+      return (
+        <tr>
+          <td>{e.name}</td>
+          <td>{e.department}</td>
+          <td>{e.email}</td>
+          <td>{e.phoneNumber}</td>
+          <th>
+            <button
+              className="btn actionbutton"
+              onClick={() => {
+                removeDoctor(e._id);
+              }}
+            >
+              Remove
+            </button>
+          </th>
+        </tr>
+      );
+    };
+
+
   useEffect(() => {
     getDoctList();
+    getPharmList();
   }, [doctDetails.length]);
 
-  let newRow = (e) => {
+
+    const [pharmDetails, setPharmdetails] = useState([]);
+
+    const removePharmacy = async (pharmId) => {
+      await apis
+        .delete(`pharmacy/${pharmId}`)
+        .then((res) => console.log(res))
+        .catch((e) => console.log(e));
+
+      getPharmList();
+    };
+
+    const getPharmList = async () => {
+      console.log("hi from getPharmlist");
+      let results;
+      await apis
+        .get("pharmacy")
+        .then((data) => {
+          results = data.data.filter((pharm) => {
+            return pharm.admin_id === admin_id;
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      if (results.length === 0 || results !== null) {
+        console.log(results);
+        setPharmdetails(results);
+        console.log(results);
+      }
+    };
+
+  let newRow1 = (e) => {
     return (
       <tr>
-        <td>{e.name}</td>
-        <td>{e.department}</td>
+        <td>{e.hospital_name}</td>
+        <td>{e.district}</td>
         <td>{e.email}</td>
         <td>{e.phoneNumber}</td>
         <th>
           <button
             className="btn actionbutton"
             onClick={() => {
-              removeDoctor(e._id);
+              removePharmacy(e._id);
             }}
           >
             Remove
@@ -64,11 +118,12 @@ export default function Dashboard() {
       </tr>
     );
   };
+
+
   return (
     <div className="fullpage">
-      <div className="mainpart">
-        <div className="rightpart">
-          <div className="divtable">
+        <div className="leftpart">
+          <div className="container shadow divtable">
             <table className="table">
               <thead>
                 <tr>
@@ -86,14 +141,44 @@ export default function Dashboard() {
               </tbody>
             </table>
           </div>
+          <button
+            className="btn add-button"
+            onClick={() => {
+              navigate("/admin/add-doctor");
+            }}
+          >
+            ADD DOCTOR
+          </button>
+        </div>
+        <div className="rightpart">
+          <div className="container shadow divtable">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Hospital Name</th>
+                  <th>District</th>
+                  <th>Email</th>
+                  <th>Phone number</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pharmDetails.map((item) => {
+                  return newRow1(item);
+                })}
+              </tbody>
+            </table>
+          </div>
           <div className="bottompart">
-            <button className="btn leftbutton">
-              <Link className="link" to="/admin/add-doctor">
-                ADD DOCTOR
-              </Link>
+            <button
+              className="btn add-button"
+              onClick={() => {
+                navigate("/admin/add-pharmacy");
+              }}
+            >
+              ADD PHARMACY
             </button>
           </div>
-        </div>
       </div>
     </div>
   );

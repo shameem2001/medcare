@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,9 @@ import { TextField, MenuItem, FormControl, InputLabel } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function RegisterPage() {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const admin_id = localStorage.getItem("admin_id");
+
   let [hospital_name, setHospital_name] = useState("");
   let [email, setemail] = useState("");
   let [phoneNumber, setphonenumber] = useState("");
@@ -17,6 +19,19 @@ export default function RegisterPage() {
   let [city, setCity] = useState("");
   let [password, setpassword] = useState("");
 
+  let [pharmacies, setPharmacies] = useState([]);
+  useEffect(() => {
+    let results;
+    apis
+      .get("pharmacy")
+      .then((data) => {
+        results = data.data;
+        setPharmacies(results);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   let passwordHash = async (conpassword) => {
     if (password === conpassword) {
@@ -25,21 +40,36 @@ export default function RegisterPage() {
           setpassword(hashedPassword);
         });
       });
-    } else {
-      console.log("Password not same");
     }
   };
+
   let submit = async (e) => {
-    console.log("submitted");
-    await apis.post("pharmacy", {
-      hospital_name: hospital_name,
-      email: email,
-      phoneNumber: phoneNumber,
-      district: district,
-      city: city,
-      password: password,
+    console.log(pharmacies);
+    const same_email = pharmacies.filter((pharmacy) => {
+      return pharmacy.email === email;
     });
-    navigate("/pharmacy/login");
+    if (same_email.length === 0) {
+      apis
+        .post("pharmacy", {
+          admin_id: admin_id,
+          hospital_name: hospital_name,
+          email: email,
+          phoneNumber: phoneNumber,
+          district: district,
+          city: city,
+          password: password,
+        })
+        .then((data) => {
+          console.log("submitted");
+          console.log(data.data);
+          navigate("/admin/dashboard");
+        })
+        .catch((e) => {
+          alert("Error");
+        });
+    } else {
+      alert("Email exists. Recheck Credentials.");
+    }
   };
 
   return (
@@ -56,7 +86,7 @@ export default function RegisterPage() {
           <div className="pharmacy-div-1">
             <input
               type="text"
-              placeholder="Enter Pharmacy"
+              placeholder="Enter Hospital"
               className="pharmacy-div-child-1"
               onChange={(e) => {
                 setHospital_name(e.target.value);
@@ -89,7 +119,7 @@ export default function RegisterPage() {
               onChange={(e) => {
                 setdistrict(e.target.value);
               }}
-              style={{padding:"5px"}}
+              style={{ padding: "5px" }}
             >
               <option value="Kannur">Kannur</option>
               <option value="Kozhikode">Kozhikode</option>

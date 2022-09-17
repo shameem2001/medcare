@@ -27,7 +27,7 @@ app.get("/api/pharmacy", async (req, res) => {
 app.get("/api/pharmacy/:id", async (req, res)=> {
     try{
         let pharmacy = await pharmacymodel.findOne({'_id': req.params.id});
-        res.send(store);
+        res.send(pharmacy);
     }
     catch(error){
         console.log(error);
@@ -37,7 +37,7 @@ app.get("/api/pharmacy/:id", async (req, res)=> {
 app.put("/api/pharmacy/:id", async (req, res) => {
   try {
     console.log(req.body);
-    await doctormodel
+    await pharmacymodel
       .findByIdAndUpdate(req.params.id, req.body)
       .then((data) => res.send(data));
   } catch (error) {
