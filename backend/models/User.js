@@ -34,17 +34,14 @@ const userSchema = mongoose.Schema({
   },
   prev_docs: {
     type: String,
-    required: true,
   },
   prev_cond: {
     type: String,
-    required: true,
   },
   address: {
     type: String,
     required: true,
   },
-  overview: [String]
 });
 
 const user = mongoose.model("user", userSchema);

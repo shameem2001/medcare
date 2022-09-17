@@ -405,20 +405,15 @@ export default function Profile() {
               <div className="container shadow profile-tabbar-content-all-tab-overview-container">
                 <h5>Overview</h5>
                 <hr />
-                {/* <ul>
-                  <li>Patient has eczema and asthma.</li>
-                  <li>
-                    Allergic to dust, red meat, cocoa, meat with exoskeletons.
-                  </li>
-                  <li>
-                    Allergic reactions often seen as asthma or itchiness in B/L
-                    orbit and legs.
-                  </li>
-                  <li>No other serious medical conditions.</li>
-                </ul> */}
-                {userData.overview.map((item) => {
-                  return newRow(item);
-                })}
+                {overView.length !== 0 ? (
+                  overView.map((item) => {
+                    return newRow(item);
+                  })
+                ) : (
+                  <div style={{ textAlign: "center" }}>
+                    No Overview Given
+                  </div>
+                )}
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
                 <h5>Latest Appointment</h5>
@@ -435,7 +430,9 @@ export default function Profile() {
                     status={details2[0].status}
                   />
                 ) : (
-                  <div></div>
+                  <div style={{ textAlign: "center" }}>
+                    No recent Appointments
+                  </div>
                 )}
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-history-container">
@@ -463,7 +460,9 @@ export default function Profile() {
                       );
                     })
                   ) : (
-                    <div></div>
+                    <div style={{ textAlign: "center" }}>
+                      No patient history available
+                    </div>
                   )}
                 </div>
               </div>
