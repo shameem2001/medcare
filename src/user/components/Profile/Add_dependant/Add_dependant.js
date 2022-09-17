@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import apis from "../../../../apis";
 import "./Add_dependant.scss";
 
-
 export default function Add_dependant(props) {
   let [name, setname] = useState("");
   let [relationship, setrel] = useState("");
@@ -15,7 +14,10 @@ export default function Add_dependant(props) {
       user_id: userId,
       name: name,
       relationship: relationship,
-    });
+    }).then(()=>{
+      props.setTrigger(false);
+
+    }).catch((e)=>{console.log(e)});
   };
 
   return props.trigger ? (

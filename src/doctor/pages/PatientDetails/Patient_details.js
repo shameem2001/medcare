@@ -52,6 +52,7 @@ export default function Patient_details() {
         priority: priority,
         hospital_name: localStorage.getItem("hospital_name"),
         submitted_time: submitted_time,
+        is_visited: false
       })
 
       .then((res) => {
@@ -82,15 +83,6 @@ export default function Patient_details() {
     }
   };
 
-  // let presC = [
-  //   {
-  //     user_id: "62eac78745c82de1c0ff6f31",
-  //     doctor_id: "62efe3e72d916a9451598d70",
-  //     title: "21-10-2022",
-  //     observation: "heavy depression",
-  //     prescription: "pmol,dolo,cocaine",
-  //   },
-  // ];
 
   const [details, setDetails] = useState([]);
 
@@ -117,40 +109,6 @@ export default function Patient_details() {
     fetchPrescription();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // const addPrescription = async () => {
-  //   console.log(user_id);
-  //   await apis
-  //     .put(`user/${user_id}`, {
-  //       $push: {
-  //         history: {
-  //           doctor_name: "Ayyappan",
-  //           hospital_name: "Mims",
-  //           condition: "Stomachache",
-  //           consultation_date: "2022-12-12",
-  //           consultation_day: "Sunday",
-  //           doctors_notes: ["Slightly anemic", "needs ors"],
-  //           body_condition: {
-  //             blood_pressure: "175",
-  //             body_temperature: "97.5",
-  //             blood_oxygen: "97",
-  //             blood_sugar: "120",
-  //           },
-  //           medicine_prescription: [
-  //             {
-  //               medicine_name: "Dolo",
-  //               dosage: "1-1-1",
-  //               duration: "5",
-  //             },
-  //           ],
-  //         },
-  //       },
-  //     })
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.log(error));
-  //     console.log("change the status of appointment to be finished");
-  //   navigate("/doctor/patient-details");
-  // };
 
   return (
     <div className="patient-details-page">
