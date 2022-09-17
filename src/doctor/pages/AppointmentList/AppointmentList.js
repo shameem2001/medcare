@@ -8,6 +8,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import green from "@mui/material/colors/green";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const theme = createTheme({
   palette: {
@@ -20,17 +22,29 @@ export default function PatientList() {
   const doctor_id = localStorage.getItem("doctor_id");
   console.log(doctor_id);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   // add-slot
-  const [leave, setLeave] = useState("no");
+  const [isWorkday, setIsWorkday] = useState("yes");
   const [workHrsStart, setWorkHrsStart] = useState("10:00");
   const [workHrsEnd, setWorkHrsEnd] = useState("18:00");
   const [breakStart, setBreakStart] = useState("12:00");
   const [breakEnd, setBreakEnd] = useState("13:00");
   const [duration, setDuration] = useState("30");
+  const [fetchedSlots, setFetchedSlots] = useState([]);
+  const [slotExists, setSlotExists] = useState(false);
+
+  useState(() => {
+    apis.get("slot").then((data) => {
+      setFetchedSlots(data.data);
+    });
+  }, []);
 
   const handleDateChange = (date) => {
-    setLeave("no");
+    setIsWorkday("yes");
     setWorkHrsStart("10:00");
     setWorkHrsEnd("18:00");
     setBreakStart("12:00");
@@ -74,14 +88,20 @@ export default function PatientList() {
     let formattedDateP = JSON.stringify(selectedDate).split("T")[0].slice(1);
     console.log(formattedDateP);
 
-    if (leave === "yes") {
+    const doesSlotExists = fetchedSlots.filter((data) => {
+      return data.date === formattedDateP && data.doctor_id === doctor_id;
+    });
+
+    if (doesSlotExists.length !== 0) {
+      alert("Slot exists");
+    } else if (isWorkday === "no") {
       console.log("leave, update doctor");
       await apis
         .put(`doctor/${doctor_id}`, {
           $push: {
             bookings: {
               date: formattedDateP,
-              isLeave: leave,
+              isLeave: isWorkday,
             },
           },
         })
@@ -122,10 +142,13 @@ export default function PatientList() {
         .post("slot", {
           doctor_id: doctor_id,
           date: formattedDateP,
-          isLeave: leave,
+          isLeave: isWorkday,
           slots: slots_for_day,
         })
-        .then((data) => console.log(data))
+        .then((data) => {
+          console.log(data);
+          setShow(true);
+        })
         .catch((e) => console.log(e));
     }
   };
@@ -142,6 +165,12 @@ export default function PatientList() {
           console.log("Here");
           results = data.data.filter((doc) => {
             const date = JSON.stringify(selectedDate).split("T")[0].slice(1);
+            if(fetchedSlots.filter((data)=>{return date ===data.date && doctor_id === data.doctor_id}).length !== 0){
+              setSlotExists(true);
+            }
+            else{
+              setSlotExists(false);
+            }
             console.log(date);
             return doc.doctor_id === doctor_id && doc.date === date;
           });
@@ -164,23 +193,23 @@ export default function PatientList() {
       });
   };
 
-    let [usersData, setUsersData] = useState([]);
+  let [usersData, setUsersData] = useState([]);
 
-    const getUserNameAndPhone = async (id) => {
-      let results;
-      await apis
-        .get(`user`)
-        .then((data) => {
-          results = data.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  const getUserNameAndPhone = async (id) => {
+    let results;
+    await apis
+      .get(`user`)
+      .then((data) => {
+        results = data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-      if (results !== null) {
-        setUsersData(results);
-      }
-    };
+    if (results !== null) {
+      setUsersData(results);
+    }
+  };
 
   useEffect(() => {
     if (doctor_id !== null) {
@@ -201,7 +230,13 @@ export default function PatientList() {
         {isSlotEmpty === true ? (
           <div className="container add-slot-page">
             <div className="container shadow add-slot-page-left">
-              <h3 className="textCenter">{`${month} ${dayno}th ${year}`}</h3>
+              <div className="slotExist">
+                <h3 className="textCenter">{`${month} ${dayno}th ${year}`}</h3>
+                {slotExists === true?
+                  <h6>Slots already Added</h6>:
+                  null
+                }
+              </div>
               <div>
                 <label>Will you be conducting consultation on this day: </label>
                 <div style={{ display: "inline" }}>
@@ -211,8 +246,9 @@ export default function PatientList() {
                     type="radio"
                     name="leave"
                     value="yes"
+                    checked
                     onChange={(e) => {
-                      setLeave(e.target.value);
+                      setIsWorkday(e.target.value);
                     }}
                   />
                   <label>no </label>
@@ -221,9 +257,8 @@ export default function PatientList() {
                     type="radio"
                     name="leave"
                     value="no"
-                    checked
                     onChange={(e) => {
-                      setLeave(e.target.value);
+                      setIsWorkday(e.target.value);
                     }}
                   />
                 </div>
@@ -293,6 +328,16 @@ export default function PatientList() {
                 <button className="btn" onClick={addSlot}>
                   ADD
                 </button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Slots added!</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
           </div>

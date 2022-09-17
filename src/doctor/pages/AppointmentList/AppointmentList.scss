@@ -195,3 +195,9 @@
     }
   }
 }
+
+.slotExist{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
