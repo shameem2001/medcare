@@ -6,7 +6,13 @@ import "./Patient_details.scss";
 import PrescribtionCard from "../../components/PatientDetails/Prescribtion_card";
 import { useLocation, useNavigate } from "react-router-dom";
 import imga from "../../../assets/profile.jpg";
-import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import { Document, Page, Text, View,Line, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import { fontSize } from "@mui/system";
+
+
+const doc_id = localStorage.getItem("doctor_id");
+
+
 
 
 export default function Patient_details() {
@@ -26,6 +32,24 @@ export default function Patient_details() {
       .catch((e) => console.log(e));
   };
 
+  let [DoctorData, setDoctorData] = useState({});
+
+  const getDoctorDetails = async () => {
+    console.log(doc_id);
+    let results;
+    await apis
+      .get(`doctor/${doc_id}`)
+      .then((data) => {
+        console.log(data.data);
+        results = data.data;
+      })
+      .catch((e) => console.log(e));
+
+    if (results !== null) {
+      console.log(results);
+      setDoctorData(results);
+    }
+  };
 
 let [userData, setUserData] = useState({});
 
@@ -45,14 +69,21 @@ let [userData, setUserData] = useState({});
       setUserData(results);
     }
   };
+  const obs1 = localStorage.getItem("pres_obs");
+  const pres1 = localStorage.getItem("pre_prescription");
+  const pre1 = localStorage.getItem("pre_pressure");
+  const temp1 = localStorage.getItem("pre_temp");
+  const oxyg1 = localStorage.getItem("pre_oxyg");
+  const sugar1 = localStorage.getItem("pre_sugar");
+
 
   let [condition, setCondition] = useState("");
-  let [observation, setobservation] = useState("");
-  let [prescription, setprescribtion] = useState("");
-  let [pressure, setPressure] = useState("");
-  let [temp, setTemp] = useState("");
-  let [oxyg, setOxyg] = useState("");
-  let [sugar, setSugar] = useState("");
+  let [observation, setobservation] = useState(obs1);
+  let [prescription, setprescribtion] = useState(pres1);
+  let [pressure, setPressure] = useState(pre1);
+  let [temp, setTemp] = useState(temp1);
+  let [oxyg, setOxyg] = useState(oxyg1);
+  let [sugar, setSugar] = useState(sugar1);
 
 
 const styles = StyleSheet.create({
@@ -61,18 +92,27 @@ const styles = StyleSheet.create({
 	},
 	section: {
 		fontSize:40,
-    paddingLeft:250,
-    paddingTop: 20,
-    paddingBottom: 20
+    paddingLeft:180,
+    paddingTop: 80,
     
 	},
   section1: {
     fontSize:20,
-    paddingLeft:10,
-    paddingBottom: 10
+    paddingLeft:180,
+    paddingBottom: 40
   },
   section2: {
-      padding:30
+      paddingLeft:30,
+      fontSize:30
+  },
+  section3: {
+    paddingLeft:30,
+    fontSize:20
+  },
+  section4: {
+    paddingLeft:30,
+    fontSize:20,
+    paddingBottom:30
   },
   viewer: {
     width: window.innerWidth, //the pdf viewer will take up all of the width and height
@@ -84,45 +124,64 @@ const MyDocument = (
 	<Document>
 		<Page  style={styles.page}>
 			<View  style={styles.section}>
-				<Text>Insights</Text>
+				<Text>{DoctorData.hospital}</Text>
 			</View>
       
-			<View  style={styles.section1}>
+      <View  style={styles.section1}>
+				<Text>{DoctorData.hospital_address}</Text>
+			</View>
+      <Line style={styles.line} />
+
+      <View  style={styles.section2}>
+				<Text> Doctor Details </Text>
+			</View>
+
+      <View  style={styles.section3}>
+				<Text>Name : {DoctorData.name}</Text>
+			</View>
+
+      <View  style={styles.section3}>
+				<Text>Department : {DoctorData.department}</Text>
+			</View>
+
+
+      <View  style={styles.section4}>
+				<Text>Email : {DoctorData.email}</Text>
+			</View>
+      <View  style={styles.section2}>
+				<Text> Diagnosis </Text>
+			</View>
+
+			<View  style={styles.section3}>
 				<Text>Name : {userData.name}</Text>
 			</View>
 
-      <View  style={styles.section1}>
-				<Text>Number : {userData.phoneNumber}</Text>
-			</View>
-
-      <View  style={styles.section1}>
+      <View  style={styles.section4}>
 				<Text>Email : {userData.email}</Text>
 			</View>
 
-      <View  style={styles.section2}>
-			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section3}>
 				<Text>Blood Pressure : {pressure} </Text>
 			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section3}>
 				<Text>Body Temperature : {temp} </Text>
 			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section3}>
 				<Text>Blood oxygen level : {oxyg} </Text>
 			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section4}>
 				<Text>Blood sugar level : {sugar} </Text>
 			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section4}>
 				<Text>Observation : {observation} </Text>
 			</View>
 
-      <View  style={styles.section1}>
+      <View  style={styles.section3}>
 				<Text>prescription : {prescription} </Text>
 			</View>
 
@@ -135,6 +194,14 @@ const MyDocument = (
  
 
   const postData = async () => {
+    localStorage.removeItem("pres_obs");
+    localStorage.removeItem("pre_prescription");
+    localStorage.removeItem("pre_pressure");
+    localStorage.removeItem("pre_temp");
+    localStorage.removeItem("pre_oxyg");
+    localStorage.removeItem("pre_sugar");
+
+
     await apis
       .post("prescription", {
         user_id: user_id,
@@ -158,13 +225,19 @@ const MyDocument = (
   };
 
   const printpdf = async () => {
-    if(observation ==="") {
+    if(observation ===null || observation==="") {
       console.log("no value entered")
     }
     else {
       ReactDOM.render(
         <PDFViewer className="pdfpage">{MyDocument}</PDFViewer>,
         document.getElementById('root'),
+        localStorage.setItem("pres_obs", observation),
+          localStorage.setItem("pre_prescription", prescription),
+          localStorage.setItem("pre_pressure", pressure),
+          localStorage.setItem("pre_temp", temp),
+          localStorage.setItem("pre_oxyg", oxyg),
+          localStorage.setItem("pre_sugar", sugar),
       );
 
     }
@@ -205,6 +278,7 @@ const MyDocument = (
   useEffect(() => {
     getPatientDetails();
     fetchPrescription();
+    getDoctorDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -390,6 +464,7 @@ const MyDocument = (
                           Blood Pressure:
                         </label>
                         <input
+                          defaultValue={pre1}
                           className="body-condition-pt-dt-input"
                           type="text"
                           onChange={(e) => {
@@ -402,7 +477,7 @@ const MyDocument = (
                         <label className="body-condition-pt-dt-label">
                           Body Temperature:
                         </label>
-                        <input
+                        <input  defaultValue={temp1}
                           className="body-condition-pt-dt-input"
                           type="text"
                           onChange={(e) => {
@@ -416,7 +491,7 @@ const MyDocument = (
                           {" "}
                           Blood Oxygen Level:
                         </label>
-                        <input
+                        <input defaultValue={oxyg1}
                           className="body-condition-pt-dt-input"
                           type="text"
                           onChange={(e) => {
@@ -429,7 +504,7 @@ const MyDocument = (
                         <label className="body-condition-pt-dt-label">
                           Blood Sugar Level:
                         </label>
-                        <input
+                        <input defaultValue={sugar1}
                           className="body-condition-pt-dt-input"
                           type="text"
                           onChange={(e) => {
@@ -447,7 +522,7 @@ const MyDocument = (
                     >
                       Observations
                     </label>
-                    <textarea
+                    <textarea defaultValue={obs1}
                       id="textarea-doctor2"
                       name="textarea-doctor"
                       rows="3"
@@ -464,7 +539,7 @@ const MyDocument = (
                     >
                       Prescriptions
                     </label>
-                    <textarea
+                    <textarea  defaultValue={pres1}
                       id="textarea-doctor3"
                       name="textarea-doctor"
                       rows="3"
