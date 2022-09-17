@@ -142,7 +142,6 @@ export default function PrescriptionCard({
               <h6 className="profile-prescription-card-body-sect-3-header">
                 Observation
               </h6>
-              {/* <ul>{observationList}</ul> */}
               <table className="table">
                 <tbody>
                   {observationList.map((item) => {
@@ -171,27 +170,6 @@ export default function PrescriptionCard({
                   })}
                 </tbody>
               </table>
-              {/* <table className="table"> */}
-              {/* <ul>{prescription}</ul> */}
-              {/* 
-                <tbody>
-                  <tr>
-                    <td>Dapsone</td>
-                    <td>1-0-1</td>
-                    <td>2 weeks</td>
-                  </tr>
-                  <tr>
-                    <td>hydrocortisone cream</td>
-                    <td>1-1-1</td>
-                    <td>30 days</td>
-                  </tr>
-                  <tr>
-                    <td>RoC Retinol Correxion Eye Cream</td>
-                    <td>1-0-1</td>
-                    <td>7 days</td>
-                  </tr>
-                </tbody> */}
-              {/* </table> */}
             </div>
           </div>
         </div>

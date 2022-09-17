@@ -1,22 +1,33 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import apis from "../../apis";
 
-export default function DeliveryCard({doctor_id}) {
-  const newheading = "heading" ;
-  const newCollapse = "collapse" ;
+export default function DeliveryCard({
+  doctor_id,
+  doctor_name,
+  patient_name,
+  submitted_time,
+  priority,
+  prescription,
+  _id,
+  user_id,
+  address,
+}) {
+  const newheading = "heading" + _id;
+  const newCollapse = "collapse" + _id;
+  let prescriptionList = prescription + "";
+  let prescriptionList1 = prescriptionList.split("\n");
+  const [DetailsDoc, setDetailsdoc] = useState("");
 
-  
-  const [DetailsDoc, setDetailsdoc] = useState();
+  const [seeMore, setSeeMore] = useState("View more");
 
-  const fetchDoctorName = async () => {
-    let result;
+  let result;
+  const fetchPatientName = async () => {
     await apis
-      .get(`doctor/${doctor_id}`)
+      .get(`user/${user_id}`)
       .then((data1) => {
         console.log(data1.data);
-        result = data1.data;
+        result = data1.data.address;
+        console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -28,10 +39,15 @@ export default function DeliveryCard({doctor_id}) {
     }
   };
 
-  useEffect(()=>{
-    fetchDoctorName();
-  })  
+  const set_visited = ()=>{
+    apis.put(`prescription/${_id}`, {
+      is_visited: true,
+    }).then((data)=>console.log(data.data)).catch((e)=>console.log(e));
+  }
 
+  useEffect(() => {
+    fetchPatientName();
+  });
 
   return (
     <div className="container shadow-sm profile-prescription-card-pharmacy">
@@ -40,13 +56,13 @@ export default function DeliveryCard({doctor_id}) {
         id={newheading}
       >
         <div className="profile-prescription-card-head-left-pharmacy">
-          <h6>Patient : Muhammed Shameem</h6>
-          <p>Doctor : {DetailsDoc.name}</p>
+          <h6>Patient : {patient_name}</h6>
+          <p>Doctor : {doctor_name}</p>
         </div>
         <div className="profile-prescription-card-head-right-pharmacy">
-          <h6>26-05-2022</h6>
+          <h6>{submitted_time}</h6>
           <h6>
-            Priority:<span className="priority">HIGH</span>
+            Priority:<span className="priority">{priority}</span>
           </h6>
 
           <button
@@ -54,9 +70,17 @@ export default function DeliveryCard({doctor_id}) {
             data-bs-toggle="collapse"
             data-bs-target={`#${newCollapse}`}
             aria-expanded="false"
-            aria-controls={newCollapse}
+            aria-controls={newheading}
+            onClick={()=>{
+              if(seeMore === "View more"){
+                setSeeMore("View less");
+              }
+              else{
+                setSeeMore("View more");
+              }
+            }}
           >
-            View more
+            {seeMore}
           </button>
         </div>
       </div>
@@ -72,7 +96,7 @@ export default function DeliveryCard({doctor_id}) {
               Patient Address:
             </h6>
             <div className="profile-prescription-card-body-sect-2-pharmacy">
-              <h6>Devikripa house, Mundathicode p.o Thrissur</h6>
+              <h6>{DetailsDoc}</h6>
             </div>
             <h6 className="profile-prescription-card-body-sect-3-header-pharmacy">
               Medicine Prescriptions
@@ -87,31 +111,21 @@ export default function DeliveryCard({doctor_id}) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Dolo 650g</td>
-                    <td>1-1-1</td>
-                    <td>5 days</td>
-                  </tr>
-                  <tr>
-                    <td>Levotek-M</td>
-                    <td>0-0-1</td>
-                    <td>30 days</td>
-                  </tr>
-                  <tr>
-                    <td>Rontac 15g</td>
-                    <td>1-0-1</td>
-                    <td>5 days</td>
-                  </tr>
-                  <tr>
-                    <td>Azee 50g</td>
-                    <td>1-0-1</td>
-                    <td>5 days</td>
-                  </tr>
+                  {prescriptionList1.map((item) => {
+                    let data = item.split(",");
+                    return (
+                      <tr>
+                        <td style={{ fontSize: "15.5px" }}>{data[0]}</td>
+                        <td style={{ fontSize: "15.5px" }}>{data[1]}</td>
+                        <td style={{ fontSize: "15.5px" }}>{data[2]}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
           </div>
-          <button className="btn delete-prescription">Delete</button>
+          <button className="btn delete-prescription" onClick={set_visited}>Deliver</button>
         </div>
       </div>
     </div>

@@ -7,105 +7,41 @@ import "./Dashboard.scss";
 import DeliveryCard from "../../components/DeliveryCard";
 
 export default function Dashboard() {
-  // const location = useLocation().state;
-  // const pharmacy_id = location._id;
-  // console.log(pharmacy_id);
-
   const pharmacy_id = localStorage.getItem("pharmacy_id");
-  const hospital_name = localStorage.getItem("hos_name");
-  // const pharmacy_name = localStorage.getItem('pharmacy_name');
-  // console.log(pharmacy_name);
+  const hospital_name = localStorage.getItem("pharmacy_name");
+  let addr;
 
-  // let pharma = [
-  //   {
-  //     hospital_name: "Aster mims",
-  //     email: "mims@gmail.com",
-  //     phoneNumber: "123456789",
-  //     district: "Thrissur",
-  //     city: "Thrissur",
-  //     password: "aster",
-  //   },
-  // ];
-  // let [pharmacyData, setPharmacyData] = useState(pharma);
+  const [details, setDetails] = useState([]);
+  const [sdetails, setSDetails] = useState([]);
+  const [doctDetails, setDoctDetails] = useState([]);
+  const [address, setAddress] = useState("");
+  const [pharm, setPharm] = useState([]);
 
-  // const fetchPharmacyrData = async () => {
-  //   let results;
-  //   await apis
-  //     .get(`pharmacy/${pharmacy_id}`)
-  //     .then((data) => {
-  //       console.log(data.data);
-  //       results = data.data;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-
-  //   if (results !== null) {
-  //     setPharmacyData(results);
-  //     console.log(results);
-  //   }
-  // };
-
-  // let hospital_name = pharmacyData.hospital_name;
-
-  // let [doctorData, setDoctorData] = useState();
-
-  // const fetchDoctor = async () => {
-  //   let resultd;
-  //   await apis
-  //     .get("doctor")
-  //     .then((datad) => {
-  //       resultd = datad.data.filter((doc) => {
-  //         return doc.hospital === hospital;
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   if (resultd !== null) {
-  //     setDoctorData(resultd);
-  //     console.log(resultd);
-  //   }
-  // };
-
-  const [details, setDetails] = useState([{}]);
-
+  let result1, result2;
   const fetchPrescription = async () => {
-    let result;
     let data1 = await apis.get("prescription");
     console.log(data1.data);
-    result = data1.data.filter((presC) => {
+    result1 = data1.data.filter((presC) => {
       return presC.hospital_name === hospital_name;
     });
 
-    if (result !== null) {
-      setDetails(result);
-      console.log(result);
+    if (result1 !== null) {
+      setDetails(result1);
+    }
+
+    let data2 = await apis.get("pharmacy");
+    console.log(data1.data);
+    result2 = data2.data.filter((presC) => {
+      return presC.hospital_name === hospital_name;
+    })[0];
+
+    if (result2 !== null) {
+      setPharm(result2);
     }
   };
+
   console.log(details);
-
-  // const [DetailsDoc, setDetailsdoc] = useState();
-
-  // const fetchDoctorName = async () => {
-  //   let result;
-  //   await apis
-  //     .get(`doctor/${details.doctor_id}`)
-  //     .then((data1) => {
-  //       console.log(data1.data);
-  //       result = data1.data;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-
-  //   if (result !== null) {
-  //     setDetailsdoc(result);
-  //     console.log(result);
-  //   }
-  // };
-
-  // const doc_name = DetailsDoc.name;
+  console.log(pharm);
 
   useEffect(() => {
     // fetchPharmacyrData();
@@ -124,11 +60,11 @@ export default function Dashboard() {
           </li>
           <li className="pharma-basic">
             <span className="li-left">e-mail:</span>
-            {/* <span> {pharmacyData.email}</span> */}
+            <span> {pharm.email}</span>
           </li>
           <li className="pharma-basic">
-            <span className="li-left">district:</span>
-            {/* <span>{pharmacyData.district}</span> */}
+            <span className="li-left">District:</span>
+            <span>{pharm.district}</span>
           </li>
         </ul>
       </div>
@@ -137,9 +73,45 @@ export default function Dashboard() {
           <h4 className=" right-header-inner">PRESCRIPTIONS</h4>
         </div>
         <div className="delivery-card">
-          {/* {details.map((item) => {
-            return <DeliveryCard doctor_id={item.doctor_id} />;
-          })} */}
+          {details
+            .sort((a, b) => (a.submitted_time > b.submitted_time ? 1 : -1))
+            .filter((data) => {
+              return data.is_visited === false && data.priority === "high";
+            })
+            .map((item) => {
+              return (
+                <DeliveryCard
+                  doctor_id={item.doctor_id}
+                  doctor_name={item.doctor_name}
+                  patient_name={item.patient_name}
+                  submitted_time={item.submitted_time}
+                  priority={item.priority}
+                  prescription={item.prescription}
+                  _id={item._id}
+                  user_id={item.user_id}
+                />
+              );
+            })}
+          {details
+            .sort((a, b) => (a.submitted_time > b.submitted_time ? 1 : -1))
+            .filter((data) => {
+              return data.is_visited === false && data.priority === "low";
+            })
+            .map((item) => {
+              console.log(address);
+              return (
+                <DeliveryCard
+                  doctor_id={item.doctor_id}
+                  doctor_name={item.doctor_name}
+                  patient_name={item.patient_name}
+                  submitted_time={item.submitted_time}
+                  priority={item.priority}
+                  prescription={item.prescription}
+                  _id={item._id}
+                  user_id={item.user_id}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

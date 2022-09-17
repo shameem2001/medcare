@@ -81,17 +81,7 @@ export default function Profile() {
 
   //Prescription Fetching
 
-  let presC = [
-    {
-      user_id: "631db481444e7c6a98141f1b",
-      doctor_id: "62efe3e72d916a9451598d70",
-      title: "21-10-2022",
-      observation: "heavy depression\nAnxiety",
-      prescription: "pmol,1-0-1,2 weeks\ndolo,1-1-1,3 weeks",
-    },
-  ];
-
-  const [details, setDetails] = useState(presC);
+  const [details, setDetails] = useState([]);
   console.log(details);
 
   const fetchPrescription = async () => {
@@ -116,18 +106,7 @@ export default function Profile() {
 
   //Appointment details Fetching
 
-  let defAppointment = [
-    {
-      user_id: "631db481444e7c6a98141f1b",
-      doctor_id: "6315fd773ab894b04626855f",
-      date: "2022-09-24",
-      session: "Afternoon",
-      time: "2.30 PM",
-      status: "Active",
-    },
-  ];
-
-  const [details2, setDetails2] = useState(defAppointment);
+  const [details2, setDetails2] = useState([]);
 
   const appointmentData = async () => {
     let results;
@@ -168,27 +147,8 @@ export default function Profile() {
     return hoursNum + minNum;
   };
 
-  // useEffect(()=>{
-  //   appointmentData();
-  // })
-  // let defDoc=[{
-  //   name: "Dr.Feroz BK",
-  //   hospital: "Sreechand Hospital",
-  //   department: "Consulting Physician",
-  //   experience: 3,
-  //   district: "Kannur",
-  //   email: "ferozbk@gmail.com",
-  // }]
 
-  let deP = [
-    {
-      user_id: "1230",
-      name: "John Wick",
-      relationship: "Dog walker",
-    },
-  ];
-
-  let [dependantData, setDependantData] = useState(deP);
+  let [dependantData, setDependantData] = useState([]);
 
   const fetchDependant = async () => {
     let resultd;
@@ -292,30 +252,26 @@ export default function Profile() {
           </div>
           <hr />
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">age: </span>
-            {userData.age} yrs
-          </h6>
-          <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">occupation: </span>
-            Software Engineer
-          </h6>
-          <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">email: </span>
+            <span className="profile-card1-details-helper">Email: </span>
             {userData.email}
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">
-              mobile number:{" "}
+              Mobile number:{" "}
             </span>
             +91 {userData.phoneNumber}
           </h6>
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">address: </span>
+            <span className="profile-card1-details-helper">Address: </span>
             {userData.address}
           </h6>
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">blood group: </span>
-            O+ve
+            <span className="profile-card1-details-helper">Previous Doctors: </span>
+            {userData.prev_docs}
+          </h6>
+          <h6 className="profile-card1-details">
+            <span className="profile-card1-details-helper">Previous Conditions: </span>
+            {userData.prev_cond}
           </h6>
         </div>
         <div className="container shadow dependents-card">

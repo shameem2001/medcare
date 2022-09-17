@@ -47,6 +47,9 @@ const prescriptionSchema = mongoose.Schema({
   submitted_time: {
     type: String,
   },
+  is_visited: {
+    type: Boolean,
+  }
 });
 
 const prescription = mongoose.model("prescription", prescriptionSchema);
