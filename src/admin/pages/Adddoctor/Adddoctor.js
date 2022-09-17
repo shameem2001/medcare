@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import bcrypt from 'bcryptjs';
+import { React, useState, useEffect } from "react";
+import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import "./Adddoctor.scss";
@@ -9,6 +9,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function Add_Doctor() {
   const navigate = useNavigate();
+
+  const admin_id = localStorage.getItem("admin_id");
 
   let [name, setname] = useState("");
   let [gender, setgender] = useState("");
@@ -24,36 +26,64 @@ export default function Add_Doctor() {
   let [hosp_addr, sethosp_addr] = useState("");
   let [department, setdepartment] = useState("");
 
-    let passwordHash = async (conpassword) => {
-      if (password === conpassword) {
-        bcrypt.genSalt(10, function (err, salt) {
-          bcrypt.hash(password, salt, function (err, hashedPassword) {
-            setpassword(hashedPassword);
-          });
-        });
-      } else {
-        console.log("Password not same");
-      }
-    };
-
-  let submit = async (e) => {
-      console.log("submitted");
-      await apis.post("doctor", {
-        name: name,
-        gender: gender,
-        age: age,
-        email: email,
-        department: department,
-        experience: exp,
-        district: district,
-        hospital: hospital,
-        hospital_address: hosp_addr,
-        phoneNumber: phoneNumber,
-        dob: dob,
-        password: password,
-        address: address,
+  let [doctors, setDoctors] = useState([]);
+  useEffect(() => {
+    let results;
+    apis
+      .get("doctor")
+      .then((data) => {
+        results = data.data;
+        setDoctors(results);
+      })
+      .catch((e) => {
+        console.log(e);
       });
-      navigate("/admin/dashboard");
+  }, []);
+
+  let passwordHash = async (conpassword) => {
+    if (password === conpassword) {
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(password, salt, function (err, hashedPassword) {
+          setpassword(hashedPassword);
+        });
+      });
+    }
+  };
+
+  let submit = (e) => {
+    console.log(doctors);
+    const same_email = doctors.filter((doctor) => {
+      return doctor.email === email;
+    });
+    if (same_email.length === 0) {
+      apis
+        .post("doctor", {
+          admin_id: admin_id,
+          name: name,
+          gender: gender,
+          age: age,
+          email: email,
+          department: department,
+          experience: exp,
+          district: district,
+          hospital: hospital,
+          hospital_address: hosp_addr,
+          phoneNumber: phoneNumber,
+          dob: dob,
+          password: password,
+          address: address,
+        })
+        .then((data) => {
+          console.log("submitted");
+          console.log(data.data);
+          navigate("/admin/dashboard");
+        })
+        .catch((e) => {
+          alert("Error");
+        });
+    } else {
+      alert("Email exists. Recheck Credentials.");
+    }
   };
 
   return (
@@ -67,71 +97,22 @@ export default function Add_Doctor() {
             MED<span>CARE</span>
           </h5>
           <br />
-          <div className="adddoctor-second-div">
+          <div className="adddoctor-first-div">
             <TextField
-              className="adddoctor-second-div-1"
+              className="adddoctor-first-div-1"
               size="small"
               required
               label="Name"
-              variant="outlined"
+              type="text"
               onChange={(e) => setname(e.target.value)}
             />
             <TextField
-              className="adddoctor-second-div-2"
               size="small"
-              required
-              label="Age"
-              type="number"
-              onChange={(e) => setage(e.target.value)}
-            />
-            <FormControl
-              className="adddoctor-second-div-3"
-              required
-              size="small"
-            >
-              <InputLabel>Gender</InputLabel>
-
-              <Select
-                label="gender"
-                onChange={(e) => setgender(e.target.value)}
-              >
-                <MenuItem
-                  value="Male"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Male
-                </MenuItem>
-                <MenuItem
-                  value="Female"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Female
-                </MenuItem>
-                <MenuItem
-                  value="Other"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Other
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="adddoctor-first-div">
-            <TextField
-              size="small"
-              className="adddoctor-first-div-1"
+              className="adddoctor-first-div-2"
               required
               label="email-id"
               variant="outlined"
               onChange={(e) => setemail(e.target.value)}
-            />
-            <TextField
-              className="adddoctor-first-div-2"
-              size="small"
-              required
-              label="Experience"
-              type="number"
-              onChange={(e) => setexp(e.target.value)}
             />
           </div>
           <div className="adddoctor-third-div">
@@ -247,6 +228,56 @@ export default function Add_Doctor() {
               </Select>
             </FormControl>
           </div>
+          <div className="adddoctor-second-div">
+            <TextField
+              className="adddoctor-second-div-1"
+              size="small"
+              required
+              label="Experience"
+              type="number"
+              variant="outlined"
+              onChange={(e) => setexp(e.target.value)}
+            />
+            <TextField
+              className="adddoctor-second-div-2"
+              size="small"
+              required
+              label="Age"
+              type="number"
+              onChange={(e) => setage(e.target.value)}
+            />
+            <FormControl
+              className="adddoctor-second-div-3"
+              required
+              size="small"
+            >
+              <InputLabel>Gender</InputLabel>
+
+              <Select
+                label="gender"
+                onChange={(e) => setgender(e.target.value)}
+              >
+                <MenuItem
+                  value="Male"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Male
+                </MenuItem>
+                <MenuItem
+                  value="Female"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Female
+                </MenuItem>
+                <MenuItem
+                  value="Other"
+                  onChange={(e) => setgender(e.target.value)}
+                >
+                  Other
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </div>
           <div className="adddoctor-fourth-div">
             <TextField
               className="adddoctor-fourth-div-1"
@@ -257,7 +288,7 @@ export default function Add_Doctor() {
               onChange={(e) => setaddress(e.target.value)}
             />
             <TextField
-              className="adddoctor-forth-div-2"
+              className="adddoctor-fourth-div-2"
               size="small"
               required
               label="Hospital address"

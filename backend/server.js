@@ -32,6 +32,9 @@ const route = './routes/';
 const user = require(`${route}User`);
 app.use(user);
 
+const dependant = require(`${route}Dependant`);
+app.use(dependant);
+
 const doctor = require(`${route}Doctor`);
 app.use(doctor);
 
@@ -40,6 +43,12 @@ app.use(appointment);
 
 const slot = require(`${route}Slot`);
 app.use(slot);
+
+const prescription = require(`${route}Prescription`);
+app.use(prescription);
+
+const pharmacy = require(`${route}Pharmacy`);
+app.use(pharmacy);
 
 const admin = require(`${route}Admin`);
 app.use(admin);

@@ -40,5 +40,12 @@ app.put("/api/slot/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/slot/:id", async (req, res) => {
+  slotmodel
+    .findByIdAndDelete({ _id: req.params.id })
+    .then((data) => res.send(data))
+    .catch((e) => console.log(e));
+});
+
 
 module.exports = app;

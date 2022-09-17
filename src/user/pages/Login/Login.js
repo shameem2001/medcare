@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import "./Login.scss";
 import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
@@ -12,32 +12,33 @@ export default function Login() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
-  let submit = async () => {
-    let results;
-    await apis
+  let submit = () => {
+    apis
       .get("user")
-      .then((data) => {results = data.data})
-      .catch((err) => console.log(err));
+      .then((data) => {
+        const same_email = data.data.filter((user) => {
+          return email === user.email;
+        })[0];
 
-    let match = false;
-    results.map((data)=>{
-      bcrypt.compare(password, data.password, (err, res) => {
-        console.log(res);
-        if(res === true && email === data.email){
-          match = true;
-          localStorage.setItem("_id", data._id);
-          localStorage.setItem("user_name", data.name);
-          localStorage.setItem("user_img", data.img);
-          console.log(data.img+"log");
-          navigate("/");
+        console.log(same_email);
+        if (same_email !== undefined) {
+          bcrypt.compare(password, same_email.password, (err, res) => {
+            if (res === true) {
+              console.log("Logged in");
+              localStorage.setItem("_id", same_email._id);
+              localStorage.setItem("user_name", same_email.name);
+              localStorage.setItem("user_img", same_email.img);
+              localStorage.setItem("_mail", same_email.email);
+              navigate("/");
+            } else {
+              alert("Incorrect Password!!");
+            }
+          });
+        } else {
+          alert("Email doesn't exists!!");
         }
-      });
-    if(match === false){
-      console.log("invalid credentials");
-    }
-    });
-
-    
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -79,6 +80,24 @@ export default function Login() {
               Sign Up
             </Link>
           </h6>
+          <div className="navigateToDocPharm">
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/doctor/login");
+              }}
+            >
+              Login as a Doctor
+            </button>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/pharmacy/login");
+              }}
+            >
+              Login as a Pharmacist
+            </button>
+          </div>
         </div>
       </div>
     </div>

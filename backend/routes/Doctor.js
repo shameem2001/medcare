@@ -45,4 +45,11 @@ app.put("/api/doctor/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/doctor/:id", async (req, res) => {
+  doctormodel
+    .findByIdAndDelete({ _id: req.params.id })
+    .then((data) => res.send(data))
+    .catch((e) => console.log(e));
+});
+
 module.exports = app;

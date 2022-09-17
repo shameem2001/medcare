@@ -1,76 +1,82 @@
-.fullpage {
-    height: 82vh;
-    width: 100vw;
-}
+.fullpage{
+    background-color: snow;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    min-height: 90vh;
+    padding-top: 80px;
+    padding-right: 10px;
+    padding-left: 10px;
 
-.mainpart {
-    display: flex;
-    height: 85%;
-    width: 100%;
-    padding: 40px;
-}
-.bottompart{
-    display: flex;
-    justify-content: center;
-}
-.leftbutton {
-    height: 50px;
-    border-radius: 10px;
-    background-color: cadetblue;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 200px;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
+    .leftpart{
+        min-width: 500px;
 
-.leftbutton:hover {
-    cursor: pointer;
-}
-.rightpart {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    padding: 5rem;
-}
-.divtable{
-    
-    padding-top: 3rem;
-}
-table {
-    width: 80%;
-    border-collapse: collapse;
-}
-th {
-    border: 1px solid ;
-    text-align: center;
-    color: cadetblue;
-    padding: 8px;
-}
-td {
-    border: 1px solid ;
-    text-align: center;
-    padding: 6px;
-}
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-tr:hover {
-    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
-}
-.actionbutton {
-    height: 25px;
-    background-color: cadetblue;
-    color: white;
-    padding: 3px;
-    font-size: 13px;
-}
-.actionbutton:hover {
-    cursor: pointer;
-}
+        .divtable{
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid lightgray;
 
-.link{
-    text-decoration: none;
-    color: white;
+            th{
+                text-align: center;
+            }
+
+            td{
+                text-align: center;
+            }
+        }
+
+        button{
+            padding: 4px;
+            font-size: 13px;
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .add-button{
+            padding: 6px;
+            font-size: 16px;
+            width: 180px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-left: 40%;
+            background-color: cadetblue;
+            color: white;
+        }
+    }
+
+    .rightpart{
+        min-width: 500px;
+
+        .divtable{
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid lightgray;
+
+            th{
+                text-align: center;
+            }
+
+            td{
+                text-align: center;
+            }
+        }
+
+        button{
+            padding: 4px;
+            font-size: 13px;
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .add-button{
+            padding: 6px;
+            font-size: 16px;
+            width: 180px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-left: 40%;
+            background-color: cadetblue;
+            color: white;
+        }
+    }
 }

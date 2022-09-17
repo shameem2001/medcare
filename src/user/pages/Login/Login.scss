@@ -7,7 +7,7 @@
 
   .login-page-container {
     width: 900px;
-    height: 500px;
+    height: 530px;
     border-radius: 12px;
     display: grid;
     grid-template-columns: auto auto;
@@ -18,7 +18,7 @@
       height: 250px;
 
       img {
-        margin-top: 50px;
+        margin-top: 80px;
         align-content: center;
         width: 400px;
         height: 350px;
@@ -62,6 +62,20 @@
         color: white;
         letter-spacing: 1.5px;
         font-size: 18px;
+      }
+
+      .navigateToDocPharm{
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: auto auto;
+
+        button{
+          background-color: cadetblue;
+          color: white;
+          width: 200px;
+          height: 40px;
+          padding: 5px;
+        }
       }
 
       .loginnew{
