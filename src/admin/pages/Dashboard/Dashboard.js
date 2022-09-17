@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import "./Dashboard.scss";
-import { Link } from "react-router-dom";
-
-export default function Dash_board() {
-  return (
-    <div className="fullpage">
-      <div className="mainpart">
-        <div className="rightpart">
-          <div className="divtable">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Doctor-id</th>
-=======
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
@@ -143,7 +127,6 @@ export default function Dashboard() {
             <table className="table">
               <thead>
                 <tr>
->>>>>>> origin/pharmacy-final
                   <th>Name</th>
                   <th>Department</th>
                   <th>Email</th>
@@ -152,64 +135,6 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-<<<<<<< HEAD
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>Aswin</td>
-                  <td>Neurosurgeon</td>
-                  <td>aswin989@gmail.com</td>
-                  <td>9876543210</td>
-                  <th>
-                    {" "}
-                    <button className="btn actionbutton">Remove</button>{" "}
-                  </th>
-                </tr>
-=======
                 {doctDetails.map((item) => {
                   return newRow(item);
                 })}
@@ -241,20 +166,10 @@ export default function Dashboard() {
                 {pharmDetails.map((item) => {
                   return newRow1(item);
                 })}
->>>>>>> origin/pharmacy-final
               </tbody>
             </table>
           </div>
           <div className="bottompart">
-<<<<<<< HEAD
-            <button className="btn leftbutton">
-              <Link className="link" to="/admin/add-doctor">
-                ADD DOCTOR
-              </Link>
-            </button>
-          </div>
-        </div>
-=======
             <button
               className="btn add-button"
               onClick={() => {
@@ -264,7 +179,6 @@ export default function Dashboard() {
               ADD PHARMACY
             </button>
           </div>
->>>>>>> origin/pharmacy-final
       </div>
     </div>
   );

@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function AppointmentCard() {
-  return (
-    <div className="container shadow-sm profile-tabbar-content-all-tab-appointment-card">
-      <div className="profile-tabbar-content-all-tab-appointment-card-sect-1">
-        <h6>ASTER MIMS, KANNUR</h6>
-        <p>Chala East, Kannur, 670003, Kerala, India, 9446422189</p>
-      </div>
-
-      <div className="profile-tabbar-content-all-tab-appointment-card-sect-2">
-        <div className="profile-tabbar-content-all-tab-appointment-card-sect-2-pic"></div>
-        <div className="profile-tabbar-content-all-tab-appointment-card-sect-2-data">
-          <h6>DR. RADHIKA</h6>
-          <p>DERMATOLOGY</p>
-=======
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apis from "../../../apis";
@@ -75,7 +58,6 @@ export default function AppointmentCard({
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-2-data">
           <h6>{doctorData.name}</h6>
           <p>{doctorData.department}</p>
->>>>>>> origin/pharmacy-final
         </div>
       </div>
       <div className="profile-tabbar-content-all-tab-appointment-card-sect-3">
@@ -94,17 +76,10 @@ export default function AppointmentCard({
           <p>:</p>
         </div>
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-3-right">
-<<<<<<< HEAD
-          <p>03-06-2022</p>
-          <p>AFTERNOON</p>
-          <p>12:00 PM</p>
-          <p>John Doe</p>
-=======
           <p>{date}</p>
           <p>{session}</p>
           <p>{time}</p>
           <p>{uName}</p>
->>>>>>> origin/pharmacy-final
           <p>MD-139646</p>
         </div>
       </div>
@@ -113,11 +88,7 @@ export default function AppointmentCard({
           <p>Confirmed</p>
         </div>
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-4-right">
-<<<<<<< HEAD
-          <p>CANCEL</p>
-=======
           <p onClick={cancelAppointment}>CANCEL</p>
->>>>>>> origin/pharmacy-final
           <p>VIEW</p>
         </div>
       </div>

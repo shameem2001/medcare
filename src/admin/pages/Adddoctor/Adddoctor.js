@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { React, useState } from "react";
-import bcrypt from 'bcryptjs';
-=======
 import { React, useState, useEffect } from "react";
 import bcrypt from "bcryptjs";
->>>>>>> origin/pharmacy-final
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
 import "./Adddoctor.scss";
@@ -15,11 +10,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 export default function Add_Doctor() {
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-=======
   const admin_id = localStorage.getItem("admin_id");
 
->>>>>>> origin/pharmacy-final
   let [name, setname] = useState("");
   let [gender, setgender] = useState("");
   let [age, setage] = useState(0);
@@ -34,38 +26,6 @@ export default function Add_Doctor() {
   let [hosp_addr, sethosp_addr] = useState("");
   let [department, setdepartment] = useState("");
 
-<<<<<<< HEAD
-    let passwordHash = async (conpassword) => {
-      if (password === conpassword) {
-        bcrypt.genSalt(10, function (err, salt) {
-          bcrypt.hash(password, salt, function (err, hashedPassword) {
-            setpassword(hashedPassword);
-          });
-        });
-      } else {
-        console.log("Password not same");
-      }
-    };
-
-  let submit = async (e) => {
-      console.log("submitted");
-      await apis.post("doctor", {
-        name: name,
-        gender: gender,
-        age: age,
-        email: email,
-        department: department,
-        experience: exp,
-        district: district,
-        hospital: hospital,
-        hospital_address: hosp_addr,
-        phoneNumber: phoneNumber,
-        dob: dob,
-        password: password,
-        address: address,
-      });
-      navigate("/admin/dashboard");
-=======
   let [doctors, setDoctors] = useState([]);
   useEffect(() => {
     let results;
@@ -124,7 +84,6 @@ export default function Add_Doctor() {
     } else {
       alert("Email exists. Recheck Credentials.");
     }
->>>>>>> origin/pharmacy-final
   };
 
   return (
@@ -138,61 +97,6 @@ export default function Add_Doctor() {
             MED<span>CARE</span>
           </h5>
           <br />
-<<<<<<< HEAD
-          <div className="adddoctor-second-div">
-            <TextField
-              className="adddoctor-second-div-1"
-              size="small"
-              required
-              label="Name"
-              variant="outlined"
-              onChange={(e) => setname(e.target.value)}
-            />
-            <TextField
-              className="adddoctor-second-div-2"
-              size="small"
-              required
-              label="Age"
-              type="number"
-              onChange={(e) => setage(e.target.value)}
-            />
-            <FormControl
-              className="adddoctor-second-div-3"
-              required
-              size="small"
-            >
-              <InputLabel>Gender</InputLabel>
-
-              <Select
-                label="gender"
-                onChange={(e) => setgender(e.target.value)}
-              >
-                <MenuItem
-                  value="Male"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Male
-                </MenuItem>
-                <MenuItem
-                  value="Female"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Female
-                </MenuItem>
-                <MenuItem
-                  value="Other"
-                  onChange={(e) => setgender(e.target.value)}
-                >
-                  Other
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="adddoctor-first-div">
-            <TextField
-              size="small"
-              className="adddoctor-first-div-1"
-=======
           <div className="adddoctor-first-div">
             <TextField
               className="adddoctor-first-div-1"
@@ -205,23 +109,11 @@ export default function Add_Doctor() {
             <TextField
               size="small"
               className="adddoctor-first-div-2"
->>>>>>> origin/pharmacy-final
               required
               label="email-id"
               variant="outlined"
               onChange={(e) => setemail(e.target.value)}
             />
-<<<<<<< HEAD
-            <TextField
-              className="adddoctor-first-div-2"
-              size="small"
-              required
-              label="Experience"
-              type="number"
-              onChange={(e) => setexp(e.target.value)}
-            />
-=======
->>>>>>> origin/pharmacy-final
           </div>
           <div className="adddoctor-third-div">
             <TextField
@@ -336,8 +228,6 @@ export default function Add_Doctor() {
               </Select>
             </FormControl>
           </div>
-<<<<<<< HEAD
-=======
           <div className="adddoctor-second-div">
             <TextField
               className="adddoctor-second-div-1"
@@ -388,7 +278,6 @@ export default function Add_Doctor() {
               </Select>
             </FormControl>
           </div>
->>>>>>> origin/pharmacy-final
           <div className="adddoctor-fourth-div">
             <TextField
               className="adddoctor-fourth-div-1"
@@ -399,11 +288,7 @@ export default function Add_Doctor() {
               onChange={(e) => setaddress(e.target.value)}
             />
             <TextField
-<<<<<<< HEAD
-              className="adddoctor-forth-div-2"
-=======
               className="adddoctor-fourth-div-2"
->>>>>>> origin/pharmacy-final
               size="small"
               required
               label="Hospital address"

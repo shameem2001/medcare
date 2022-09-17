@@ -1,20 +1,10 @@
 const express = require("express");
 const usermodel = require("../models/User.js");
-<<<<<<< HEAD
-=======
 const nodemailer = require("nodemailer");
->>>>>>> origin/pharmacy-final
 const app = express();
 
 app.post("/api/user", async (req, res) => {
   const user = new usermodel(req.body);
-<<<<<<< HEAD
-  try {
-    await user.save().then(() => res.json("details added"));
-  } catch (error) {
-    res.status(500).send(error);
-  }
-=======
   await user
     .save()
     .then((data) => {
@@ -62,7 +52,6 @@ app.post("/api/user", async (req, res) => {
     .catch((error) => {
       res.status(500).send(error);
     });
->>>>>>> origin/pharmacy-final
 });
 
 app.get("/api/user", async (req, res) => {
@@ -92,9 +81,6 @@ app.put("/api/user/:id", async (req, res)=> {
   catch(error){
     console.log(error);
   }
-<<<<<<< HEAD
-})
-=======
 });
 
 app.delete("/api/admin/:id", async (req, res) => {
@@ -103,6 +89,5 @@ app.delete("/api/admin/:id", async (req, res) => {
     .then((data) => res.send(data))
     .catch((e) => console.log(e));
 });
->>>>>>> origin/pharmacy-final
 
 module.exports = app;

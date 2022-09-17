@@ -2,10 +2,7 @@ import React from "react";
 import "./app.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/User/Header/Header.js";
-<<<<<<< HEAD
-=======
 import FixedHeader from "./components/User/Header/FixedHeader.js";
->>>>>>> origin/pharmacy-final
 import Footer from "./components/User/Footer/Footer.js";
 import Home from "./user/pages/HomePage/Home.js";
 import DoctorList from "./user/pages/DoctorList/DoctorList.js";
@@ -16,12 +13,6 @@ import Login from "./user/pages/Login/Login.js";
 import Register from "./user/pages/Register/Register.js";
 import Dashboard from "./admin/pages/Dashboard/Dashboard";
 import Adddoctor from "./admin/pages/Adddoctor/Adddoctor";
-<<<<<<< HEAD
-import Adminlogin from "../src/admin/pages/Adminlogin/Adminlogin";
-import Doctorlogin from "../src/doctor/pages/doctorlogin/doctorlogin";
-import AppointmentList from "../src/doctor/pages/AppointmentList/AppointmentList";
-import PatientDetails from "../src/doctor/pages/PatientDetails/Patient_details";
-=======
 import AddPharmacy from "./admin/pages/AddPharmacy/AddPharmacy";
 import Adminlogin from "../src/admin/pages/Adminlogin/Adminlogin";
 import Doctorlogin from "../src/doctor/pages/doctorlogin/doctorlogin";
@@ -30,15 +21,11 @@ import AppointmentList from "../src/doctor/pages/AppointmentList/AppointmentList
 import PatientDetails from "../src/doctor/pages/PatientDetails/Patient_details";
 import PharmacyLogin from "../src/pharmacy/pages/LoginPage/Login";
 import PharmacyDashboard from "../src/pharmacy/pages/Dashboard/Dashboard";
->>>>>>> origin/pharmacy-final
 import DoctorHeader from "./components/Doctor/Header/DoctorHeader";
 import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
 import AdminFooter from "./components/Admin/Footer/AdminFooter";
-<<<<<<< HEAD
-=======
 import PharmacyHeader from "./components/Pharmacy/Header/PharmacyHeader";
->>>>>>> origin/pharmacy-final
 
 export default function Medcare() {
   return (
@@ -51,18 +38,12 @@ export default function Medcare() {
           <Route path="/doctor-list" element={<Header />} />
           <Route path="/doctor-details" element={<Header />} />
           <Route path="/doctor-window" element={<Header />} />
-<<<<<<< HEAD
-          <Route path="/profile" element={<Header />} />
-          <Route path="/doctor/" element={<DoctorHeader />} />
-          <Route path="/admin/dashboard" element={<AdminHeader />} />
-=======
           <Route path="/profile" element={<FixedHeader />} />
           <Route path="/doctor/" element={<DoctorHeader />} />
           <Route path="/doctor/profile" element={<DoctorHeader />} />
           <Route path="/doctor/patient-details" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
           <Route path="/pharmacy/" element={<PharmacyHeader />} />
->>>>>>> origin/pharmacy-final
         </Routes>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -74,17 +55,12 @@ export default function Medcare() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/doctor/login" element={<Doctorlogin />} />
           <Route path="/doctor/" element={<AppointmentList />} />
-<<<<<<< HEAD
-          <Route path="/doctor/patient-details" element={<PatientDetails />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-=======
           <Route path="/doctor/profile" element={<DoctorProfile />} />
           <Route path="/doctor/patient-details" element={<PatientDetails />} />
           <Route path="/pharmacy/login" element={<PharmacyLogin />} />
           <Route path="/pharmacy/" element={<PharmacyDashboard />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/add-pharmacy" element={<AddPharmacy />} />
->>>>>>> origin/pharmacy-final
           <Route path="/admin/add-doctor" element={<Adddoctor />} />
           <Route path="/admin/login" element={<Adminlogin />} />
         </Routes>
@@ -96,11 +72,7 @@ export default function Medcare() {
           <Route path="/profile" element={<Footer />} />
           <Route path="/doctor/" element={<DoctorFooter />} />
           <Route path="/doctor/add-slot" element={<DoctorFooter />} />
-<<<<<<< HEAD
-          <Route path="/admin/" element={<AdminFooter />} />
-=======
           <Route path="/admin/dashboard" element={<AdminFooter />} />
->>>>>>> origin/pharmacy-final
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,9 +1,5 @@
 import { React, useState } from "react";
-<<<<<<< HEAD
-import bcrypt from 'bcryptjs';
-=======
 import bcrypt from "bcryptjs";
->>>>>>> origin/pharmacy-final
 import "./Login.scss";
 import apis from "../../../apis";
 import TextField from "@mui/material/TextField";
@@ -16,34 +12,6 @@ export default function Login() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
-<<<<<<< HEAD
-  let submit = async () => {
-    let results;
-    await apis
-      .get("user")
-      .then((data) => {results = data.data})
-      .catch((err) => console.log(err));
-
-    let match = false;
-    results.map((data)=>{
-      bcrypt.compare(password, data.password, (err, res) => {
-        console.log(res);
-        if(res === true && email === data.email){
-          match = true;
-          localStorage.setItem("_id", data._id);
-          localStorage.setItem("user_name", data.name);
-          localStorage.setItem("user_img", data.img);
-          console.log(data.img+"log");
-          navigate("/");
-        }
-      });
-    if(match === false){
-      console.log("invalid credentials");
-    }
-    });
-
-    
-=======
   let submit = () => {
     apis
       .get("user")
@@ -71,7 +39,6 @@ export default function Login() {
         }
       })
       .catch((err) => console.log(err));
->>>>>>> origin/pharmacy-final
   };
 
   return (
@@ -113,8 +80,6 @@ export default function Login() {
               Sign Up
             </Link>
           </h6>
-<<<<<<< HEAD
-=======
           <div className="navigateToDocPharm">
             <button
               className="btn"
@@ -133,7 +98,6 @@ export default function Login() {
               Login as a Pharmacist
             </button>
           </div>
->>>>>>> origin/pharmacy-final
         </div>
       </div>
     </div>

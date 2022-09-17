@@ -1,21 +1,9 @@
-<<<<<<< HEAD
-import {React, useState, useEffect} from "react";
-import { useLocation } from 'react-router-dom';
-=======
 import { React, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
->>>>>>> origin/pharmacy-final
 import apis from "../../../apis";
 import AppointmentCard from "../../components/Profile/AppointmentCard";
 import DependantCard from "../../components/Profile/DependantCard";
 import PrescriptionCard from "../../components/Profile/PrescriptionCard";
-<<<<<<< HEAD
-import './Profile.scss';
-
-export default function Profile() {
-  const location = useLocation();
-  const {user_id} = location.state;
-=======
 import "./Profile.scss";
 import img from "../../../assets/profile.jpg";
 import * as filestack from "filestack-js";
@@ -26,7 +14,6 @@ export default function Profile() {
   const { user_id } = location.state;
 
   const [buttonPopup, setButtonPopup] = useState(false);
->>>>>>> origin/pharmacy-final
 
   let [userData, setUserData] = useState({
     name: "John Doe",
@@ -34,11 +21,6 @@ export default function Profile() {
     email: "johnDoe",
     dob: "20201-09-23",
     age: 22,
-<<<<<<< HEAD
-    phoneNumber: "245676543"
-  });
-
-=======
     phoneNumber: "245676543",
     prev_cond:
       "Patient has eczema and asthma\n                 Allergic to dust, red meat, cocoa, meat with exoskeletons\nAllergic reactions often seen as asthma or itchiness in B/L orbit and legs.\nNo other serious medical conditions.",
@@ -79,7 +61,6 @@ export default function Profile() {
     }
   };
 
->>>>>>> origin/pharmacy-final
   const fetchUserData = async () => {
     let results;
     await apis
@@ -97,21 +78,6 @@ export default function Profile() {
     }
   };
 
-<<<<<<< HEAD
-  useEffect(() => {
-    fetchUserData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-  return (
-    <div className="profile">
-      {/* <div></div> */}
-      <div className="profile-div-left">
-        <div className="container shadow profile-card1">
-          <div className="profile-card1-grid">
-            <div className="profile-card1-circle-avatar"></div>
-=======
   //Prescription Fetching
 
   let presC = [
@@ -302,7 +268,6 @@ export default function Profile() {
                 className="profile-card1-circle-avatar"
               />
             )}
->>>>>>> origin/pharmacy-final
             <div className="profile-card1-top-right">
               <h3 className="profile-card1-name">{userData.name}</h3>
               <h6 className="profile-card1-dob">
@@ -315,27 +280,19 @@ export default function Profile() {
                 <span className="profile-card1-gender-helper">Gender: </span>
                 {userData.gender}
               </h6>
-<<<<<<< HEAD
-              <button className="btn profile-card1-edit-button">
-=======
               <button
                 className="btn profile-card1-edit-button"
                 data-bs-toggle="modal"
                 data-bs-target="#profileModal"
               >
->>>>>>> origin/pharmacy-final
                 edit profile
               </button>
             </div>
           </div>
           <hr />
           <h6 className="profile-card1-details">
-<<<<<<< HEAD
-            <span className="profile-card1-details-helper">age: </span>{userData.age} yrs
-=======
             <span className="profile-card1-details-helper">age: </span>
             {userData.age} yrs
->>>>>>> origin/pharmacy-final
           </h6>
           <h6 className="profile-card1-details">
             <span className="profile-card1-details-helper">occupation: </span>
@@ -363,10 +320,6 @@ export default function Profile() {
         <div className="container shadow dependents-card">
           <h5>Registered Dependants</h5>
           <hr className="dependants-card-hr" />
-<<<<<<< HEAD
-          <DependantCard />
-          <button className="btn dependents-card-btn">Add Dependant</button>
-=======
           {dependantData.map((itemd) => {
             return (
               <DependantCard
@@ -383,7 +336,6 @@ export default function Profile() {
             Add Dependant
           </button>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
->>>>>>> origin/pharmacy-final
         </div>
       </div>
       <div className="profile-div-right">
@@ -393,11 +345,7 @@ export default function Profile() {
             id="pills-tab"
             role="tablist"
           >
-<<<<<<< HEAD
-            <li class="nav-item" role="presentation">
-=======
             <li className="nav-item" role="presentation">
->>>>>>> origin/pharmacy-final
               <button
                 className="nav-link active profile-tabbar-tab"
                 id="pills-home-tab"
@@ -455,19 +403,6 @@ export default function Profile() {
               <div className="container shadow profile-tabbar-content-all-tab-overview-container">
                 <h5>Overview</h5>
                 <hr />
-<<<<<<< HEAD
-                <ul>
-                  <li>Patient has eczema and asthma.</li>
-                  <li>
-                    Allergic to dust, red meat, cocoa, meat with exoskeletons.
-                  </li>
-                  <li>
-                    Allergic reactions often seen as asthma or itchiness in B/L
-                    orbit and legs.
-                  </li>
-                  <li>No other serious medical conditions.</li>
-                </ul>
-=======
                 {overView.length !== 0 ? (
                   overView.map((item) => {
                     return newRow(item);
@@ -475,14 +410,10 @@ export default function Profile() {
                 ) : (
                   <div style={{ textAlign: "center" }}>No Overview Given</div>
                 )}
->>>>>>> origin/pharmacy-final
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
                 <h5>Latest Appointment</h5>
                 <hr />
-<<<<<<< HEAD
-                <AppointmentCard />
-=======
                 {details2.length !== 0 && details2[0].status === "Active" ? (
                   <AppointmentCard
                     uName={userData.name}
@@ -499,7 +430,6 @@ export default function Profile() {
                     No recent Appointments
                   </div>
                 )}
->>>>>>> origin/pharmacy-final
               </div>
               <div className="container shadow profile-tabbar-content-all-tab-history-container">
                 <h5>History</h5>
@@ -508,11 +438,6 @@ export default function Profile() {
                   id="accordion"
                   className="profile-tabbar-content-all-tab-history-accordion"
                 >
-<<<<<<< HEAD
-                  <PrescriptionCard no={"1"} />
-                  <PrescriptionCard no={"2"} />
-                  <PrescriptionCard no={"3"} />
-=======
                   {details.length !== 0 ? (
                     details.slice(0, 3).map((item3) => {
                       return (
@@ -535,7 +460,6 @@ export default function Profile() {
                       No patient history available
                     </div>
                   )}
->>>>>>> origin/pharmacy-final
                 </div>
               </div>
             </div>
@@ -551,12 +475,6 @@ export default function Profile() {
                 </h5>
                 <hr />
                 <div className="profile-tabbar-content-appointments-tab-container">
-<<<<<<< HEAD
-                  <AppointmentCard />
-                  <AppointmentCard />
-                  <AppointmentCard />
-                  <AppointmentCard />
-=======
                   {details2.map((item4) => {
                     return (
                       <AppointmentCard
@@ -571,7 +489,6 @@ export default function Profile() {
                       />
                     );
                   })}
->>>>>>> origin/pharmacy-final
                 </div>
               </div>
             </div>
@@ -588,12 +505,6 @@ export default function Profile() {
                   id="accordion"
                   className="profile-tabbar-content-all-tab-history-accordion"
                 >
-<<<<<<< HEAD
-                  <PrescriptionCard no={"1"} />
-                  <PrescriptionCard no={"2"} />
-                  <PrescriptionCard no={"3"} />
-                  <PrescriptionCard no={"4"} />
-=======
                   {details
                     .filter((item1) => {
                       return item1.user_id === user_id;
@@ -614,7 +525,6 @@ export default function Profile() {
                         />
                       );
                     })}
->>>>>>> origin/pharmacy-final
                 </div>
               </div>
             </div>

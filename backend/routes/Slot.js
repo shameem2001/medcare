@@ -40,8 +40,6 @@ app.put("/api/slot/:id", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
 app.delete("/api/slot/:id", async (req, res) => {
   slotmodel
     .findByIdAndDelete({ _id: req.params.id })
@@ -49,6 +47,5 @@ app.delete("/api/slot/:id", async (req, res) => {
     .catch((e) => console.log(e));
 });
 
->>>>>>> origin/pharmacy-final
 
 module.exports = app;

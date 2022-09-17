@@ -8,11 +8,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import green from "@mui/material/colors/green";
 import { useNavigate } from "react-router-dom";
 import apis from "../../../apis";
-<<<<<<< HEAD
-=======
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
->>>>>>> origin/pharmacy-final
 
 const theme = createTheme({
   palette: {
@@ -25,20 +22,6 @@ export default function PatientList() {
   const doctor_id = localStorage.getItem("doctor_id");
   console.log(doctor_id);
 
-<<<<<<< HEAD
-  useEffect(() => {
-    if (doctor_id !== null) {
-      console.log("no prob");
-    } else {
-      console.log("go to login");
-      navigate("/doctor/login");
-    }
-  }, []);
-
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
-  // add-slot
-  const [leave, setLeave] = useState("no");
-=======
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -46,17 +29,11 @@ export default function PatientList() {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   // add-slot
   const [isWorkday, setIsWorkday] = useState("yes");
->>>>>>> origin/pharmacy-final
   const [workHrsStart, setWorkHrsStart] = useState("10:00");
   const [workHrsEnd, setWorkHrsEnd] = useState("18:00");
   const [breakStart, setBreakStart] = useState("12:00");
   const [breakEnd, setBreakEnd] = useState("13:00");
   const [duration, setDuration] = useState("30");
-<<<<<<< HEAD
-
-  const handleDateChange = (date) => {
-    setLeave("no");
-=======
   const [fetchedSlots, setFetchedSlots] = useState([]);
   const [slotExists, setSlotExists] = useState(false);
 
@@ -68,7 +45,6 @@ export default function PatientList() {
 
   const handleDateChange = (date) => {
     setIsWorkday("yes");
->>>>>>> origin/pharmacy-final
     setWorkHrsStart("10:00");
     setWorkHrsEnd("18:00");
     setBreakStart("12:00");
@@ -112,9 +88,6 @@ export default function PatientList() {
     let formattedDateP = JSON.stringify(selectedDate).split("T")[0].slice(1);
     console.log(formattedDateP);
 
-<<<<<<< HEAD
-    if (leave === "yes") {
-=======
     const doesSlotExists = fetchedSlots.filter((data) => {
       return data.date === formattedDateP && data.doctor_id === doctor_id;
     });
@@ -122,18 +95,13 @@ export default function PatientList() {
     if (doesSlotExists.length !== 0) {
       alert("Slot exists");
     } else if (isWorkday === "no") {
->>>>>>> origin/pharmacy-final
       console.log("leave, update doctor");
       await apis
         .put(`doctor/${doctor_id}`, {
           $push: {
             bookings: {
               date: formattedDateP,
-<<<<<<< HEAD
-              isLeave: leave,
-=======
               isLeave: isWorkday,
->>>>>>> origin/pharmacy-final
             },
           },
         })
@@ -172,14 +140,6 @@ export default function PatientList() {
 
       await apis
         .post("slot", {
-<<<<<<< HEAD
-              doctor_id: doctor_id,
-              date: formattedDateP,
-              isLeave: leave,
-              slots: slots_for_day,
-        })
-        .then((data) => console.log(data))
-=======
           doctor_id: doctor_id,
           date: formattedDateP,
           isLeave: isWorkday,
@@ -189,16 +149,10 @@ export default function PatientList() {
           console.log(data);
           setShow(true);
         })
->>>>>>> origin/pharmacy-final
         .catch((e) => console.log(e));
     }
   };
 
-<<<<<<< HEAD
-  const [day, month, dayno, year] = selectedDate.toString().split(" ");
-
-  let isSlotEmpty = false;
-=======
   let [isSlotEmpty, setIsSlotEmpty] = useState(false);
   let [details, setDetails] = useState({});
 
@@ -269,7 +223,6 @@ export default function PatientList() {
   }, [selectedDate]);
 
   const [day, month, dayno, year] = selectedDate.toString().split(" ");
->>>>>>> origin/pharmacy-final
 
   return (
     <div className="patient-list-cont">
@@ -277,9 +230,6 @@ export default function PatientList() {
         {isSlotEmpty === true ? (
           <div className="container add-slot-page">
             <div className="container shadow add-slot-page-left">
-<<<<<<< HEAD
-              <h3 className="textCenter">{`${month} ${dayno}th ${year}`}</h3>
-=======
               <div className="slotExist">
                 <h3 className="textCenter">{`${month} ${dayno}th ${year}`}</h3>
                 {slotExists === true?
@@ -287,7 +237,6 @@ export default function PatientList() {
                   null
                 }
               </div>
->>>>>>> origin/pharmacy-final
               <div>
                 <label>Will you be conducting consultation on this day: </label>
                 <div style={{ display: "inline" }}>
@@ -297,14 +246,9 @@ export default function PatientList() {
                     type="radio"
                     name="leave"
                     value="yes"
-<<<<<<< HEAD
-                    onChange={(e) => {
-                      setLeave(e.target.value);
-=======
                     checked
                     onChange={(e) => {
                       setIsWorkday(e.target.value);
->>>>>>> origin/pharmacy-final
                     }}
                   />
                   <label>no </label>
@@ -313,14 +257,8 @@ export default function PatientList() {
                     type="radio"
                     name="leave"
                     value="no"
-<<<<<<< HEAD
-                    checked
-                    onChange={(e) => {
-                      setLeave(e.target.value);
-=======
                     onChange={(e) => {
                       setIsWorkday(e.target.value);
->>>>>>> origin/pharmacy-final
                     }}
                   />
                 </div>
@@ -376,13 +314,9 @@ export default function PatientList() {
                   value={duration}
                   defaultValue={duration}
                   type="text"
-<<<<<<< HEAD
-                  onFocus={()=>{setDuration("")}}
-=======
                   onFocus={() => {
                     setDuration("");
                   }}
->>>>>>> origin/pharmacy-final
                   onChange={(e) => {
                     console.log(e.target.value);
                     setDuration(e.target.value);
@@ -394,8 +328,6 @@ export default function PatientList() {
                 <button className="btn" onClick={addSlot}>
                   ADD
                 </button>
-<<<<<<< HEAD
-=======
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>Slots added!</Modal.Title>
@@ -406,7 +338,6 @@ export default function PatientList() {
                     </Button>
                   </Modal.Footer>
                 </Modal>
->>>>>>> origin/pharmacy-final
               </div>
             </div>
           </div>
@@ -469,15 +400,9 @@ export default function PatientList() {
                 aria-labelledby="New"
               >
                 <Pcard
-<<<<<<< HEAD
-                  flag={"to-be-consulted"}
-                  check={0}
-                  dateP={selectedDate}
-=======
                   usersData={usersData}
                   flag={"to-be-consulted"}
                   dateP={JSON.stringify(selectedDate).split("T")[0].slice(1)}
->>>>>>> origin/pharmacy-final
                 />
               </div>
               <div
@@ -486,15 +411,11 @@ export default function PatientList() {
                 role="tabpanel"
                 aria-labelledby="Approved"
               >
-<<<<<<< HEAD
-                <Pcard flag={"consulted"} check={0} dateP={selectedDate} />
-=======
                 <Pcard
                   usersData={usersData}
                   flag={"consulted"}
                   dateP={JSON.stringify(selectedDate).split("T")[0].slice(1)}
                 />
->>>>>>> origin/pharmacy-final
               </div>
               <div
                 className="tab-pane fade show active"
@@ -502,15 +423,11 @@ export default function PatientList() {
                 role="tabpanel"
                 aria-labelledby="All"
               >
-<<<<<<< HEAD
-                <Pcard flag={"All"} check={1} dateP={selectedDate} />
-=======
                 <Pcard
                   usersData={usersData}
                   flag={"All"}
                   dateP={JSON.stringify(selectedDate).split("T")[0].slice(1)}
                 />
->>>>>>> origin/pharmacy-final
               </div>
             </div>
           </div>

@@ -53,10 +53,7 @@
 }
 .PatientSubcard {
   border-radius: 8px;
-<<<<<<< HEAD
-=======
   border: 1px solid lightgray;
->>>>>>> origin/pharmacy-final
   display: grid;
   grid-template-columns: 17% 83%;
   width: 90%;
@@ -90,30 +87,18 @@
       justify-content: space-between;
 
       img {
-<<<<<<< HEAD
-        width: 40px;
-        height: 40px;
-
-        border: 1px solid black;
-        margin-left: 65px;
-=======
         width: 50px;
         height: 50px;
 
         border: 1px solid black;
         margin-top: -5px;
         margin-left: 55px;
->>>>>>> origin/pharmacy-final
         border-radius: 100%;
       }
 
       .details-right-div-name {
         width: 250px;
-<<<<<<< HEAD
-        font-size: 13px;
-=======
         font-size: 15px;
->>>>>>> origin/pharmacy-final
         margin-left: 5px;
         display: grid;
         grid-template-columns: 70% 30%;
@@ -125,11 +110,7 @@
 
         .details-right-div-mob {
           h6 {
-<<<<<<< HEAD
-            font-size: 13px;
-=======
             font-size: 15px;
->>>>>>> origin/pharmacy-final
           }
         }
       }
@@ -214,12 +195,9 @@
     }
   }
 }
-<<<<<<< HEAD
-=======
 
 .slotExist{
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
 }
->>>>>>> origin/pharmacy-final

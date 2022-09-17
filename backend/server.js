@@ -32,12 +32,9 @@ const route = './routes/';
 const user = require(`${route}User`);
 app.use(user);
 
-<<<<<<< HEAD
-=======
 const dependant = require(`${route}Dependant`);
 app.use(dependant);
 
->>>>>>> origin/pharmacy-final
 const doctor = require(`${route}Doctor`);
 app.use(doctor);
 
@@ -47,15 +44,12 @@ app.use(appointment);
 const slot = require(`${route}Slot`);
 app.use(slot);
 
-<<<<<<< HEAD
-=======
 const prescription = require(`${route}Prescription`);
 app.use(prescription);
 
 const pharmacy = require(`${route}Pharmacy`);
 app.use(pharmacy);
 
->>>>>>> origin/pharmacy-final
 const admin = require(`${route}Admin`);
 app.use(admin);
 

@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
 
 const doctorSchema = mongoose.Schema({
-<<<<<<< HEAD
-=======
   admin_id: {
     type: String
   },
->>>>>>> origin/pharmacy-final
   name: {
     type: String,
     required: true,
@@ -56,12 +53,7 @@ const doctorSchema = mongoose.Schema({
   password: {
     type: String,
     required: true,
-<<<<<<< HEAD
-  },
-  appointments: [String],
-=======
   }
->>>>>>> origin/pharmacy-final
   });
 
 const doctor = mongoose.model("doctor", doctorSchema);

@@ -4,25 +4,11 @@
   background-color: snow;
   padding: 30px 60px;
   display: grid;
-<<<<<<< HEAD
-=======
   min-height: 90vh;
->>>>>>> origin/pharmacy-final
   grid-template-columns: 40% auto;
   justify-content: space-around;
 
   .profile-div-left {
-<<<<<<< HEAD
-    // position: fixed;
-    // margin-left: 5%;
-
-    // profile-card styling start
-    .profile-card1 {
-      background-color: white;
-      border-radius: 8px;
-      height: 390px;
-      width: 370px;
-=======
     margin-top: 70px;
     position: fixed;
     margin-left: 3%;
@@ -35,7 +21,6 @@
       max-height: 360px;
       min-width: 370px;
       max-width: 420px;
->>>>>>> origin/pharmacy-final
       padding: 10px;
 
       .profile-card1-grid {
@@ -47,10 +32,6 @@
           height: 110px;
           border-radius: 100%;
           border: solid 1px gray;
-<<<<<<< HEAD
-          background-image: url("../../../../assets/profile.jpg");
-=======
->>>>>>> origin/pharmacy-final
           background-size: 100% 100%;
 
           margin-left: auto;
@@ -64,10 +45,7 @@
 
           .profile-card1-name {
             font-weight: 500;
-<<<<<<< HEAD
-=======
             font-size: 24px;
->>>>>>> origin/pharmacy-final
           }
 
           .profile-card1-dob {
@@ -80,11 +58,7 @@
           }
 
           .profile-card1-gender {
-<<<<<<< HEAD
-            font-size: 14px;
-=======
             font-size: 16px;
->>>>>>> origin/pharmacy-final
             .profile-card1-gender-helper {
               color: cadetblue;
               font-weight: 500;
@@ -107,11 +81,7 @@
         padding-left: 10px;
         padding-right: 20px;
         margin-bottom: 10px;
-<<<<<<< HEAD
-        font-size: 14px;
-=======
         font-size: 16px;
->>>>>>> origin/pharmacy-final
 
         .profile-card1-details-helper {
           color: cadetblue;
@@ -195,11 +165,8 @@
 // right side styling start
 
 .profile-div-right {
-<<<<<<< HEAD
-=======
   min-height: 70vh;
   margin-top: 70px;
->>>>>>> origin/pharmacy-final
   // tabbar styling start
   .profile-tabbar-container {
     height: 50px;
@@ -510,8 +477,6 @@
 
 // right side styling end
 // Profile page styling end
-<<<<<<< HEAD
-=======
 
 
 .modal-profile-img{
@@ -534,4 +499,3 @@
       background-color: teal;
     }
 }
->>>>>>> origin/pharmacy-final

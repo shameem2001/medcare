@@ -12,34 +12,6 @@ function Doctorlogin() {
   let [email, setemail] = useState("");
   let [password, setpassword] = useState("");
 
-<<<<<<< HEAD
-  let submit = async () => {
-    let results;
-    await apis
-      .get("doctor")
-      .then((data) => {
-        results = data.data;
-      })
-      .catch((err) => console.log(err));
-
-    let match = false;
-    results.map((data) => {
-      bcrypt.compare(password, data.password, (err, res) => {
-        console.log(res);
-        if (res === true && email === data.email) {
-          match = true;
-          localStorage.setItem("doctor_id", data._id);
-          localStorage.setItem("doctor_name", data.name);
-          localStorage.setItem("doctor_img", data.img);
-          navigate("/doctor/");
-        }
-      });
-      if (match === false) {
-        console.log("invalid credentials");
-      }
-    });
-  };
-=======
   let submit = () => {
     apis
       .get("doctor")
@@ -70,7 +42,6 @@ function Doctorlogin() {
   };
 
 
->>>>>>> origin/pharmacy-final
   return (
     <div className="doctor-login-page">
       <div className=" container shadow doctor-login-page-container">

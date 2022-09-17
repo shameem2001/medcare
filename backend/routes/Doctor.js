@@ -45,8 +45,6 @@ app.put("/api/doctor/:id", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
 app.delete("/api/doctor/:id", async (req, res) => {
   doctormodel
     .findByIdAndDelete({ _id: req.params.id })
@@ -54,5 +52,4 @@ app.delete("/api/doctor/:id", async (req, res) => {
     .catch((e) => console.log(e));
 });
 
->>>>>>> origin/pharmacy-final
 module.exports = app;

@@ -5,101 +5,6 @@ import HospitalListCard from '../../components/DoctorList/HospitalListCard';
 import DoctorListCard from "../../components/DoctorList/DoctorListCard";
 import './DoctorList.scss';
 
-<<<<<<< HEAD
-let hospitals_list = [
-  {
-    id: 1,
-    img: "dg.png",
-    name: "Aster Medcity, Cheranellur",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 8,
-    doctors: 4,
-  },
-  {
-    id: 2,
-    img: "dg.png",
-    name: "Mims Hospital, Chala",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 4,
-    doctors: 4,
-  },
-  {
-    id: 3,
-    img: "dg.png",
-    name: "BHMS, Chala",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 2,
-    doctors: 84,
-  },
-  {
-    id: 4,
-    img: "dg.png",
-    name: "Dhanalakshmi Hospital, Thana",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 21,
-    doctors: 47,
-  },
-  {
-    id: 5,
-    img: "dg.png",
-    name: "Speciality Hospital, Thana",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 112,
-    doctors: 38,
-  },
-  {
-    id: 6,
-    img: "dg.png",
-    name: "HNC Hospital, Mattannur",
-    address:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, veniam.",
-    departments: 56,
-    doctors: 28,
-  },
-];
-
-let doctors_list = [
-  {
-    id: 1,
-    img: "profile.png",
-    name: "Feroz BK",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "Sreechand Hospital",
-  },
-  {
-    id: 2,
-    img: "profile.png",
-    name: "Ashraf",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "Koyili Hospital",
-  },
-  {
-    id: 3,
-    img: "profile.png",
-    name: "Sreejith",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "Dhanalakshmi Hospital",
-  },
-  {
-    id: 4,
-    img: "profile.png",
-    name: "Hansiraj",
-    department: "Dermatology",
-    experience: 3,
-    hospital: "Speciality Hospital",
-  }
-];
-
-=======
->>>>>>> origin/pharmacy-final
 export default function DoctorList() {
   const props = useLocation().state;
 
@@ -110,14 +15,9 @@ export default function DoctorList() {
   console.log(location, criteria, searchField);
 
 
-<<<<<<< HEAD
-  let [doctors, setDoctors] = useState(doctors_list);
-
-=======
   let [doctors, setDoctors] = useState([]);
 
   //search start.
->>>>>>> origin/pharmacy-final
   let fetchData = async () => {
     let results;
     console.log(results);
@@ -146,11 +46,7 @@ export default function DoctorList() {
   useEffect(() => {
     fetchData();
   }, []);
-<<<<<<< HEAD
-
-=======
 // search end.
->>>>>>> origin/pharmacy-final
   return (
     <div className="parent">
       <div className="container">

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-export default function PrescriptionCard({ no }) {
-  const newheading = "heading" + no;
-  const newCollapse = "collapse" + no;
-=======
 import React, { useEffect, useState } from "react";
 import apis from "../../../apis";
 
@@ -83,7 +76,6 @@ export default function PrescriptionCard({
 
       const [hint, setHint] = useState("View more");
 
->>>>>>> origin/pharmacy-final
   return (
     <div className="container shadow-sm profile-prescription-card">
       <div
@@ -91,31 +83,17 @@ export default function PrescriptionCard({
         id={newheading}
       >
         <div className="profile-prescription-card-head-left">
-<<<<<<< HEAD
-          <h6>DR.FEROZ B.K</h6>
-          <p>Koyili Hospital</p>
-          <p>Condition: Wet cough, Fever, Vomitting.</p>
-        </div>
-        <div className="profile-prescription-card-head-right">
-          <h6>26-05-2022</h6>
-          <h6>Sunday</h6>
-=======
           <h6>{doctorData.name}</h6>
           <p>{doctorData.department}</p>
         </div>
         <div className="profile-prescription-card-head-right">
           <h6>{date}</h6>
->>>>>>> origin/pharmacy-final
           <button
             className="btn profile-description-card-button"
             data-bs-toggle="collapse"
             data-bs-target={`#${newCollapse}`}
             aria-expanded="false"
             aria-controls={newCollapse}
-<<<<<<< HEAD
-          >
-            View more
-=======
             style={{
               width:"100px",
               height:"25px"
@@ -125,7 +103,6 @@ export default function PrescriptionCard({
             }}
           >
             {hint}
->>>>>>> origin/pharmacy-final
           </button>
         </div>
       </div>
@@ -138,42 +115,6 @@ export default function PrescriptionCard({
         <div className="card-body profile-prescription-card-body">
           <div className="profile-prescription-card-body-sect-1">
             <div>
-<<<<<<< HEAD
-              <h6>Doctors notes</h6>
-              <ul>
-                <li>Patient has viral fever</li>
-                <li>anaemic</li>
-                <li>Chest infection</li>
-                <li>Sinus infection</li>
-                <li>Rest for 3 days will be needed</li>
-              </ul>
-            </div>
-            <h6>Body Condition</h6>
-            <div className="profile-prescription-card-body-sect-2">
-              <div>
-                <ul>
-                  <li>Blood Pressure</li>
-                  <li>Body temperature</li>
-                  <li>Blood Oxygen Level</li>
-                  <li>Blood Sugar Level</li>
-                </ul>
-              </div>
-              <div>
-                <p>:</p>
-                <p>:</p>
-                <p>:</p>
-                <p>:</p>
-              </div>
-              <div>
-                <p>140/80 mmhg</p>
-                <p>37.6 degrees</p>
-                <p>97%</p>
-                <p>140 mg/dL</p>
-              </div>
-            </div>
-            <h6 className="profile-prescription-card-body-sect-3-header">
-              Medicine Prescriptions
-=======
               <br />
               <h6>Body Condition</h6>
               <div className="profile-prescription-card-body-sect-2">
@@ -214,7 +155,6 @@ export default function PrescriptionCard({
 
             <h6 className="profile-prescription-card-body-sect-3-header">
               Prescriptions
->>>>>>> origin/pharmacy-final
             </h6>
             <div className="profile-prescription-card-body-sect-3">
               <table className="table">
@@ -226,30 +166,6 @@ export default function PrescriptionCard({
                   </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
-                  <tr>
-                    <td>Dolo 650g</td>
-                    <td>1-1-1</td>
-                    <td>5 days</td>
-                  </tr>
-                  <tr>
-                    <td>Levotek-M</td>
-                    <td>0-0-1</td>
-                    <td>30 days</td>
-                  </tr>
-                  <tr>
-                    <td>Rontac 15g</td>
-                    <td>1-0-1</td>
-                    <td>5 days</td>
-                  </tr>
-                  <tr>
-                    <td>Azee 50g</td>
-                    <td>1-0-1</td>
-                    <td>5 days</td>
-                  </tr>
-                </tbody>
-              </table>
-=======
                   {prescriptionList.map((item) => {
                     return newRow(item);
                   })}
@@ -276,7 +192,6 @@ export default function PrescriptionCard({
                   </tr>
                 </tbody> */}
               {/* </table> */}
->>>>>>> origin/pharmacy-final
             </div>
           </div>
         </div>

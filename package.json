@@ -14,12 +14,6 @@
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "date-fns": "^2.29.1",
-<<<<<<< HEAD
-    "moment": "^2.29.4",
-    "mongoose": "^6.5.1",
-    "node-sass": "^7.0.1",
-    "react": "^18.2.0",
-=======
     "filestack-js": "^3.25.0",
     "mdb-react-ui-kit": "^4.2.0",
     "moment": "^2.29.4",
@@ -28,7 +22,6 @@
     "nodemailer": "^6.7.8",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
->>>>>>> origin/pharmacy-final
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
