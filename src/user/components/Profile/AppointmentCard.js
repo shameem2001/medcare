@@ -11,6 +11,7 @@ export default function AppointmentCard({
   session,
   time,
   status,
+  onClicked
 }) {
 
     const navigate = useNavigate();
@@ -33,18 +34,14 @@ export default function AppointmentCard({
        await apis
          .delete(`appointment/${_id}`)
          .then((res) => {
-          navigate("/profile", {
-            state: {
-              user_id: localStorage.getItem("_id"),
-            },
-          });
+          onClicked(_id);
           console.log(res)})
          .catch((e) => console.log(e));
      };
 
     useEffect(() => {
       getDoctorDetails();
-    });
+    }, []);
 
   return (
     <div className="container shadow-sm profile-tabbar-content-all-tab-appointment-card">
@@ -66,7 +63,7 @@ export default function AppointmentCard({
           <p>Session</p>
           <p>Time</p>
           <p>Booking for</p>
-          <p>Appointment Ref Id</p>
+          <p>Status</p>
         </div>
         <div>
           <p>:</p>
@@ -80,16 +77,17 @@ export default function AppointmentCard({
           <p>{session}</p>
           <p>{time}</p>
           <p>{uName}</p>
-          <p>MD-139646</p>
+          <p>{status}</p>
         </div>
       </div>
       <div className="profile-tabbar-content-all-tab-appointment-card-sect-4">
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-4-left">
-          <p>Confirmed</p>
+          {status === "Active"?<p>Confirmed</p>:null}
         </div>
         <div className="profile-tabbar-content-all-tab-appointment-card-sect-4-right">
-          <p onClick={cancelAppointment}>CANCEL</p>
-          <p>VIEW</p>
+          {status === "Active"?<button className="btn appointment-cancel-button" onClick={cancelAppointment}>CANCEL</button>:
+            <p>Consulted</p>
+          }
         </div>
       </div>
     </div>

@@ -31,12 +31,14 @@
             display: grid;
             grid-template-columns: 25% 25%;
             column-gap: 2rem;
+            justify-content: center;
             .close-btn{
-                background-color: cadetblue;
+                background-color: red;
                 color: white;
             }
             .submit-button{
-                border:black;
+                background-color: cadetblue;
+                color: white;
             }
         }
     }

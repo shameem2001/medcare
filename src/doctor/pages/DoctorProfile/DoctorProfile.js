@@ -15,21 +15,8 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function DoctorProfile() {
-  const [doctData, setDoctData] = useState({
-    name: "sugunan",
-    age: "19",
-    gender: "male",
-    department: "physician",
-    district: "kannur",
-    dob: "20-20-200",
-    email: "sugunan@gmail.com",
-    hospital: "kims",
-    phoneNumber: "098765543",
-    hospital_address: "address of hospital here",
-    experience: 90,
-  });
+  const [doctData, setDoctData] = useState({});
 
-  let results;
   const doctor_id = localStorage.getItem("doctor_id");
 
   useEffect(() => {
@@ -50,9 +37,11 @@ export default function DoctorProfile() {
     setDoctData(results);
   };
 
+  const doctor_img = localStorage.getItem("doctor_img");
+
   const FILESTACK_APIKEY = "AR9a0fhrDRleWdYYiy68qz";
   let [file_data, setFile_data] = useState({});
-  let [img_up, setImg] = useState("");
+  let [img_up, setImg] = useState(doctor_img);
   const client = filestack.init(FILESTACK_APIKEY);
 
   const fileSelectedHandler = (filedata) => {
@@ -72,6 +61,7 @@ export default function DoctorProfile() {
           .then((data2) => {
             setImg(data.url);
             console.log(data);
+            localStorage.setItem("doctor_img", data.url);
           })
           .catch((error) => console.log(error));
       });

@@ -6,18 +6,31 @@ import "./Add_dependant.scss";
 export default function Add_dependant(props) {
   let [name, setname] = useState("");
   let [relationship, setrel] = useState("");
+  let [phone, setphone] = useState("");
   const userId = localStorage.getItem("_id");
 
   let submit = async (e) => {
     console.log("Added");
-    await apis.post("dependant", {
-      user_id: userId,
-      name: name,
-      relationship: relationship,
-    }).then(()=>{
-      props.setTrigger(false);
-
-    }).catch((e)=>{console.log(e)});
+    await apis
+      .post("dependant", {
+        user_id: userId,
+        name: name,
+        relationship: relationship,
+        phoneNumber: phone,
+      })
+      .then((data) => {
+        props.setTrigger(false);
+        props.onClicked({
+          _id: data.data._id,
+          user_id: userId,
+          name: name,
+          relationship: relationship,
+          phoneNumber: phone,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return props.trigger ? (
@@ -27,7 +40,7 @@ export default function Add_dependant(props) {
           <TextField
             className="Dependant-name"
             required
-            label="dependant name"
+            label="Dependant name"
             variant="outlined"
             onChange={(e) => {
               setname(e.target.value);
@@ -36,18 +49,30 @@ export default function Add_dependant(props) {
           <TextField
             className="Dependant-relationship"
             required
-            label="dependant relationship"
+            label="Dependant relationship"
             variant="outlined"
             onChange={(e) => {
               setrel(e.target.value);
             }}
           />
+          <TextField
+            className="Dependant-relationship"
+            required
+            label="Contact number"
+            variant="outlined"
+            onChange={(e) => {
+              setphone(e.target.value);
+            }}
+          />
         </div>
         <div className="bottom">
-          <button className="close-btn" onClick={() => props.setTrigger(false)}>
+          <button
+            className="btn close-btn"
+            onClick={() => props.setTrigger(false)}
+          >
             close
           </button>
-          <button className="btn login-button" onClick={submit}>
+          <button className="btn submit-button" onClick={submit}>
             ADD
           </button>
         </div>

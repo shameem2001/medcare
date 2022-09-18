@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import apis from "../../apis";
 
 export default function DeliveryCard({
+  onClicked,
   doctor_id,
   doctor_name,
   patient_name,
@@ -42,7 +43,10 @@ export default function DeliveryCard({
   const set_visited = ()=>{
     apis.put(`prescription/${_id}`, {
       is_visited: true,
-    }).then((data)=>console.log(data.data)).catch((e)=>console.log(e));
+    }).then((data)=>{
+      onClicked(_id);
+      console.log(data.data)}).catch((e)=>console.log(e));
+
   }
 
   useEffect(() => {

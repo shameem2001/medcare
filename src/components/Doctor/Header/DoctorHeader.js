@@ -9,6 +9,11 @@ export default function DoctorHeader() {
   const logout = () => {
     localStorage.removeItem("doctor_name");
     localStorage.removeItem("doctor_id");
+    localStorage.removeItem("doctor_img");
+    localStorage.removeItem("hospital_name");
+    localStorage.removeItem("doctor_depart");
+    localStorage.removeItem("doctor_email");
+    localStorage.removeItem("hospital_addr");
     navigate("/doctor/login");
   };
 

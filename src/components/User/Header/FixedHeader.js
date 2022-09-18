@@ -23,6 +23,9 @@ export default function Header() {
 
   const logout = () => {
     localStorage.removeItem("_id");
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_img");
+    localStorage.removeItem("_mail");
     showLogin = true;
     navigate("/login");
   };

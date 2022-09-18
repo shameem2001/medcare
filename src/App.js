@@ -21,11 +21,13 @@ import AppointmentList from "../src/doctor/pages/AppointmentList/AppointmentList
 import PatientDetails from "../src/doctor/pages/PatientDetails/Patient_details";
 import PharmacyLogin from "../src/pharmacy/pages/LoginPage/Login";
 import PharmacyDashboard from "../src/pharmacy/pages/Dashboard/Dashboard";
+import PharmacyProfile from "../src/pharmacy/pages/Profile/Profile";
 import DoctorHeader from "./components/Doctor/Header/DoctorHeader";
 import AdminHeader from "./components/Admin/Header/AdminHeader";
 import DoctorFooter from "./components/Doctor/Footer/DoctorFooter";
 import AdminFooter from "./components/Admin/Footer/AdminFooter";
 import PharmacyHeader from "./components/Pharmacy/Header/PharmacyHeader";
+import Printpdf from "./doctor/pages/pdf/printpdf.js";
 
 export default function Medcare() {
   return (
@@ -44,6 +46,7 @@ export default function Medcare() {
           <Route path="/doctor/patient-details" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
           <Route path="/pharmacy/" element={<PharmacyHeader />} />
+          <Route path="/pharmacy/profile" element={<PharmacyHeader />} />
         </Routes>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,10 +62,12 @@ export default function Medcare() {
           <Route path="/doctor/patient-details" element={<PatientDetails />} />
           <Route path="/pharmacy/login" element={<PharmacyLogin />} />
           <Route path="/pharmacy/" element={<PharmacyDashboard />} />
+          <Route path="/pharmacy/profile" element={<PharmacyProfile />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/add-pharmacy" element={<AddPharmacy />} />
           <Route path="/admin/add-doctor" element={<Adddoctor />} />
           <Route path="/admin/login" element={<Adminlogin />} />
+          <Route path="/doctor/patient-details/print" element={<Printpdf />} />
         </Routes>
         <Routes>
           <Route path="/" element={<Footer />} />

@@ -25,7 +25,6 @@ export default function PrescriptionCard({
       },
     ];
 
-    console.log(doc_id);
     let [doctorData, setDoctorData] = useState(defDoc);
 
       const getDoctorDetails = async () => {
@@ -44,8 +43,6 @@ export default function PrescriptionCard({
       // console.log(typeof observation);
       let observationList = observation.split("\n");
       let prescriptionList = prescription.split("\n");
-
-      console.log(doctorData);
 
       let newRow = (e) => {
         let data = e.split(",");
@@ -72,7 +69,7 @@ export default function PrescriptionCard({
       useEffect(() => {
         getDoctorDetails();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      });
+      }, []);
 
       const [hint, setHint] = useState("View more");
 

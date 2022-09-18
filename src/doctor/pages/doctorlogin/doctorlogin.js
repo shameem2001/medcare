@@ -29,6 +29,12 @@ function Doctorlogin() {
               localStorage.setItem("doctor_name", same_email.name);
               localStorage.setItem("doctor_img", same_email.img);
               localStorage.setItem("hospital_name", same_email.hospital);
+              localStorage.setItem("doctor_depart", same_email.department);
+              localStorage.setItem("doctor_email", same_email.email);
+              localStorage.setItem(
+                "hospital_addr",
+                same_email.hospital_address
+              );
               navigate("/doctor/");
             } else {
               alert("Incorrect Password!!");
