@@ -172,13 +172,17 @@ export default function Profile() {
   useEffect(
     () => {
       fetchUserData();
-      fetchDependant();
+      const interval = setInterval(()=>{
+        fetchDependant();
+      }, 1000 * 10);
       appointmentData();
       fetchPrescription();
       // getDoctorDetails()
+
+      return () => clearInterval(interval);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [img_up, dependantData.length]);
+    [img_up]);
 
   let newRow = (e) => {
     return (
@@ -266,11 +270,15 @@ export default function Profile() {
             {userData.address}
           </h6>
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">Previous Doctors: </span>
+            <span className="profile-card1-details-helper">
+              Previous Doctors:{" "}
+            </span>
             {userData.prev_docs}
           </h6>
           <h6 className="profile-card1-details">
-            <span className="profile-card1-details-helper">Previous Conditions: </span>
+            <span className="profile-card1-details-helper">
+              Previous Conditions:{" "}
+            </span>
             {userData.prev_cond}
           </h6>
         </div>
@@ -278,8 +286,16 @@ export default function Profile() {
           <h5>Registered Dependants</h5>
           <hr className="dependants-card-hr" />
           {dependantData.map((itemd) => {
+            console.log(dependantData);
             return (
               <DependantCard
+                onClicked={(id) => {
+                  console.log(dependantData);
+                  const res = dependantData.filter((item) => {
+                    return item._id !== id;
+                  });
+                  setDependantData(res);
+                }}
                 id={itemd._id}
                 name={itemd.name}
                 rel={itemd.relationship}
@@ -292,7 +308,14 @@ export default function Profile() {
           >
             Add Dependant
           </button>
-          <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
+          <Popup
+            onClicked={(addedDependant) => {
+              const newDep = [...dependantData, addedDependant];
+              setDependantData(newDep);
+            }}
+            trigger={buttonPopup}
+            setTrigger={setButtonPopup}
+          />
         </div>
       </div>
       <div className="profile-div-right">

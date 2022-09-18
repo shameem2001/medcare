@@ -14,9 +14,14 @@ export default function Add_dependant(props) {
       user_id: userId,
       name: name,
       relationship: relationship,
-    }).then(()=>{
+    }).then((data)=>{
       props.setTrigger(false);
-
+      props.onClicked({
+        _id: data.data._id,
+        user_id: userId,
+        name: name,
+        relationship: relationship
+      });
     }).catch((e)=>{console.log(e)});
   };
 
@@ -27,7 +32,7 @@ export default function Add_dependant(props) {
           <TextField
             className="Dependant-name"
             required
-            label="dependant name"
+            label="Dependant name"
             variant="outlined"
             onChange={(e) => {
               setname(e.target.value);
@@ -36,7 +41,7 @@ export default function Add_dependant(props) {
           <TextField
             className="Dependant-relationship"
             required
-            label="dependant relationship"
+            label="Dependant relationship"
             variant="outlined"
             onChange={(e) => {
               setrel(e.target.value);
@@ -44,10 +49,10 @@ export default function Add_dependant(props) {
           />
         </div>
         <div className="bottom">
-          <button className="close-btn" onClick={() => props.setTrigger(false)}>
+          <button className="btn close-btn" onClick={() => props.setTrigger(false)}>
             close
           </button>
-          <button className="btn login-button" onClick={submit}>
+          <button className="btn submit-button" onClick={submit}>
             ADD
           </button>
         </div>

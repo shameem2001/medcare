@@ -72,7 +72,7 @@ export default function PrescriptionCard({
       useEffect(() => {
         getDoctorDetails();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      });
+      }, []);
 
       const [hint, setHint] = useState("View more");
 

@@ -44,7 +44,7 @@ export default function AppointmentCard({
 
     useEffect(() => {
       getDoctorDetails();
-    });
+    }, []);
 
   return (
     <div className="container shadow-sm profile-tabbar-content-all-tab-appointment-card">

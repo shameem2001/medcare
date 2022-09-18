@@ -11,7 +11,7 @@ export default function Dashboard() {
   const hospital_name = localStorage.getItem("pharmacy_name");
   let addr;
 
-  const [details, setDetails] = useState([]);
+  let [prescDetails, setPrescDetails] = useState([{}]);
   const [sdetails, setSDetails] = useState([]);
   const [doctDetails, setDoctDetails] = useState([]);
   const [address, setAddress] = useState("");
@@ -26,7 +26,7 @@ export default function Dashboard() {
     });
 
     if (result1 !== null) {
-      setDetails(result1);
+      setPrescDetails(result1);
     }
 
     let data2 = await apis.get("pharmacy");
@@ -40,14 +40,17 @@ export default function Dashboard() {
     }
   };
 
-  console.log(details);
+  console.log(prescDetails);
   console.log(pharm);
 
   useEffect(() => {
-    // fetchPharmacyrData();
-    fetchPrescription();
-    // fetchDoctorName();
-  }, []);
+    const interval = setInterval(() => {
+      console.log("This will be called every 2 seconds");
+      fetchPrescription();
+    }, 1000*30);
+
+    return () => clearInterval(interval);
+  }, [prescDetails.length]);
 
   return (
     <div className="Store-Boundary">
@@ -73,7 +76,7 @@ export default function Dashboard() {
           <h4 className=" right-header-inner">PRESCRIPTIONS</h4>
         </div>
         <div className="delivery-card">
-          {details
+          {prescDetails
             .sort((a, b) => (a.submitted_time > b.submitted_time ? 1 : -1))
             .filter((data) => {
               return data.is_visited === false && data.priority === "high";
@@ -81,6 +84,13 @@ export default function Dashboard() {
             .map((item) => {
               return (
                 <DeliveryCard
+                  onClicked={(id) => {
+                    console.log("Onclick callback", id);
+                    const res = prescDetails.filter((item) => {
+                      return item._id !== id;
+                    });
+                    setPrescDetails(res);
+                  }}
                   doctor_id={item.doctor_id}
                   doctor_name={item.doctor_name}
                   patient_name={item.patient_name}
@@ -92,7 +102,7 @@ export default function Dashboard() {
                 />
               );
             })}
-          {details
+          {prescDetails
             .sort((a, b) => (a.submitted_time > b.submitted_time ? 1 : -1))
             .filter((data) => {
               return data.is_visited === false && data.priority === "low";
@@ -101,6 +111,13 @@ export default function Dashboard() {
               console.log(address);
               return (
                 <DeliveryCard
+                  onClicked={(id) => {
+                    console.log("Onclick callback");
+                    const res = prescDetails.filter((item) => {
+                      return item._id !== id;
+                    });
+                    setPrescDetails(res);
+                  }}
                   doctor_id={item.doctor_id}
                   doctor_name={item.doctor_name}
                   patient_name={item.patient_name}

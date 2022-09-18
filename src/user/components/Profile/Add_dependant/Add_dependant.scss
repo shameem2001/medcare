@@ -32,11 +32,12 @@
             grid-template-columns: 25% 25%;
             column-gap: 2rem;
             .close-btn{
-                background-color: cadetblue;
+                background-color: red;
                 color: white;
             }
             .submit-button{
-                border:black;
+                background-color: cadetblue;
+                color: white;
             }
         }
     }
