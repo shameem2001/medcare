@@ -32,35 +32,56 @@ export default function Patient_details() {
   let [priority, setPriority] = useState("low");
 
   const postData = async () => {
-    const hours = new Date().getHours();
-    const min = new Date().getMinutes();
-    const submitted_time = `${hours}:${min}`;
-    console.log(submitted_time);
-    await apis
-      .post("prescription", {
-        user_id: user_id,
-        doctor_id: doctor_id,
-        patient_name: userData.name,
-        doctor_name: localStorage.getItem("doctor_name"),
-        date: date,
-        blood_pressure: pressure,
-        body_temperature: temp,
-        blood_oxygen: oxyg,
-        blood_sugar: sugar,
-        observation: observation,
-        prescription: prescription,
-        priority: priority,
-        hospital_name: localStorage.getItem("hospital_name"),
-        submitted_time: submitted_time,
-      })
 
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => console.log(e));
-    updateAppointmentStatus();
+    if (observation===null||observation==="")  {
+      alert("Observation can't be empty")
+    }
 
-    navigate("/doctor/");
+    else {
+      const hours = new Date().getHours();
+      const min = new Date().getMinutes();
+      const submitted_time = `${hours}:${min}`;
+      console.log(submitted_time);
+      localStorage.setItem("observation", observation);
+      localStorage.setItem("prescription", prescription);
+      localStorage.setItem("pressure", pressure);
+      localStorage.setItem("temp", temp);
+      localStorage.setItem("oxyg", oxyg);
+      localStorage.setItem("sugar",sugar);
+      localStorage.setItem("pat_name", userData.name);
+      localStorage.setItem("pat_age", userData.age);
+      localStorage.setItem("pat_email", userData.email);
+      localStorage.setItem("pat_num", userData.phoneNumber);
+
+      await apis
+        .post("prescription", {
+          user_id: user_id,
+          doctor_id: doctor_id,
+          patient_name: userData.name,
+          doctor_name: localStorage.getItem("doctor_name"),
+          date: date,
+          blood_pressure: pressure,
+          body_temperature: temp,
+          blood_oxygen: oxyg,
+          blood_sugar: sugar,
+          observation: observation,
+          prescription: prescription,
+          priority: priority,
+          hospital_name: localStorage.getItem("hospital_name"),
+          submitted_time: submitted_time,
+        })
+
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => console.log(e));
+      updateAppointmentStatus();
+
+      navigate("/doctor/patient-details/print");
+
+      }
+
+    
   };
 
   let [userData, setUserData] = useState({});

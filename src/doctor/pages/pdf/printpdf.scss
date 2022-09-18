@@ -1,0 +1,96 @@
+
+
+.print-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width:100vw;
+    height: 90vh;
+    font-size: 17px;
+
+
+
+    .print-page-a4 {
+        width: 750px;
+        height : 1000px;
+        border-style: solid;
+        border-radius: 1%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1%;
+        margin-bottom: 40px;
+        margin-top: 40px;
+
+        .print-page-head {
+            padding-bottom: 90px;
+            display: flex;
+            flex-direction: column;
+            .print-page-a4-1 {
+                font-size: 40px;
+                position: relative;
+                left: 30%;
+            }
+            .print-page-a4-2 {
+                position: relative;
+                font-size: 20px;
+                left: 30%;
+            }
+        }
+
+        .print-page-main {
+            display: flex;
+            //justify-content: space-around;
+            
+
+            .doc-part {
+                align-self: flex-start;
+                padding: 3%;
+                border: solid;
+                border-radius: 5%;
+                
+            }
+
+            .patient-part {
+                align-self: flex-end;
+                padding: 3%;
+                .forpadding {
+                    padding-bottom: 30px;
+                }
+
+                span {
+                    font-size: 22px;
+                }
+
+                
+            }
+
+            
+            .print-page-a4-3 {
+                align-self: flex-start;
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+
+.button-part {
+    width: 100vw;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    font-family: "Poppins";
+    background-color: cadetblue;
+    color: white;
+    font-size: 20px;
+    height: 2.2rem;
+    width: 15rem;
+    border-radius: 12px;
+    border: 0ch;
+    margin: 30px;
+  }
