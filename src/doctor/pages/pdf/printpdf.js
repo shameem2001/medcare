@@ -175,7 +175,7 @@ export default function Printpdf() {
                               Pro_page();
                             }}
                           >
-                            back to profile
+                            back to Dashboard
                 </button>
             </div>
     </div>
