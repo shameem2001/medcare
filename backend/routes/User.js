@@ -23,20 +23,19 @@ app.post("/api/user", async (req, res) => {
         from: "medcare1987@outlook.com",
         to: req.body.email,
         subject: "MEDCARE Registration",
-        text: "Token booked Succesfully",
+        text: "User Registered Succesfully",
         html: `
-      <div style="clear: both">
-      <h2 style="float: left;color:red">MED</h2>
-      <h2 style="float: left;color:white">CARE</h2>
-      </div>
-      <div style="padding:10px;border-style:ridge">
-      </br>
-       Dear ${req.body.name} ,/br>
-      <p> Your Registration has been successfully confirmed. </p>
-      <p> Your Registration id is ${data._id}</p>
-      <h5>You can now log in to your account through your Registered mail id</h5>
-      </br></br></br>
-    <div><p>Thank You !</p></div>
+        <div style="padding:10px;border-style:ridge">
+      <h2 style="color:red">MED<span style="color:black">CARE</span></h2>
+      <h3>Details</h3>
+      <p>Your registration has been successfully confirmed.</p>
+      <ul>
+        <li>User ID    : ${data._id}</li>
+        <li>User Name    : ${req.body.name}</li>
+        <li>Email id   : ${req.body.email}</li>
+        <li>Recovery phone number : ${req.body.phoneNumber}</li>
+        </ul>
+      <p>Thank You</p>
     </div>`,
       };
 

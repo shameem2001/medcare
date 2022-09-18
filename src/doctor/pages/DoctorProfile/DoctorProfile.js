@@ -37,9 +37,11 @@ export default function DoctorProfile() {
     setDoctData(results);
   };
 
+  const doctor_img = localStorage.getItem("doctor_img");
+
   const FILESTACK_APIKEY = "AR9a0fhrDRleWdYYiy68qz";
   let [file_data, setFile_data] = useState({});
-  let [img_up, setImg] = useState("");
+  let [img_up, setImg] = useState(doctor_img);
   const client = filestack.init(FILESTACK_APIKEY);
 
   const fileSelectedHandler = (filedata) => {
@@ -59,6 +61,7 @@ export default function DoctorProfile() {
           .then((data2) => {
             setImg(data.url);
             console.log(data);
+            localStorage.setItem("doctor_img", data.url);
           })
           .catch((error) => console.log(error));
       });

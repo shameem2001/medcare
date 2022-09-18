@@ -26,7 +26,6 @@ function Doctorlogin() {
             if (res === true) {
               console.log("Logged in");
               localStorage.setItem("pharmacy_id", same_email._id);
-              console.log(same_email.hospital_name);
               localStorage.setItem("pharmacy_name", same_email.hospital_name);
               localStorage.setItem("pharmacy_img", same_email.img);
               navigate("/pharmacy/");

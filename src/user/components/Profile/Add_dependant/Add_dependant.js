@@ -6,23 +6,31 @@ import "./Add_dependant.scss";
 export default function Add_dependant(props) {
   let [name, setname] = useState("");
   let [relationship, setrel] = useState("");
+  let [phone, setphone] = useState("");
   const userId = localStorage.getItem("_id");
 
   let submit = async (e) => {
     console.log("Added");
-    await apis.post("dependant", {
-      user_id: userId,
-      name: name,
-      relationship: relationship,
-    }).then((data)=>{
-      props.setTrigger(false);
-      props.onClicked({
-        _id: data.data._id,
+    await apis
+      .post("dependant", {
         user_id: userId,
         name: name,
-        relationship: relationship
+        relationship: relationship,
+        phoneNumber: phone,
+      })
+      .then((data) => {
+        props.setTrigger(false);
+        props.onClicked({
+          _id: data.data._id,
+          user_id: userId,
+          name: name,
+          relationship: relationship,
+          phoneNumber: phone,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
       });
-    }).catch((e)=>{console.log(e)});
   };
 
   return props.trigger ? (
@@ -47,9 +55,21 @@ export default function Add_dependant(props) {
               setrel(e.target.value);
             }}
           />
+          <TextField
+            className="Dependant-relationship"
+            required
+            label="Contact number"
+            variant="outlined"
+            onChange={(e) => {
+              setphone(e.target.value);
+            }}
+          />
         </div>
         <div className="bottom">
-          <button className="btn close-btn" onClick={() => props.setTrigger(false)}>
+          <button
+            className="btn close-btn"
+            onClick={() => props.setTrigger(false)}
+          >
             close
           </button>
           <button className="btn submit-button" onClick={submit}>

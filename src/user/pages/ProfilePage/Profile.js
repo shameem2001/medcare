@@ -299,6 +299,7 @@ export default function Profile() {
                 id={itemd._id}
                 name={itemd.name}
                 rel={itemd.relationship}
+                phone={itemd.phoneNumber}
               />
             );
           })}

@@ -11,6 +11,9 @@ const dependantSchema = mongoose.Schema({
     relationship:{
         type: String,
         required: true,
+    },
+    phoneNumber: {
+        type: String,
     }
 });
 
