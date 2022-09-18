@@ -46,6 +46,7 @@ export default function Medcare() {
           <Route path="/doctor/" element={<DoctorHeader />} />
           <Route path="/doctor/profile" element={<DoctorHeader />} />
           <Route path="/doctor/patient-details" element={<DoctorHeader />} />
+          <Route path="/doctor/patient-details/print" element={<DoctorHeader />} />
           <Route path="/admin/dashboard" element={<AdminHeader />} />
           <Route path="/pharmacy/" element={<PharmacyHeader />} />
           <Route path="/pharmacy/profile" element={<PharmacyHeader />} />
@@ -74,6 +75,7 @@ export default function Medcare() {
         </Routes>
         <Routes>
           <Route path="/" element={<Footer />} />
+          <Route path="/support" element={<Footer />} />
           <Route path="/doctor-list" element={<Footer />} />
           <Route path="/doctor-details" element={<Footer />} />
           <Route path="/doctor-window" element={<Footer />} />
