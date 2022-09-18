@@ -158,10 +158,10 @@ export default function Printpdf() {
             </div>
             
         </div>
-        <div className='button-part'>
+        <div className='button-part1'>
                 <button
                             style={{ marginTop: "5px", borderRadius: "12px" }}
-                            className="submit-button"
+                            className="submit-button1"
                             onClick={() => {
                               handlePrint();
                             }}
@@ -170,7 +170,7 @@ export default function Printpdf() {
                 </button>
                 <button
                             style={{ marginTop: "5px", borderRadius: "12px" }}
-                            className="submit-button"
+                            className="submit-button1"
                             onClick={() => {
                               Pro_page();
                             }}

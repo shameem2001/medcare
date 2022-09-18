@@ -44,10 +44,11 @@ export default function Dashboard() {
   console.log(pharm);
 
   useEffect(() => {
+    fetchPrescription();
     const interval = setInterval(() => {
       console.log("This will be called every 2 seconds");
       fetchPrescription();
-    }, 1000*30);
+    }, 1000*20);
 
     return () => clearInterval(interval);
   }, [prescDetails.length]);

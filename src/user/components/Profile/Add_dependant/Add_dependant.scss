@@ -31,6 +31,7 @@
             display: grid;
             grid-template-columns: 25% 25%;
             column-gap: 2rem;
+            justify-content: center;
             .close-btn{
                 background-color: red;
                 color: white;

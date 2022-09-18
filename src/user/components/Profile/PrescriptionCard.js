@@ -25,7 +25,6 @@ export default function PrescriptionCard({
       },
     ];
 
-    console.log(doc_id);
     let [doctorData, setDoctorData] = useState(defDoc);
 
       const getDoctorDetails = async () => {
@@ -44,8 +43,6 @@ export default function PrescriptionCard({
       // console.log(typeof observation);
       let observationList = observation.split("\n");
       let prescriptionList = prescription.split("\n");
-
-      console.log(doctorData);
 
       let newRow = (e) => {
         let data = e.split(",");

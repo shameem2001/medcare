@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    overflow-x: hidden;
     width:100vw;
     height: 90vh;
     font-size: 17px;
@@ -76,14 +77,15 @@
     }
 }
 
-.button-part {
+.button-part1 {
     width: 100vw;
     height: 40px;
     display: flex;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
-.submit-button {
+.submit-button1 {
     font-family: "Poppins";
     background-color: cadetblue;
     color: white;

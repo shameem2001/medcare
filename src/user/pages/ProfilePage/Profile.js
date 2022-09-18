@@ -100,16 +100,17 @@ export default function Profile() {
 
     if (result !== null) {
       setDetails(result);
-      console.log(result);
     }
   };
 
   //Appointment details Fetching
 
   const [details2, setDetails2] = useState([]);
+  const [activeAppointments, setActiveAppointments] = useState([]);
 
   const appointmentData = async () => {
     let results;
+    let results2;
     await apis
       .get("appointment")
       .then((data) => {
@@ -117,21 +118,35 @@ export default function Profile() {
         results = data.data.filter((doc) => {
           return doc.user_id === user_id;
         });
+        results2 = data.data.filter((item) => {
+          return item.user_id === user_id && item.status === "Active";
+        });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    if (results !== null) {
+    if (results.length !== 0) {
       const sorted = results.sort(function (a, b) {
         return Date(a.date) - Date(b.date);
       });
       sorted.sort(function (a, b) {
         return modifyTime(a.time, a.session) - modifyTime(b.time, b.session);
       });
+      setDetails2(sorted);
+      console.log(sorted);
+    }
 
-      setDetails2(results);
-      console.log(results);
+    if (results2.length !== 0) {
+      const sorted2 = results2.sort(function (a, b) {
+        return Date(a.date) - Date(b.date);
+      });
+      sorted2.sort(function (a, b) {
+        return modifyTime(a.time, a.session) - modifyTime(b.time, b.session);
+      });
+
+      console.log("Sorted here");
+      setActiveAppointments(sorted2);
     }
   };
 
@@ -146,7 +161,6 @@ export default function Profile() {
     let minNum = parseFloat(min) / 60;
     return hoursNum + minNum;
   };
-
 
   let [dependantData, setDependantData] = useState([]);
 
@@ -164,25 +178,22 @@ export default function Profile() {
       });
     if (resultd !== null) {
       setDependantData(resultd);
-      console.log(resultd);
     }
   };
 
+  useEffect(() => {
+    fetchUserData();
+    const interval = setInterval(() => {
+      fetchDependant();
+    }, 1000 * 10);
+    fetchDependant();
+    appointmentData();
+    fetchPrescription();
+    // getDoctorDetails()
 
-  useEffect(
-    () => {
-      fetchUserData();
-      const interval = setInterval(()=>{
-        fetchDependant();
-      }, 1000 * 10);
-      appointmentData();
-      fetchPrescription();
-      // getDoctorDetails()
-
-      return () => clearInterval(interval);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
-    [img_up]);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [img_up]);
 
   let newRow = (e) => {
     return (
@@ -395,16 +406,26 @@ export default function Profile() {
               <div className="container shadow profile-tabbar-content-all-tab-appointments-container">
                 <h5>Latest Appointment</h5>
                 <hr />
-                {details2.length !== 0 && details2[0].status === "Active" ? (
+                {activeAppointments.length !== 0 ? (
                   <AppointmentCard
                     uName={userData.name}
-                    _id={details2[0]._id}
-                    use_id={details2[0].user_id}
-                    doctor_id={details2[0].doctor_id}
-                    date={details2[0].date}
-                    session={details2[0].session}
-                    time={details2[0].time}
-                    status={details2[0].status}
+                    _id={activeAppointments[0]._id}
+                    use_id={activeAppointments[0].user_id}
+                    doctor_id={activeAppointments[0].doctor_id}
+                    date={activeAppointments[0].date}
+                    session={activeAppointments[0].session}
+                    time={activeAppointments[0].time}
+                    status={activeAppointments[0].status}
+                    onClicked={(id)=>{
+                      const res = activeAppointments.filter((item)=>{
+                        return item._id !== id;
+                      });
+                      setActiveAppointments(res);
+                      const res2 = details2.filter((item) => {
+                        return item._id !== id;
+                      });
+                      setDetails2(res2);
+                    }}
                   />
                 ) : (
                   <div style={{ textAlign: "center" }}>
@@ -467,6 +488,17 @@ export default function Profile() {
                         session={item4.session}
                         time={item4.time}
                         status={item4.status}
+                        onClicked={(id)=>{
+                          const res = details2.filter((item) => {
+                            return item._id !== id;
+                          });
+                          setDetails2(res);
+
+                          const res2 = activeAppointments.filter((item) => {
+                            return item._id !== id;
+                          });
+                          setActiveAppointments(res2);
+                        }}
                       />
                     );
                   })}
