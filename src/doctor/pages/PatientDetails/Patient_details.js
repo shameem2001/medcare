@@ -31,8 +31,8 @@ export default function Patient_details() {
   let [sugar, setSugar] = useState("");
   let [priority, setPriority] = useState("low");
 
-  const postData = async () => {
-    if(observation === null || observation === ""){
+  const printData = ()=>{
+        if(observation === null || observation === ""){
       alert("Observation can't be empty");
     }
     else{
@@ -50,6 +50,46 @@ export default function Patient_details() {
       localStorage.setItem("pat_age", userData.age);
       localStorage.setItem("pat_email", userData.email);
       localStorage.setItem("pat_num", userData.phoneNumber);
+      localStorage.setItem("pat_img", userData.img);
+      localStorage.setItem("date", date);
+
+      apis
+        .post("prescription", {
+          user_id: user_id,
+          doctor_id: doctor_id,
+          patient_name: userData.name,
+          doctor_name: localStorage.getItem("doctor_name"),
+          date: date,
+          blood_pressure: pressure,
+          body_temperature: temp,
+          blood_oxygen: oxyg,
+          blood_sugar: sugar,
+          observation: observation,
+          prescription: prescription,
+          priority: priority,
+          hospital_name: localStorage.getItem("hospital_name"),
+          submitted_time: submitted_time,
+          is_visited: false,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => console.log(e));
+      updateAppointmentStatus();
+
+      navigate("/doctor/patient-details/print");
+    }
+  }
+
+  const postData = async () => {
+    if(observation === null || observation === ""){
+      alert("Observation can't be empty");
+    }
+    else{
+      const hours = new Date().getHours();
+      const min = new Date().getMinutes();
+      const submitted_time = `${hours}:${min}`;
+      console.log(submitted_time);
 
       await apis
         .post("prescription", {
@@ -76,7 +116,7 @@ export default function Patient_details() {
         .catch((e) => console.log(e));
       updateAppointmentStatus();
 
-      navigate("/doctor/patient-details/print");
+      navigate("/doctor/");
     }
   };
 
@@ -264,23 +304,28 @@ export default function Patient_details() {
                 aria-labelledby="add-prescription"
               >
                 <div className=" profile-tabbar-content-all-tab-newpres-container">
-                  <div className="fields" style={{marginTop:"10px", marginBottom:"10px"}}>
-                    <label style={{ marginTop: "5px" }} className="labels">
-                      High Priority?
-                    </label>
-                    <input
-                      className="form-check-input"
-                      style={{
-                        marginLeft: "10px",
-                        width: "20px",
-                        height: "20px",
-                      }}
-                      type="checkbox"
-                      value="high"
-                      onChange={(e) => {
-                        setPriority(e.target.value);
-                      }}
-                    />
+                  <div className="presc-print"> 
+                    <div className="fields" style={{marginTop:"10px", marginBottom:"10px"}}>
+                      <label style={{ marginTop: "5px" }} className="labels">
+                        High Priority?
+                      </label>
+                      <input
+                        className="form-check-input"
+                        style={{
+                          marginLeft: "10px",
+                          width: "20px",
+                          height: "20px",
+                        }}
+                        type="checkbox"
+                        value="high"
+                        onChange={(e) => {
+                          setPriority(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <button className="btn print-btn" onClick={printData}>
+                        Export
+                    </button>
                   </div>
                   <div className="fields">
                     <label style={{ marginTop: "5px" }} className="labels">

@@ -338,3 +338,18 @@
     // background-color: white;
     border-bottom: 1px solid black;
 }
+
+.presc-print{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+
+  .print-btn{
+    background-color: cadetblue;
+    color: white;
+    padding: 2px;
+    font-size: 14px;
+    width: 80px;
+    height: 30px;
+  }
+}
