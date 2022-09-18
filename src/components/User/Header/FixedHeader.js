@@ -48,8 +48,8 @@ export default function Header() {
         <Link className="navbar-right-link1" to="/">
           <a href="d">Home</a>
         </Link>
-        <Link className="navbar-right-link1" to="/">
-          <a href="#contact">Support</a>
+        <Link className="navbar-right-link1" to="/support">
+          <a href="f">Support</a>
         </Link>
         {showLogin === false ? (
           <Link

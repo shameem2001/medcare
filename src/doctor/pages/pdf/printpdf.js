@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React,{ useRef } from 'react'
 import "./printpdf.scss";
 import { useReactToPrint } from 'react-to-print';
 import { useNavigate } from 'react-router-dom';

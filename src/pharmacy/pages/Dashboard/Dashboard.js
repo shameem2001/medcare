@@ -46,7 +46,6 @@ export default function Dashboard() {
   useEffect(() => {
     fetchPrescription();
     const interval = setInterval(() => {
-      console.log("This will be called every 2 seconds");
       fetchPrescription();
     }, 1000*20);
 

@@ -145,11 +145,11 @@ export default function DoctorProfile() {
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
+                    <MDBCardText>District</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      {doctData.phoneNumber}
+                      {doctData.district}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>

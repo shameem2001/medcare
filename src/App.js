@@ -5,6 +5,7 @@ import Header from "./components/User/Header/Header.js";
 import FixedHeader from "./components/User/Header/FixedHeader.js";
 import Footer from "./components/User/Footer/Footer.js";
 import Home from "./user/pages/HomePage/Home.js";
+import Support from "./user/pages/SupportPage/Support.js";
 import DoctorList from "./user/pages/DoctorList/DoctorList.js";
 import DoctorDetails from "./user/pages/DoctorDetails/DoctorDetails.js";
 import DocDetailsWindow from "./user/pages/DocDetailsWindow/DocDetailsWindow.js";
@@ -35,6 +36,7 @@ export default function Medcare() {
       <div>
         <Routes>
           <Route path="/" element={<Header />} />
+          <Route path="/support" element={<Header />} />
           <Route path="/register" element={<Header />} />
           <Route path="/login" element={<Header />} />
           <Route path="/doctor-list" element={<Header />} />
@@ -50,6 +52,7 @@ export default function Medcare() {
         </Routes>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/support" element={<Support />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/doctor-list" element={<DoctorList />} />
