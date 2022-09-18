@@ -187,7 +187,7 @@ export default function DocDetailsWindow() {
                     if (localStorage.getItem("_id") !== null) {
                       addAppointment(item3);
                       updateDoctorSlots(item3);
-                      updateStep(2);
+                      updateStep(3);
                     } else {
                       console.log("not logged in");
                     }
@@ -394,16 +394,16 @@ export default function DocDetailsWindow() {
                 </div>
                 <Stepper activeStep={activeStep} orientation="vertical">
                   <Step>
+                    <StepLabel> Choose Doctor</StepLabel>
+                  </Step>
+                  <Step>
                     <StepLabel> Choose Date</StepLabel>
                   </Step>
                   <Step>
-                    <StepLabel> Confirm Appointment</StepLabel>
+                    <StepLabel> Choose Time</StepLabel>
                   </Step>
                   <Step>
-                    <StepLabel> login</StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel> Booking Confirmed</StepLabel>
+                    <StepLabel> Apply for Booking</StepLabel>
                   </Step>
                 </Stepper>
               </div>
@@ -422,7 +422,7 @@ export default function DocDetailsWindow() {
                     setSelectedDate(e.target.value);
                     await getSlotDetails(e.target.value);
                     setDisplayTime(true);
-                    updateStep(3);
+                    updateStep(2);
                   }}
                   type="date"
                   id="date"

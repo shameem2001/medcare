@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from "react";
 
 export default function Contact() {
+  const [typedName, setTypedName] = useState("");
+  const [typedEmail, setTypedEmail] = useState("");
+  const [typedPhone, setTypedPhone] = useState("");
+  const [typedMessage, setTypedMessage] = useState("");
+
   return (
     <div id="contact" className="contact-us">
       <section>
@@ -21,6 +26,9 @@ export default function Contact() {
                     type="text"
                     placeholder="Your Name *"
                     data-sb-validations="required"
+                    onChange={(e) => {
+                      setTypedName(e.target.value);
+                    }}
                   />
                   <div
                     className="invalid-feedback"
@@ -36,6 +44,9 @@ export default function Contact() {
                     type="email"
                     placeholder="Your Email *"
                     data-sb-validations="required,email"
+                    onChange={(e) => {
+                      setTypedEmail(e.target.value);
+                    }}
                   />
                   <div
                     className="invalid-feedback"
@@ -57,6 +68,9 @@ export default function Contact() {
                     type="tel"
                     placeholder="Your Phone *"
                     data-sb-validations="required"
+                    onChange={(e) => {
+                      setTypedPhone(e.target.value);
+                    }}
                   />
                   <div
                     className="invalid-feedback"
@@ -73,6 +87,9 @@ export default function Contact() {
                     id="message"
                     placeholder="Your Message *"
                     data-sb-validations="required"
+                    onChange={(e) => {
+                      setTypedMessage(e.target.value);
+                    }}
                   ></textarea>
                   <div
                     className="invalid-feedback"
@@ -83,32 +100,18 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            <div className="d-none" id="submitSuccessMessage">
-              <div className="text-center text-white mb-3">
-                <div className="fw-bolder">Form submission successful!</div>
-                To activate this form, sign up at
-                <br />
-                <a href="https://startbootstrap.com/solution/contact-forms">
-                  https://startbootstrap.com/solution/contact-forms
-                </a>
-              </div>
-            </div>
-
-            <div className="d-none" id="submitErrorMessage">
-              <div className="text-center text-danger mb-3">
-                Error sending message!
-              </div>
-            </div>
-
             <div className="text-center">
-              <button
-                className="btn btn-xl text-uppercase disabled contact-button"
+              <a
+                className="btn btn-xl text-uppercase contact-button"
                 id="submitButton"
                 type="submit"
+                style={{ color: "white", textDecoration: "none" }}
+                href={`mailto:toshameem2001@gmail.com?subject=${
+                  typedMessage.split(".")[0]
+                }&body=Message: ${typedMessage.split(".")[1]}`}
               >
                 Send Message
-              </button>
+              </a>
             </div>
           </form>
         </div>

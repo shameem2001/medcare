@@ -9,7 +9,7 @@ app.post("/api/user", async (req, res) => {
     .save()
     .then((data) => {
       res.send(data._id);
-      console.log(req.body.email)
+      console.log(req.body.email);
       // mailing.
       let transporter = nodemailer.createTransport({
         service: "hotmail",
@@ -46,7 +46,7 @@ app.post("/api/user", async (req, res) => {
           console.log("Email sent: " + info.response);
         }
       });
-     // mail end.
+      // mail end.
     })
     .catch((error) => {
       res.status(500).send(error);
@@ -62,22 +62,22 @@ app.get("/api/user", async (req, res) => {
   }
 });
 
-app.get("/api/user/:id", async (req, res)=>{
-  try{
-    let user = await usermodel.findOne({'_id': req.params.id});
+app.get("/api/user/:id", async (req, res) => {
+  try {
+    let user = await usermodel.findOne({ _id: req.params.id });
     res.send(user);
-  }
-  catch(error){
+  } catch (error) {
     console.log(error);
   }
-})
+});
 
-app.put("/api/user/:id", async (req, res)=> {
-  try{
+app.put("/api/user/:id", async (req, res) => {
+  try {
     console.log(req.body);
-    await usermodel.findByIdAndUpdate(req.params.id, req.body).then((data)=> res.send(data));
-  }
-  catch(error){
+    await usermodel
+      .findByIdAndUpdate(req.params.id, req.body)
+      .then((data) => res.send(data));
+  } catch (error) {
     console.log(error);
   }
 });
